@@ -1,0 +1,228 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.uid == "o4cLZuDfECSAeMbqK3FrrxJOskk2";
+    }
+
+    function isLinkedStudent(studentId) {
+      let uid = request.auth != null ? request.auth.uid : "";
+      let sessionPath = /databases/$(database)/documents/studentSessions/$(uid);
+      let studentPath = /databases/$(database)/documents/studentAuth/$(studentId);
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == "anonymous"
+        && exists(sessionPath)
+        && exists(studentPath)
+        && get(sessionPath).data.uid == request.auth.uid
+        && get(sessionPath).data.studentId == studentId
+        && get(studentPath).data.active == true
+        && get(sessionPath).data.codeVersion == get(studentPath).data.codeVersion
+        && get(sessionPath).data.codeHash == get(studentPath).data.codeHash;
+    }
+
+    function isCourseDataKey(key) {
+      return key in [
+        "itqan-lesson-tools-v1",
+        "itqan-lesson-books-v1",
+        "itqan-homework-assignments-v1",
+        "itqan-quiz-settings-v1",
+        "itqan-custom-quizzes-v1",
+        "itqan-lesson-quizzes-cleared-v1",
+        "itqan-lesson-access-v1",
+        "itqan-library-books-v1",
+        "itqan-students-v1",
+        "itqan-student-roster-cleared-v1",
+        "itqan-student-roster-seeded-v1",
+        "itqan-teacher-notifications-v1",
+        "itqan-attendance-v1",
+        "itqan-study-groups-v1",
+        "itqan-theme-settings-v1"
+      ];
+    }
+
+    match /courseData/{key} {
+      allow read: if request.auth != null
+        && isCourseDataKey(key);
+      allow create, update: if isTeacher()
+        && isCourseDataKey(key)
+        && request.resource.data.keys().hasOnly(["value", "updatedAt"])
+        && request.resource.data.value is string
+        && request.resource.data.value.size() < 900000;
+      allow delete: if isTeacher()
+        && isCourseDataKey(key);
+    }
+
+    match /studentAuth/{studentId} {
+      allow get, list: if isTeacher();
+      allow create, update, delete: if isTeacher();
+    }
+
+    match /studentLoginCodes/{codeHash} {
+      allow get: if isTeacher()
+        || request.auth != null
+        && (!exists(/databases/$(database)/documents/studentLoginCodes/$(codeHash))
+          || resource.data.active == true);
+      allow list: if isTeacher();
+      allow create, update: if isTeacher()
+        && request.resource.data.keys().hasOnly(["studentId", "codeVersion", "active", "createdAt", "updatedAt"])
+        && request.resource.data.studentId is string
+        && request.resource.data.codeVersion is int
+        && request.resource.data.codeVersion > 0
+        && request.resource.data.active is bool;
+      allow delete: if isTeacher();
+    }
+
+    match /studentSessions/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list: if false;
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && request.auth.token.firebase.sign_in_provider == "anonymous"
+        && request.resource.data.keys().hasOnly(["uid", "studentId", "codeHash", "codeVersion", "createdAt"])
+        && request.resource.data.uid == uid
+        && request.resource.data.studentId is string
+        && request.resource.data.codeHash is string
+        && request.resource.data.codeHash.matches("[a-f0-9]{64}")
+        && request.resource.data.codeVersion is int
+        && request.resource.data.createdAt is timestamp
+        && exists(/databases/$(database)/documents/studentLoginCodes/$(request.resource.data.codeHash))
+        && get(/databases/$(database)/documents/studentLoginCodes/$(request.resource.data.codeHash)).data.active == true
+        && get(/databases/$(database)/documents/studentLoginCodes/$(request.resource.data.codeHash)).data.studentId == request.resource.data.studentId
+        && get(/databases/$(database)/documents/studentLoginCodes/$(request.resource.data.codeHash)).data.codeVersion == request.resource.data.codeVersion
+        && exists(/databases/$(database)/documents/studentAuth/$(request.resource.data.studentId))
+        && get(/databases/$(database)/documents/studentAuth/$(request.resource.data.studentId)).data.active == true
+        && get(/databases/$(database)/documents/studentAuth/$(request.resource.data.studentId)).data.codeHash == request.resource.data.codeHash
+        && get(/databases/$(database)/documents/studentAuth/$(request.resource.data.studentId)).data.codeVersion == request.resource.data.codeVersion;
+      allow update, delete: if false;
+    }
+
+    match /homeworkSubmissions/{submissionId} {
+      allow read: if isTeacher();
+      allow create: if isLinkedStudent(request.resource.data.studentId)
+        && request.resource.data.keys().hasOnly([
+          "id", "studentId", "assignmentId", "lessonKey", "details",
+          "fileName", "fileId", "submittedAt", "status"
+        ])
+        && request.resource.data.id == submissionId
+        && request.resource.data.studentId is string
+        && request.resource.data.assignmentId is string
+        && request.resource.data.lessonKey is string
+        && request.resource.data.details is string
+        && request.resource.data.details.size() <= 500
+        && request.resource.data.fileName is string
+        && request.resource.data.fileId is string
+        && request.resource.data.fileId.matches("submission_[A-Za-z0-9_-]{20,}")
+        && exists(/databases/$(database)/documents/homeworkFiles/$(request.resource.data.fileId))
+        && get(/databases/$(database)/documents/homeworkFiles/$(request.resource.data.fileId)).data.kind == "submission"
+        && get(/databases/$(database)/documents/homeworkFiles/$(request.resource.data.fileId)).data.studentId == request.resource.data.studentId
+        && get(/databases/$(database)/documents/homeworkFiles/$(request.resource.data.fileId)).data.itemId == submissionId
+        && request.resource.data.submittedAt is string
+        && request.resource.data.status == "pending";
+      allow update: if (
+          isTeacher()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["status", "reviewedAt"])
+          && request.resource.data.status == "reviewed"
+          && request.resource.data.reviewedAt is string
+          || isLinkedStudent(resource.data.studentId)
+          && request.resource.data == resource.data
+        );
+      allow delete: if isTeacher();
+    }
+
+    match /homeworkFiles/{fileId} {
+      allow get: if isTeacher()
+        || request.auth != null && resource.data.kind == "assignment"
+        || resource.data.kind == "submission" && isLinkedStudent(resource.data.studentId);
+      allow list: if false;
+      allow create: if request.resource.data.keys().hasOnly([
+          "fileId", "kind", "studentId", "itemId", "fileName",
+          "contentType", "fileData", "createdAt"
+        ])
+        && request.resource.data.fileId == fileId
+        && request.resource.data.kind in ["assignment", "submission"]
+        && request.resource.data.itemId is string
+        && request.resource.data.itemId.size() <= 128
+        && request.resource.data.fileName is string
+        && request.resource.data.fileName.size() <= 255
+        && request.resource.data.contentType is string
+        && request.resource.data.contentType.matches("image/.*|application/pdf|audio/.*")
+        && request.resource.data.fileData is string
+        && request.resource.data.fileData.size() <= 850000
+        && request.resource.data.createdAt is timestamp
+        && (
+          isTeacher()
+          && request.resource.data.kind == "assignment"
+          && request.resource.data.contentType.matches("image/.*|application/pdf")
+          && request.resource.data.studentId == ""
+          || request.resource.data.kind == "submission"
+          && isLinkedStudent(request.resource.data.studentId)
+        );
+      allow update: if false;
+      allow delete: if isTeacher();
+    }
+
+    match /quizResults/{resultId} {
+      allow read: if isTeacher();
+      allow create: if isLinkedStudent(request.resource.data.studentId)
+        && request.resource.data.keys().hasOnly([
+          "id", "studentId", "lessonKey", "quizTitle", "score",
+          "totalQuestions", "attemptNumber", "submittedAt", "answers"
+        ])
+        && request.resource.data.id == resultId
+        && request.resource.data.studentId is string
+        && request.resource.data.lessonKey is string
+        && request.resource.data.quizTitle is string
+        && request.resource.data.quizTitle.size() <= 100
+        && request.resource.data.score is int
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 100
+        && request.resource.data.totalQuestions is int
+        && request.resource.data.totalQuestions > 0
+        && request.resource.data.totalQuestions <= 160
+        && request.resource.data.attemptNumber is int
+        && request.resource.data.attemptNumber >= 1
+        && request.resource.data.attemptNumber <= 2
+        && request.resource.data.submittedAt is string
+        && request.resource.data.answers is list
+        && request.resource.data.answers.size() <= 160;
+      allow update: if isTeacher()
+        || isLinkedStudent(resource.data.studentId)
+        && request.resource.data == resource.data;
+      allow delete: if isTeacher();
+    }
+
+    match /studentData/{recordId} {
+      function isStudentDataKey(key) {
+        return key in [
+          "itqan-student-reports-v1",
+          "itqan-lesson-quiz-attempts-v1",
+          "itqan-question-analytics-v1",
+          "itqan-homework-achievements-v1",
+          "itqan-game-achievements-v1",
+          "itqan-reminders-v1",
+          "itqan-flashcard-progress-v1",
+          "itqan-learning-days-v1",
+          "itqan-notification-read-state-v1",
+          "itqan-assignment-reminder-state-v1",
+          "itqan-late-submission-requests-v1",
+          "itqan-audit-log-v1",
+          "itqan-lesson-question-answers-v1",
+          "itqan-lesson-understanding-v1",
+          "itqan-lesson-notes-v1"
+        ];
+      }
+      allow read: if isTeacher()
+        || isLinkedStudent(resource.data.studentId);
+      allow create, update: if isTeacher()
+        || isLinkedStudent(request.resource.data.studentId)
+        && isStudentDataKey(request.resource.data.key)
+        && request.resource.data.keys().hasOnly(["studentId", "key", "value", "updatedAt"])
+        && recordId == request.resource.data.studentId + "__" + request.resource.data.key
+        && request.resource.data.value is string
+        && request.resource.data.value.size() < 800000;
+      allow delete: if isTeacher();
+    }
+  }
+}

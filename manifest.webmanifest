@@ -1,0 +1,18 @@
+{
+	"name": "منصة إتقان التعليمية",
+	"short_name": "إتقان",
+	"lang": "ar",
+	"dir": "rtl",
+	"start_url": "./index.html",
+	"display": "standalone",
+	"background_color": "#f4f6ef",
+	"theme_color": "#f4f6ef",
+	"icons": [
+		{
+			"src": "app-icon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any maskable"
+		}
+	]
+}

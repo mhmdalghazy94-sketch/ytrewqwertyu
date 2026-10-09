@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f6ef">
+    <title>إتقان | منصة التعلم</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="قائمة المراحل الدراسية">
+            <a class="brand" href="#home" aria-label="إتقان، الصفحة الرئيسية">
+                <span class="brand-mark">إ</span>
+                <span><strong>إتقان</strong><small>منصتك للتعلّم</small></span>
+            </a>
+            <div class="sidebar-heading">المسار الدراسي</div>
+            <button class="portal-nav is-active" id="home-nav" type="button" data-portal-page="home"><span class="reports-nav-icon" aria-hidden="true">⌂</span><span>الواجهة الرئيسية</span></button>
+            <nav id="curriculum" class="curriculum" aria-label="المراحل والفصول"></nav>
+            <div class="sidebar-heading">مساحة الطالب</div>
+            <button class="portal-nav" id="homework-nav" type="button" data-portal-page="homework"><span class="reports-nav-icon" aria-hidden="true">✓</span><span>الواجبات</span></button>
+            <button class="quizzes-nav" id="quizzes-nav" type="button">
+                <span class="reports-nav-icon" aria-hidden="true">?</span>
+                <span>الاختبارات</span>
+                <span class="disclosure">←</span>
+            </button>
+            <button class="portal-nav" id="recitation-nav" type="button" data-portal-page="recitation"><span class="reports-nav-icon" aria-hidden="true">Aa</span><span>تسميع الكلمات</span></button>
+            <button class="portal-nav" id="activity-book-nav" type="button" data-portal-page="activity-book"><span class="reports-nav-icon" aria-hidden="true">▤</span><span>كتاب النشاط</span></button>
+            <button class="portal-nav" id="calendar-nav" type="button" data-portal-page="calendar"><span class="reports-nav-icon" aria-hidden="true">◷</span><span>تقويم الدرس</span></button>
+            <button class="student-reports-nav" id="student-reports-nav" type="button">
+                <span class="reports-nav-icon" aria-hidden="true">▤</span>
+                <span>التقارير</span>
+                <span class="disclosure">←</span>
+            </button>
+            <div class="sidebar-heading students-heading" id="students-heading" hidden>إدارة الطلاب</div>
+            <button class="reports-nav" id="reports-nav" type="button" hidden>
+                <span class="reports-nav-icon" aria-hidden="true">▤</span>
+                <span>تقارير الطلاب</span>
+                <span class="disclosure">←</span>
+            </button>
+            <nav class="students-nav" id="students-nav" aria-label="قائمة الطلاب" hidden></nav>
+            <button class="english-game-nav" id="english-game-nav" type="button">
+                <span class="reports-nav-icon" aria-hidden="true">✎</span>
+                <span>لعبة الإنجليزية</span>
+                <span class="disclosure">←</span>
+            </button>
+            <button class="portal-nav" id="achievements-nav" type="button" data-portal-page="achievements"><span class="reports-nav-icon" aria-hidden="true">★</span><span>الشارات والأوسمة</span></button>
+            <button class="portal-nav" id="contact-nav" type="button" data-portal-page="contact"><span class="reports-nav-icon" aria-hidden="true">✉</span><span>التواصل</span></button>
+            <button class="features-nav" id="features-nav" type="button">
+                <span class="reports-nav-icon" aria-hidden="true">✦</span>
+                <span>لوحة التعلّم والأدوات</span>
+                <span class="disclosure">←</span>
+            </button>
+            <button class="portal-nav" id="settings-nav" type="button" data-portal-page="settings"><span class="reports-nav-icon" aria-hidden="true">⚙</span><span>الإعدادات</span></button>
+            <button class="library-nav" id="library-nav" type="button">
+                <span class="reports-nav-icon" aria-hidden="true">▧</span>
+                <span>المكتبة</span>
+                <span class="disclosure">←</span>
+            </button>
+            <button class="portal-nav" id="profile-nav" type="button" data-portal-page="profile"><span class="reports-nav-icon" aria-hidden="true">●</span><span>البروفايل</span></button>
+            <button class="portal-nav session-nav" id="session-nav" type="button"><span class="reports-nav-icon" aria-hidden="true">⇥</span><span id="session-nav-label">تسجيل الدخول</span></button>
+            <div class="sidebar-foot"><span class="status-dot"></span> رحلتك التعليمية تبدأ هنا</div>
+        </aside>
+
+        <main class="main-area" id="home">
+            <header class="topbar">
+                <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
+                    <span class="menu-glyph" aria-hidden="true">☰</span>
+                </button>
+                <div class="breadcrumbs" id="breadcrumbs">المرحلة التمهيدية <span>/</span> الفصل الدراسي الأول</div>
+                <label class="global-search"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="ابحث في المنصة" aria-label="ابحث في المنصة" autocomplete="off"><div class="global-search-results" id="global-search-results" role="listbox" hidden></div></label>
+                <div class="notification-center">
+                    <button class="notification-bell" id="notification-bell" type="button" aria-label="الإشعارات" aria-expanded="false" aria-controls="notification-popover">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+                        <span class="notification-bell-badge" id="notification-bell-badge" hidden></span>
+                    </button>
+                    <section class="notification-popover" id="notification-popover" aria-label="إشعارات المنصة" hidden></section>
+                </div>
+                <button class="text-button install-app-button" id="install-app-button" type="button" hidden>تثبيت</button>
+                <button class="text-button theme-toggle" id="theme-toggle" type="button" aria-pressed="false">الوضع الليلي</button>
+                <button class="profile-chip role-toggle" id="role-toggle" type="button" aria-haspopup="dialog">
+                    <span class="profile-avatar" id="role-avatar">ط</span><span id="role-label">دخول المعلم</span>
+                </button>
+            </header>
+
+            <section class="welcome-strip" aria-label="مقدمة المنصة">
+                <div>
+                    <span class="eyebrow">مساحة التعلّم</span>
+                    <h1>خطوة جديدة نحو الإتقان.</h1>
+                    <p>اختر مرحلتك وابدأ درساً اليوم.</p>
+                </div>
+                <div class="welcome-art" aria-hidden="true"><span class="sun-shape"></span><span class="book-shape">✦</span></div>
+            </section>
+
+            <section class="home-dashboard" id="home-dashboard" aria-label="ملخص التعلّم اليومي"></section>
+
+            <section class="lesson-section" aria-labelledby="lesson-heading">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow" id="lesson-context">المرحلة التمهيدية · الفصل الدراسي الأول</span>
+                        <h2 id="lesson-heading">الدرس الأول</h2>
+                    </div>
+                    <span class="lesson-number" id="lesson-number">01 <i>/ 03</i></span>
+                    <button class="lesson-manager-toggle" id="lesson-manager-toggle" type="button" aria-expanded="false" hidden>إدارة الدرس</button>
+                </div>
+
+                <section class="lesson-manager-panel" id="lesson-manager-panel" aria-label="إدارة محتوى الدرس" hidden>
+                    <div class="lesson-manager-header"><div><span class="eyebrow">إعدادات المعلم</span><h3>إدارة محتوى الدرس</h3></div><p class="cloud-sync-status" id="cloud-sync-status" role="status" hidden></p></div>
+                    <div class="lesson-manager-grid">
+                        <section class="project-assets-manager" aria-labelledby="project-assets-title">
+                            <div><h4 id="project-assets-title">ملفات المشروع</h4><p>على GitHub Pages تُجلب الملفات من المستودع العام تلقائياً. يمكن إدخال مستودع آخر، أو اختيار مجلد محلي.</p></div>
+                            <form class="github-assets-form" id="github-assets-form">
+                                <label class="field-label">مستودع GitHub العام<input id="github-assets-repository" name="repository" type="text" inputmode="url" placeholder="https://github.com/owner/repository" autocomplete="url"></label>
+                                <label class="field-label">الفرع (اختياري)<input id="github-assets-branch" name="branch" type="text" placeholder="يُستخدم الفرع الافتراضي للمستودع"></label>
+                                <button class="save-report-button" type="submit">جلب ملفات GitHub</button>
+                            </form>
+                            <div class="project-assets-source-actions">
+                                <label class="text-button project-assets-picker">أو اختر مجلداً من هذا الجهاز<input id="project-assets-folder" type="file" webkitdirectory directory multiple aria-describedby="project-assets-status"></label>
+                                <button class="text-button" id="refresh-github-assets" type="button" hidden>تحديث قائمة GitHub</button>
+                            </div>
+                            <p class="project-assets-status" id="project-assets-status" role="status">اختر مستودعاً عاماً أو مجلداً محلياً لعرض مسارات الملفات.</p>
+                            <div class="project-asset-list" id="project-asset-list" aria-live="polite"></div>
+                        </section>
+                        <form id="lesson-book-form" class="resource-manager-form">
+                            <h4>كتاب الدرس</h4>
+                            <label class="field-label">رابط الكتاب أو اسم الملف
+                                <span class="resource-path-picker" data-resource-path-picker>
+                                    <input name="url" type="text" autocomplete="off" aria-expanded="false" placeholder="اضغط لاختيار مسار أو أدخل رابطاً">
+                                    <span class="resource-path-options" data-resource-path-options hidden></span>
+                                </span>
+                            </label>
+                            <div class="manager-form-actions"><button class="save-report-button" type="submit">حفظ الكتاب</button><button class="delete-report-button" type="button" id="remove-lesson-book">حذف الكتاب</button></div>
+                        </form>
+                        <form id="lesson-tool-form" class="resource-manager-form">
+                            <h4>إضافة أداة</h4>
+                            <label class="field-label">اسم الأداة<input name="title" required maxlength="90" placeholder="مثال: ورقة مراجعة"></label>
+                            <label class="field-label">وصف الأداة<input name="description" maxlength="140" placeholder="وصف مختصر للطالب"></label>
+                            <label class="field-label">نوع الأداة<select name="action"><option value="resource">رابط أو ملف</option><option value="dictionary">قاموس الدرس</option><option value="activity-book">كتاب النشاط</option><option value="audio">صوتية</option><option value="homework">واجب</option><option value="quiz">تقويم</option></select></label>
+                            <label class="field-label">رابط أو مسار الملف
+                                <span class="resource-path-picker" data-resource-path-picker>
+                                    <input name="url" type="text" autocomplete="off" aria-expanded="false" placeholder="اضغط لاختيار مسار أو أدخل رابطاً">
+                                    <span class="resource-path-options" data-resource-path-options hidden></span>
+                                </span>
+                            </label>
+                            <label class="field-label">الدرجة القصوى<input name="grade" type="number" min="0" max="100" inputmode="numeric" placeholder="اختياري"></label>
+                            <label class="assignment-activation-toggle"><input name="active" type="checkbox" checked><span>تفعيل الأداة للطلاب</span></label>
+                            <button class="save-report-button" type="submit">إضافة الأداة</button>
+                        </form>
+                        <section class="lesson-tools-manager"><h4>أدوات هذا الدرس</h4><div id="lesson-tools-manager-list"></div></section>
+                    </div>
+                </section>
+
+                <div class="lesson-layout">
+                    <article class="book-panel">
+                        <div class="book-toolbar">
+                            <div><span class="live-dot"></span><span>كتاب الدرس</span></div>
+                            <a id="open-book" href="المرحلة التمهيدية/الفصل الدراسي الاول/الدرس الاول/lesson01.pdf" target="_blank" rel="noopener">فتح في نافذة جديدة <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="book-viewer" id="book-viewer">
+                            <iframe id="lesson-book" src="المرحلة التمهيدية/الفصل الدراسي الاول/الدرس الاول/lesson01.pdf" title="كتاب الدرس الأول بصيغة PDF"></iframe>
+                            <div class="book-fallback" id="book-fallback" hidden>
+                                <span class="fallback-icon">PDF</span>
+                                <h3>كتاب الدرس غير متاح للعرض</h3>
+                                <p>أضف ملف الدرس إلى مجلد المنصة لعرضه هنا.</p>
+                            </div>
+                        </div>
+                        <div class="book-caption"><span>ملف الدرس بصيغة PDF</span><span>عرض مريح للقراءة</span></div>
+                    </article>
+
+                    <aside class="lesson-tools" aria-label="أدوات الدرس">
+                        <div class="tools-heading"><span class="eyebrow">أدوات الدرس</span><span>اختر نشاطاً</span></div>
+                        <div id="lesson-tool-list"></div>
+                        <section class="lesson-interaction-tools" id="lesson-interaction-tools" aria-labelledby="lesson-interaction-title">
+                            <h3 id="lesson-interaction-title">أنشطة سريعة</h3>
+                            <button class="tool-button" type="button" data-lesson-feature="question"><span class="tool-icon quiz-icon" aria-hidden="true">؟</span><span><strong>سؤال تفاعلي</strong><small>أجب أو راجع إجابات الدرس</small></span><span class="tool-arrow" aria-hidden="true">←</span></button>
+                            <button class="tool-button" type="button" data-lesson-feature="timer"><span class="tool-icon audio-icon" aria-hidden="true">◷</span><span><strong>مؤقت النشاط</strong><small>يحدده المعلم لمهلة حل النشاط</small></span><span class="tool-arrow" aria-hidden="true">←</span></button>
+                            <button class="tool-button" type="button" data-lesson-feature="understanding"><span class="tool-icon practice-icon" aria-hidden="true">✓</span><span><strong>مؤشر الفهم</strong><small>حدّد مدى فهمك للدرس</small></span><span class="tool-arrow" aria-hidden="true">←</span></button>
+                            <button class="tool-button" type="button" data-lesson-feature="notes"><span class="tool-icon translate-icon" aria-hidden="true">✎</span><span><strong>ملاحظاتي</strong><small>دوّن ملاحظاتك لهذا الدرس</small></span><span class="tool-arrow" aria-hidden="true">←</span></button>
+                        </section>
+                        <audio id="lesson-audio" preload="none" hidden></audio>
+                    </aside>
+                </div>
+                <section class="activity-panel" id="activity-panel" aria-live="polite" hidden></section>
+            </section>
+
+            <section class="lesson-code-page" id="lesson-code-page" aria-labelledby="lesson-code-title" hidden>
+                <header class="lesson-code-header">
+                    <div><span class="eyebrow" id="lesson-code-context"></span><h1 id="lesson-code-title"></h1></div>
+                    <button class="save-report-button" id="return-home-from-lesson" type="button">العودة إلى الواجهة الرئيسية</button>
+                </header>
+                <div class="lesson-code-content" id="lesson-code-content" aria-live="polite"></div>
+            </section>
+
+            <section class="reports-page" id="reports-page" aria-labelledby="reports-title" hidden>
+                <header class="reports-header">
+                    <div>
+                        <span class="eyebrow">إدارة الطلاب</span>
+                        <h1 id="reports-title">تقارير الطلاب</h1>
+                    </div>
+                    <span class="reports-period">السجل الدراسي</span>
+                </header>
+                <div class="report-overview" id="report-overview" aria-label="ملخص التقارير"></div>
+                <div class="reports-workspace">
+                    <aside class="students-panel">
+                        <div class="students-panel-heading">
+                            <div><h2>الطلاب</h2><span id="student-count"></span></div>
+                            <label class="student-search"><span aria-hidden="true">⌕</span><input id="student-search" type="search" placeholder="ابحث عن طالب" aria-label="ابحث عن طالب"></label>
+                        </div>
+                        <div class="student-roster" id="student-roster"></div>
+                        <section class="student-account-management" aria-labelledby="student-account-title">
+                            <h3 id="student-account-title">رموز دخول الطلاب</h3>
+                            <form id="student-account-form">
+                                <label class="field-label">الاسم بالعربية<input name="name" required maxlength="100" placeholder="الاسم الكامل بالعربية"></label>
+                                <label class="field-label">الاسم بالإنجليزية<input name="nameEn" type="text" dir="ltr" required maxlength="100" placeholder="Full name in English"></label>
+                                <button class="save-report-button" type="submit">إضافة الطالب</button>
+                                <small>عيّن رمزاً خاصاً لكل طالب من قائمته، أو اتركه فارغاً لتوليد رمز عشوائي. تغيير الرمز يُبطل السابق وينهي جلساته.</small>
+                                <p id="student-account-status" role="status"></p>
+                            </form>
+                            <div class="student-account-list" id="student-account-list"></div>
+                        </section>
+                    </aside>
+                    <section class="student-report-panel" id="student-report-panel" aria-live="polite">
+                        <div class="reports-empty"><span class="empty-mark">↖</span><h2>اختر طالباً لعرض سجله</h2></div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="student-reports-page" id="student-reports-page" aria-labelledby="student-reports-title" hidden>
+                <header class="reports-header">
+                    <div>
+                        <span class="eyebrow">متابعة التعلّم</span>
+                        <h1 id="student-reports-title">التقارير</h1>
+                    </div>
+                    <span class="reports-period">عرض فقط</span>
+                </header>
+                <section class="student-profile" id="student-profile" aria-label="الملف الشخصي للطالب"></section>
+                <div class="report-overview" id="student-report-overview" aria-label="ملخص التقارير"></div>
+                <section class="student-report-panel public-reports-panel" aria-label="سجل التقارير">
+                    <div class="report-tabs" id="student-report-tabs" role="tablist" aria-label="أنواع التقارير"></div>
+                    <div class="student-public-records" id="student-public-records" aria-live="polite"></div>
+                </section>
+            </section>
+
+            <section class="library-page" id="library-page" aria-labelledby="library-title" hidden>
+                <header class="library-header">
+                    <div>
+                        <span class="eyebrow">مصادر التعلّم</span>
+                        <h1 id="library-title">المكتبة</h1>
+                    </div>
+                    <span class="library-count" id="library-count">10 كتب</span>
+                </header>
+                <section class="library-management" id="library-management" aria-label="إدارة المكتبة" hidden>
+                    <form id="library-book-form" class="resource-manager-form">
+                        <h2>إضافة كتاب للمكتبة</h2>
+                        <label class="field-label">اسم الكتاب<input name="title" required maxlength="100" placeholder="اسم الكتاب"></label>
+                        <label class="field-label">التصنيف<input name="category" required maxlength="60" placeholder="مثال: العلوم"></label>
+                        <label class="field-label">وصف الكتاب<input name="description" maxlength="160" placeholder="نبذة قصيرة"></label>
+                        <label class="field-label">رابط صورة الغلاف (اختياري)<input name="coverUrl" type="url" placeholder="https://..."></label>
+                        <label class="field-label">رابط التحميل<input name="downloadUrl" type="url" placeholder="رابط الكتاب في Telegram" required></label>
+                        <input name="bookId" type="hidden">
+                        <div class="manager-form-actions"><button class="save-report-button" type="submit">حفظ الكتاب</button><button class="delete-report-button" type="button" id="reset-library-book-form">تفريغ النموذج</button></div>
+                    </form>
+                    <div class="library-management-list" id="library-management-list"></div>
+                </section>
+                <div class="library-toolbar">
+                    <label class="library-search"><span aria-hidden="true">⌕</span><input id="library-search" type="search" placeholder="ابحث عن كتاب" aria-label="ابحث عن كتاب"></label>
+                    <p id="library-hint">حمّل الكتب من الروابط المتاحة، أو أضف روابط تيليجرام من إدارة المكتبة.</p>
+                </div>
+                <div class="library-grid" id="library-grid" aria-live="polite"></div>
+            </section>
+
+            <section class="english-game-page" id="english-game-page" aria-labelledby="english-game-title" hidden>
+                <header class="english-game-header">
+                    <div><span class="eyebrow">تعلّم وتحدَّ نفسك</span><h1 id="english-game-title">لعبة تعلّم الإنجليزية</h1></div>
+                    <span class="game-badge">اختر إجابة من أربعة خيارات</span>
+                </header>
+                <form class="english-game-filters" id="english-game-filters">
+                    <label class="field-label">مستوى الصعوبة
+                        <select name="difficulty">
+                            <option value="all">كل المستويات</option>
+                            <option value="easy">سهل</option>
+                            <option value="medium">متوسط</option>
+                            <option value="hard">صعب</option>
+                        </select>
+                    </label>
+                    <label class="field-label">نوع الأسئلة
+                        <select name="category">
+                            <option value="all">كل الأنواع</option>
+                            <option value="vocabulary">مفردات</option>
+                            <option value="phrases">جمل شائعة</option>
+                            <option value="grammar">قواعد</option>
+                        </select>
+                    </label>
+                    <label class="field-label">المرحلة الدراسية
+                        <select name="level">
+                            <option value="all">كل المراحل</option>
+                            <option value="preparatory">المرحلة التمهيدية</option>
+                            <option value="primary">المرحلة الابتدائية</option>
+                            <option value="middle">المرحلة المتوسطة</option>
+                            <option value="secondary">المرحلة الثانوية</option>
+                            <option value="university">المرحلة الجامعية</option>
+                        </select>
+                    </label>
+                    <label class="field-label">عدد الأسئلة
+                        <select name="count">
+                            <option value="10">10 أسئلة</option>
+                            <option value="20">20 سؤالاً</option>
+                            <option value="40">40 سؤالاً</option>
+                            <option value="80">80 سؤالاً</option>
+                            <option value="160">160 سؤالاً</option>
+                        </select>
+                    </label>
+                    <button class="save-report-button" type="submit">ابدأ اللعبة عشوائياً</button>
+                </form>
+                <p class="game-filter-hint" id="game-filter-hint" aria-live="polite"></p>
+                <section class="english-game-session" id="english-game-session" aria-live="polite" hidden></section>
+            </section>
+
+            <section class="quizzes-page" id="quizzes-page" aria-labelledby="quizzes-title" hidden>
+                <header class="quizzes-header">
+                    <div><span class="eyebrow">اختبارات الدروس</span><h1 id="quizzes-title">إدارة الاختبارات</h1><p>أنشئ الاختبارات وحدد مواعيدها، وتابع نتائج الطلاب وإجاباتهم.</p></div>
+                    <span class="reports-period" id="quizzes-role-label">مساحة الطالب</span>
+                    <label class="field-label quiz-create-lesson-wrap" id="quiz-create-lesson-wrap" hidden>درس الاختبار<select id="quiz-create-lesson"></select></label>
+                    <button class="save-report-button" id="create-quiz-button" type="button" hidden>إنشاء اختبار</button>
+                </header>
+                <div class="quiz-overview" id="quiz-overview" aria-label="ملخص الاختبارات"></div>
+                <section class="quiz-schedule-section" id="quiz-schedule-section" aria-labelledby="quiz-schedule-title" hidden>
+                    <div class="feature-section-heading"><div><span class="eyebrow">جدول الاختبارات</span><h2 id="quiz-schedule-title">الاختبارات المنشورة</h2></div></div>
+                    <div class="quiz-schedule-table-wrap"><table class="quiz-schedule-table"><thead><tr><th>الاختبار</th><th>الدرس</th><th>النوع</th><th>الموعد</th><th>الأسئلة</th><th>المؤقت</th><th>الإجراء</th></tr></thead><tbody id="quiz-schedule-body"></tbody></table></div>
+                </section>
+                <form class="quiz-library-filters" id="quiz-library-filters">
+                    <label class="field-label">المرحلة الدراسية<select name="level"><option value="all">كل المراحل</option><option value="0">المرحلة التمهيدية</option><option value="1">المرحلة الابتدائية</option><option value="2">المرحلة المتوسطة</option><option value="3">المرحلة الثانوية</option><option value="4">المرحلة الجامعية</option></select></label>
+                    <label class="field-label">الفصل الدراسي<select name="semester"><option value="all">كل الفصول</option><option value="0">الفصل الدراسي الأول</option><option value="1">الفصل الدراسي الثاني</option></select></label>
+                    <label class="field-label">ابحث عن اختبار<input name="search" type="search" placeholder="اسم المرحلة أو رقم الدرس" autocomplete="off"></label>
+                </form>
+                <p class="quiz-library-status" id="quiz-library-status" aria-live="polite"></p>
+                <section class="quiz-management-panel" id="quiz-management-panel" aria-label="إدارة الاختبار" hidden></section>
+                <section class="quiz-results-section" id="quiz-results-section" aria-labelledby="quiz-results-title" hidden>
+                    <div class="feature-section-heading"><div><span class="eyebrow">حلول الطلاب</span><h2 id="quiz-results-title">الاختبارات التي تم حلها</h2></div><span class="reports-period" id="quiz-results-count"></span></div>
+                    <div class="quiz-results-list" id="quiz-results-list"></div>
+                </section>
+                <div class="quiz-library-grid" id="quiz-library-grid" aria-live="polite"></div>
+            </section>
+
+            <section class="features-page" id="features-page" aria-labelledby="features-title" hidden>
+                <header class="features-header">
+                    <div><span class="eyebrow">أدوات التعلّم والمتابعة</span><h1 id="features-title">لوحة التعلّم</h1></div>
+                    <div class="features-actions">
+                        <button class="text-button" id="export-backup" type="button">تنزيل نسخة احتياطية</button>
+                        <label class="text-button import-backup-button">استعادة نسخة<input id="import-backup" type="file" accept="application/json,.json" hidden></label>
+                    </div>
+                </header>
+                <div class="features-toolbar">
+                    <div class="feature-tabs" id="feature-tabs" role="tablist" aria-label="أدوات المنصة"></div>
+                    <div class="accessibility-controls" aria-label="إعدادات سهولة الوصول">
+                        <button class="text-button" type="button" data-font-size="down" aria-label="تصغير الخط">أ−</button>
+                        <button class="text-button" type="button" data-font-size="up" aria-label="تكبير الخط">أ+</button>
+                        <button class="text-button" type="button" id="contrast-toggle" aria-pressed="false">تباين مرتفع</button>
+                    </div>
+                </div>
+                <div class="features-content" id="features-content" aria-live="polite"></div>
+                <p class="offline-status" id="offline-status" role="status"></p>
+                <button class="text-button" id="cache-current-lesson" type="button">حفظ ملفات الدرس الحالي دون اتصال</button>
+            </section>
+
+            <section class="portal-page" id="homework-page" aria-labelledby="homework-page-title" hidden><header class="portal-page-header"><span class="eyebrow">مساحة الطالب</span><h1 id="homework-page-title">الواجبات</h1><p>الواجبات النشطة للدرس الحالي ومواعيد تسليمها.</p></header><div class="portal-page-content" id="homework-page-content"></div></section>
+            <section class="portal-page" id="recitation-page" aria-labelledby="recitation-page-title" hidden><header class="portal-page-header"><span class="eyebrow">تدريب المفردات</span><h1 id="recitation-page-title">تسميع الكلمات</h1><p>راجع كلمات الدرس واستعد لتسميعها للمعلم.</p></header><div class="portal-page-content" id="recitation-page-content"></div></section>
+            <section class="portal-page" id="activity-book-page" aria-labelledby="activity-book-page-title" hidden><header class="portal-page-header"><span class="eyebrow">تطبيق وممارسة</span><h1 id="activity-book-page-title">كتاب النشاط</h1><p>افتح كتاب النشاط المرتبط بالدرس الذي تتعلمه.</p></header><div class="portal-page-content" id="activity-book-page-content"></div></section>
+            <section class="portal-page" id="calendar-page" aria-labelledby="calendar-page-title" hidden><header class="portal-page-header"><span class="eyebrow">مواعيدك التعليمية</span><h1 id="calendar-page-title">تقويم الدرس</h1><p>الاختبارات والواجبات والمواعيد القادمة.</p></header><div class="portal-page-content" id="calendar-page-content"></div></section>
+            <section class="portal-page" id="contact-page" aria-labelledby="contact-page-title" hidden><header class="portal-page-header"><span class="eyebrow">نحن هنا لمساعدتك</span><h1 id="contact-page-title">التواصل</h1><p>تواصل مع المعلم بخصوص الدرس أو الواجبات.</p></header><div class="portal-page-content" id="contact-page-content"></div></section>
+            <section class="portal-page" id="achievements-page" aria-labelledby="achievements-page-title" hidden><header class="portal-page-header"><span class="eyebrow">إنجازاتك التعليمية</span><h1 id="achievements-page-title">الشارات والأوسمة</h1><p>تابع إنجازاتك وما تبقى للحصول على الشارات.</p></header><div class="portal-page-content" id="achievements-page-content"></div></section>
+            <section class="portal-page" id="profile-page" aria-labelledby="profile-page-title" hidden><header class="portal-page-header"><span class="eyebrow">مساحتك الشخصية</span><h1 id="profile-page-title">البروفايل</h1><p>معلومات الطالب وملخص تقدمه في المرحلة الحالية.</p></header><div class="portal-page-content" id="profile-page-content"></div></section>
+            <section class="portal-page" id="settings-page" aria-labelledby="settings-page-title" hidden><header class="portal-page-header"><span class="eyebrow">تخصيص التجربة</span><h1 id="settings-page-title">الإعدادات</h1><p>اضبط المظهر وإمكانية الوصول بما يناسبك.</p></header><div class="portal-page-content" id="settings-page-content"></div></section>
+            <footer class="page-footer"><span>منصة إتقان التعليمية</span><span>تعلّم كل يوم، ولو خطوة.</span></footer>
+        </main>
+        <button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="إغلاق القائمة" tabindex="-1"></button>
+    </div>
+    <dialog class="teacher-dialog" id="teacher-dialog" aria-labelledby="teacher-dialog-title">
+        <form id="teacher-login-form">
+            <div class="teacher-dialog-heading">
+                <span class="brand-mark" aria-hidden="true">م</span>
+            </div>
+            <h2 id="teacher-dialog-title">التسجيل والدخول</h2>
+            <p>يدخل المعلم ببريده وكلمة المرور، ويدخل الطالب برمز الدخول الذي يزوّده به المعلم.</p>
+            <label class="teacher-code-label" for="login-role">نوع الحساب</label>
+            <select id="login-role" name="role"><option value="teacher">معلم</option><option value="student">طالب</option></select>
+            <label class="teacher-code-label" id="login-email-label" for="teacher-email">البريد الإلكتروني</label>
+            <input id="teacher-email" name="email" type="email" autocomplete="username" required>
+            <label class="teacher-code-label" id="login-password-label" for="teacher-password">كلمة مرور حساب Firebase</label>
+            <input id="teacher-password" name="password" type="password" autocomplete="current-password" required>
+            <label class="teacher-code-label" id="login-code-label" for="student-code" hidden>رمز الطالب</label>
+            <input id="student-code" name="studentCode" type="text" inputmode="text" autocomplete="one-time-code" maxlength="32" pattern="[A-Za-z0-9]{7,32}" placeholder="من 7 إلى 32 حرفاً أو رقماً" hidden>
+            <p class="teacher-login-error" id="teacher-login-error" role="alert" hidden>تعذر تسجيل الدخول. تحقق من بياناتك وحاول مجدداً.</p>
+            <button class="save-report-button teacher-submit" type="submit">دخول إلى المنصة</button>
+            <button class="text-button" id="guest-mode-button" type="button">استكشاف كزائر</button>
+        </form>
+    </dialog>
+    <dialog class="homework-file-dialog" id="homework-file-dialog" aria-label="معاينة المرفق">
+        <div class="homework-file-dialog-heading"><strong id="homework-file-title">معاينة المرفق</strong><button class="text-button" id="close-homework-file" type="button">إغلاق</button></div>
+        <div class="homework-file-viewer" id="homework-file-viewer"></div>
+    </dialog>
+    <script src="quiz-lesson-1.js"></script>
+    <script src="english-questions.js"></script>
+    <script src="main.js"></script>
+    <script type="module" src="firebase-sync.js?v=34"></script>
+    <script src="lesson-interactions.js"></script>
+    <script src="english-game.js"></script>
+    <script src="student-features.js"></script>
+</body>
+</html>
