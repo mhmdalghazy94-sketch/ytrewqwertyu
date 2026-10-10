@@ -817,6 +817,240 @@ function hidePortalPages() {
 	lessonCodeLoadId += 1;
 }
 
+window.initializeLessonAnnotationTools = function (container) {
+	const book = container.querySelector(".lesson-book");
+	const toolbar = book?.querySelector(".lesson-tools");
+	if (!book || !toolbar) return;
+	const canvases = [];
+	const colorPicker = toolbar.querySelector("[data-lesson-color]");
+	const shapePicker = toolbar.querySelector("[data-lesson-shape]");
+	const textInput = toolbar.querySelector("[data-lesson-text]");
+	let activeTool = "";
+	let selectedShape = "rectangle";
+	const updateAccess = () => {
+		toolbar.hidden = !isTeacher;
+		if (!isTeacher) {
+			activeTool = "";
+			book.classList.remove("is-annotating");
+			toolbar.querySelectorAll("[data-lesson-tool]").forEach((button) => {
+				button.classList.remove("is-active");
+				button.setAttribute("aria-pressed", "false");
+			});
+			if (shapePicker) shapePicker.value = "";
+		}
+	};
+	if (toolbar.dataset.accessListener !== "true") {
+		toolbar.dataset.accessListener = "true";
+		window.addEventListener("itqan-session-changed", () => {
+			updateAccess();
+			if (isTeacher && toolbar.dataset.initialized !== "true") {
+				window.initializeLessonAnnotationTools(container);
+			}
+		});
+	}
+	updateAccess();
+	if (!isTeacher || toolbar.dataset.initialized === "true") return;
+	toolbar.dataset.initialized = "true";
+
+	const setActiveTool = (tool) => {
+		activeTool = activeTool === tool ? "" : tool;
+		book.classList.toggle("is-annotating", Boolean(activeTool));
+		toolbar.querySelectorAll("[data-lesson-tool]").forEach((button) => {
+			const active = button.dataset.lessonTool === activeTool;
+			button.classList.toggle("is-active", active);
+			button.setAttribute("aria-pressed", String(active));
+		});
+		if (shapePicker && activeTool !== "shape") shapePicker.value = "";
+	};
+
+	toolbar.querySelectorAll("[data-lesson-tool]").forEach((button) => {
+		button.addEventListener("click", () => {
+			if (isTeacher) setActiveTool(button.dataset.lessonTool);
+		});
+	});
+
+	if (shapePicker) {
+		shapePicker.addEventListener("change", () => {
+			if (!isTeacher) return;
+			selectedShape = shapePicker.value || selectedShape;
+			activeTool = shapePicker.value ? "shape" : "";
+			book.classList.toggle("is-annotating", Boolean(activeTool));
+			toolbar.querySelectorAll("[data-lesson-tool]").forEach((button) => {
+				const active = button.dataset.lessonTool === activeTool;
+				button.classList.toggle("is-active", active);
+				button.setAttribute("aria-pressed", String(active));
+			});
+		});
+	}
+
+	const paintRecord = (context, record, width, height) => {
+		const x1 = record.start.x * width;
+		const y1 = record.start.y * height;
+		const x2 = record.end.x * width;
+		const y2 = record.end.y * height;
+		context.save();
+		context.strokeStyle = record.color;
+		context.fillStyle = record.color;
+		context.lineWidth = record.size;
+		context.lineCap = "round";
+		context.lineJoin = "round";
+
+		if (record.type === "path") {
+			context.globalCompositeOperation = record.erase ? "destination-out" : "source-over";
+			context.beginPath();
+			record.points.forEach((point, index) => {
+				const x = point.x * width;
+				const y = point.y * height;
+				if (index === 0) context.moveTo(x, y);
+				else context.lineTo(x, y);
+			});
+			if (record.points.length === 1) context.lineTo(x1 + 0.1, y1 + 0.1);
+			context.stroke();
+		} else if (record.type === "rectangle") {
+			context.strokeRect(x1, y1, x2 - x1, y2 - y1);
+		} else if (record.type === "ellipse") {
+			context.beginPath();
+			context.ellipse((x1 + x2) / 2, (y1 + y2) / 2, Math.abs(x2 - x1) / 2, Math.abs(y2 - y1) / 2, 0, 0, Math.PI * 2);
+			context.stroke();
+		} else if (record.type === "arrow") {
+			const angle = Math.atan2(y2 - y1, x2 - x1);
+			const headLength = 14;
+			context.beginPath();
+			context.moveTo(x1, y1);
+			context.lineTo(x2, y2);
+			context.lineTo(x2 - headLength * Math.cos(angle - Math.PI / 6), y2 - headLength * Math.sin(angle - Math.PI / 6));
+			context.moveTo(x2, y2);
+			context.lineTo(x2 - headLength * Math.cos(angle + Math.PI / 6), y2 - headLength * Math.sin(angle + Math.PI / 6));
+			context.stroke();
+		} else if (record.type === "text") {
+			context.font = `${record.size}px Segoe UI, Tahoma, sans-serif`;
+			context.textAlign = "start";
+			context.direction = "rtl";
+			context.fillText(record.text, x1, y1);
+		}
+		context.restore();
+	};
+
+	book.querySelectorAll(".a4-page").forEach((page, pageIndex) => {
+		const canvas = document.createElement("canvas");
+		canvas.className = "annotation-layer";
+		canvas.setAttribute("aria-label", `طبقة الرسم على الصفحة ${pageIndex + 1}`);
+		page.append(canvas);
+		const context = canvas.getContext("2d");
+		if (!context) {
+			console.error("Unable to initialize lesson annotation canvas.");
+			return;
+		}
+
+		const state = { canvas, context, records: [], width: 0, height: 0, draft: null };
+		canvases.push(state);
+
+		const redraw = () => {
+			const rect = page.getBoundingClientRect();
+			if (!rect.width || !rect.height) return;
+			const ratio = window.devicePixelRatio || 1;
+			state.width = rect.width;
+			state.height = rect.height;
+			canvas.width = Math.round(rect.width * ratio);
+			canvas.height = Math.round(rect.height * ratio);
+			context.setTransform(ratio, 0, 0, ratio, 0, 0);
+			context.clearRect(0, 0, rect.width, rect.height);
+			state.records.forEach((record) => paintRecord(context, record, rect.width, rect.height));
+			if (state.draft) paintRecord(context, state.draft, rect.width, rect.height);
+		};
+
+		const getPoint = (event) => {
+			const rect = canvas.getBoundingClientRect();
+			return {
+				x: Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)),
+				y: Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))
+			};
+		};
+
+		canvas.addEventListener("pointerdown", (event) => {
+			if (!isTeacher || !activeTool || activeTool === "a4") return;
+			event.preventDefault();
+			const point = getPoint(event);
+			if (activeTool === "text") {
+				const text = textInput?.value.trim();
+				if (!text) {
+					textInput?.focus();
+					return;
+				}
+				const record = {
+					type: "text",
+					start: point,
+					end: point,
+					text,
+					color: colorPicker?.value || "#e53935",
+					size: 20
+				};
+				state.records.push(record);
+				redraw();
+				return;
+			}
+
+			const erasing = activeTool === "eraser";
+			const type = activeTool === "shape" ? selectedShape : "path";
+			state.draft = {
+				type,
+				start: point,
+				end: point,
+				points: [point],
+				color: colorPicker?.value || "#e53935",
+				size: erasing ? 26 : 3.5,
+				erase: erasing
+			};
+			canvas.setPointerCapture(event.pointerId);
+			redraw();
+		});
+
+		canvas.addEventListener("pointermove", (event) => {
+			if (!state.draft) return;
+			const point = getPoint(event);
+			state.draft.end = point;
+			if (state.draft.type === "path") state.draft.points.push(point);
+			redraw();
+		});
+
+		const finishStroke = () => {
+			if (!state.draft) return;
+			state.records.push(state.draft);
+			state.draft = null;
+			redraw();
+		};
+		canvas.addEventListener("pointerup", finishStroke);
+		canvas.addEventListener("pointercancel", finishStroke);
+
+		redraw();
+		if ("ResizeObserver" in window) new ResizeObserver(redraw).observe(page);
+	});
+
+	if (!canvases.length) console.error("No lesson pages were available for annotation.");
+};
+
+window.speakText = function (text) {
+	if (!("speechSynthesis" in window)) {
+		window.alert("النطق الصوتي غير مدعوم في هذا المتصفح.");
+		return;
+	}
+	const synthesis = window.speechSynthesis;
+	const voices = synthesis.getVoices();
+	const englishVoice = voices.find((voice) => /^en[-_]us$/i.test(voice.lang))
+		|| voices.find((voice) => /^en[-_]/i.test(voice.lang));
+	const utterance = new SpeechSynthesisUtterance(text);
+	utterance.lang = englishVoice?.lang || "en-US";
+	if (englishVoice) utterance.voice = englishVoice;
+	utterance.rate = 0.85;
+	utterance.onerror = (event) => {
+		if (event.error === "canceled" || event.error === "interrupted") return;
+		console.error("Speech synthesis failed:", event.error);
+		window.alert("تعذر تشغيل الصوت. تحقق من إعدادات الصوت في المتصفح.");
+	};
+	if (synthesis.paused) synthesis.resume();
+	synthesis.speak(utterance);
+};
+
 function openLessonCodePage(level, semester, lesson) {
 	hidePortalPages();
 	activeLesson = { level, semester, lesson };
@@ -849,6 +1083,7 @@ function openLessonCodePage(level, semester, lesson) {
 		if (requestId !== lessonCodeLoadId) return;
 		const lessonHtml = typeof window.itqanLessonHtml === "string" ? window.itqanLessonHtml : "";
 		lessonCodeContent.innerHTML = lessonHtml;
+		window.initializeLessonAnnotationTools?.(lessonCodeContent);
 		if (!lessonHtml.trim()) {
 			const empty = document.createElement("p");
 			empty.className = "lesson-code-empty";
@@ -1853,6 +2088,15 @@ function renderHomeworkActivity() {
 		}
 	}
 	const visibleAssignments = isTeacher ? homeworkAssignments : homeworkAssignments.filter((assignment) => assignment.active);
+	let homeworkSubmissions = [];
+	if (isTeacher) {
+		try {
+			const storedSubmissions = JSON.parse(localStorage.getItem("itqan-homework-submissions-v1") || "[]");
+			if (Array.isArray(storedSubmissions)) homeworkSubmissions = storedSubmissions;
+		} catch (error) {
+			console.error("تعذر قراءة تسليمات الواجبات لعرضها في الدرس:", error);
+		}
+	}
 	const today = new Date();
 	const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 	const assignmentCards = visibleAssignments.length ? visibleAssignments.map((assignment) => {
@@ -1863,11 +2107,27 @@ function renderHomeworkActivity() {
 			: activeStudentId
 				? `<form class="homework-submission" data-assignment-submission="${escapeHtml(assignment.id)}"><label class="field-label">ملاحظات الحل<textarea name="details" maxlength="500" rows="2" placeholder="اكتب ملاحظة للمعلم (اختياري)"></textarea></label><label class="field-label">إرفاق صورة أو PDF أو تسجيل صوتي (حتى 600 كيلوبايت)<input name="file" type="file" accept="image/*,.pdf,application/pdf,audio/*" required></label><div class="voice-record-controls"><button class="text-button" type="button" data-record-voice>بدء تسجيل صوتي</button><span class="voice-record-status" role="status"></span><audio class="voice-record-preview" controls hidden></audio></div><button class="save-report-button" type="submit">إرسال للمعلم</button><p class="submission-status" role="status"></p></form>`
 				: `<div class="homework-submission"><p>سجّل الدخول برمز الطالب لإرسال الواجب ومتابعة مراجعته.</p><button class="save-report-button" type="button" data-open-student-login>دخول الطالب</button></div>`;
+		const assignmentSubmissions = isTeacher
+			? homeworkSubmissions
+				.filter((submission) => submission.assignmentId === assignment.id && submission.lessonKey === currentLessonKey())
+				.sort((left, right) => new Date(right.submittedAt) - new Date(left.submittedAt))
+			: [];
+		const submissionList = assignmentSubmissions.length
+			? `<section class="assignment-submissions"><h4>حلول الطلاب (${assignmentSubmissions.length})</h4>${assignmentSubmissions.map((submission) => {
+				const student = students.find((item) => item.id === submission.studentId);
+				const fileButton = submission.fileId
+					? `<button class="text-button" type="button" data-open-homework-file data-file-id="${escapeHtml(submission.fileId)}" data-file-name="${escapeHtml(submission.fileName || "حل الواجب")}">معاينة الحل</button>`
+					: `<span class="offline-status">مرفق الحل غير متاح</span>`;
+				return `<article class="assignment-submission"><div><strong>${escapeHtml(student?.fullName || student?.name || "طالب")}</strong><small>${new Date(submission.submittedAt).toLocaleString("ar")} · ${escapeHtml(submission.fileName || "مرفق")}</small>${submission.details ? `<p>${escapeHtml(submission.details)}</p>` : ""}<small>${submission.status === "reviewed" ? "تمت المراجعة" : "بانتظار المراجعة"}</small></div>${fileButton}</article>`;
+			}).join("")}</section>`
+			: isTeacher
+				? `<p class="assignment-submissions-empty">لم تصل حلول لهذا الواجب بعد.</p>`
+				: "";
 		return `
 		<article class="homework-assignment ${assignment.active ? "is-active" : "is-inactive"}" data-assignment-card="${escapeHtml(assignment.id)}">
 			<div class="homework-assignment-copy"><h4>${escapeHtml(assignment.title)}</h4><p>${escapeHtml(assignment.details)}</p>${assignment.dueDate ? `<small class="assignment-due-date">آخر موعد: ${escapeHtml(assignment.dueDate)}</small>` : ""}</div>
 			${assignment.attachment?.fileId ? `<button class="text-button" type="button" data-open-homework-file data-file-id="${escapeHtml(assignment.attachment.fileId)}" data-file-name="${escapeHtml(assignment.attachment.name || "مرفق")}">معاينة ملف الواجب: ${escapeHtml(assignment.attachment.name || "مرفق")}</button>` : assignment.attachment?.url ? (assignment.attachment.type?.startsWith("image/") ? `<img class="worksheet-preview" src="${escapeHtml(assignment.attachment.url)}" alt="ورقة عمل: ${escapeHtml(assignment.title)}">` : `<a class="text-button" href="${escapeHtml(assignment.attachment.url)}" target="_blank" rel="noopener">فتح ملف الواجب: ${escapeHtml(assignment.attachment.name || "PDF")}</a>`) : assignment.image ? `<img class="worksheet-preview" src="${escapeHtml(assignment.image)}" alt="ورقة عمل: ${escapeHtml(assignment.title)}">` : ""}
-			${isTeacher ? `<div class="assignment-admin-actions"><label class="assignment-activation-toggle ${assignment.active ? "is-active" : ""}"><input type="checkbox" data-toggle-assignment="${escapeHtml(assignment.id)}" ${assignment.active ? "checked" : ""}><span>${assignment.active ? "مفعّل للطلاب" : "غير مفعّل"}</span></label><button class="save-report-button" type="button" data-edit-assignment="${escapeHtml(assignment.id)}">تعديل الواجب</button><button class="delete-report-button" type="button" data-delete-assignment="${escapeHtml(assignment.id)}">حذف الواجب</button></div>` : studentSubmission}
+			${isTeacher ? `<div class="assignment-admin-actions"><label class="assignment-activation-toggle ${assignment.active ? "is-active" : ""}"><input type="checkbox" data-toggle-assignment="${escapeHtml(assignment.id)}" ${assignment.active ? "checked" : ""}><span>${assignment.active ? "مفعّل للطلاب" : "غير مفعّل"}</span></label><button class="save-report-button" type="button" data-edit-assignment="${escapeHtml(assignment.id)}">تعديل الواجب</button><button class="delete-report-button" type="button" data-delete-assignment="${escapeHtml(assignment.id)}">حذف الواجب</button></div>${submissionList}` : studentSubmission}
 		</article>`;
 	}).join("") : `<div class="reports-empty compact-empty"><h3>${isTeacher ? "لا توجد واجبات في هذا الدرس" : "لا توجد واجبات مفعّلة حالياً"}</h3></div>`;
 	showActivity("واجبات الدرس", `${manager}<div class="homework-assignment-list">${assignmentCards}</div>`);
@@ -3245,6 +3505,7 @@ document.querySelector("#guest-mode-button").addEventListener("click", () => {
 	updateTeacherControls();
 	renderCurriculum();
 	showLessons();
+	window.dispatchEvent(new Event("itqan-session-changed"));
 	teacherLoginError.hidden = true;
 });
 
@@ -3487,6 +3748,12 @@ window.addEventListener("itqan-student-data-changed", (event) => {
 	if (event.detail?.key === quizAttemptsKey) quizAttempts = loadQuizAttempts();
 	renderCurriculum();
 	window.dispatchEvent(new Event("itqan-data-changed"));
+});
+
+window.addEventListener("itqan-homework-submissions-changed", () => {
+	if (isTeacher && !activityPanel.hidden && activityPanel.querySelector(".homework-assignment-list")) {
+		renderHomeworkActivity();
+	}
 });
 
 updateTeacherControls();

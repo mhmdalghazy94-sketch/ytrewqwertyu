@@ -403,6 +403,14 @@ a.library-download-button:hover { background: #e2f0df; }
 .homework-form-error { color: #a9473b; }
 .homework-manager-actions, .assignment-admin-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .assignment-admin-actions { padding-top: 10px; border-top: 1px solid #edf0e9; }
+.assignment-submissions { display: grid; gap: 8px; padding-top: 10px; border-top: 1px solid #e5ebe2; }
+.assignment-submissions h4 { margin: 0; font-size: 12px; }
+.assignment-submission { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px; border: 1px solid #e7ebe4; border-radius: 6px; background: #fff; }
+.assignment-submission > div { display: grid; gap: 4px; min-width: 0; }
+.assignment-submission strong { font-size: 11px; }
+.assignment-submission small { color: #78847b; font-size: 9px; }
+.assignment-submission p { margin: 2px 0; color: #59675d; font-size: 10px; }
+.assignment-submissions-empty { margin: 0; padding: 9px 0 0; border-top: 1px solid #e5ebe2; color: #7b887f; font-size: 10px; }
 .assignment-activation-toggle { display: flex; align-items: center; gap: 7px; width: fit-content; min-height: 32px; padding: 5px 9px; border: 1px solid #e1e6df; border-radius: 5px; color: #758178; background: #fff; cursor: pointer; font-size: 10px; }
 .assignment-activation-toggle input { accent-color: #35804e; }
 .assignment-activation-toggle.is-active { border-color: #9ac3a2; color: #2e7144; background: #e4f2e4; font-weight: 700; }
@@ -947,6 +955,7 @@ a.library-download-button:hover { background: #e2f0df; }
     .quiz-overview-item strong { font-size: 18px; }
     .quiz-library-grid { grid-template-columns: minmax(0, 1fr); }
     .submission-review-card { grid-template-columns: minmax(0, 1fr); }
+    .assignment-submission { align-items: flex-start; flex-direction: column; }
     .report-tab { gap: 4px; padding-right: 7px; padding-left: 7px; font-size: 9px; }
     .report-entry-form { grid-template-columns: minmax(0, 1fr); }
     .matching-row { grid-template-columns: 1fr; gap: 5px; }
