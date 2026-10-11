@@ -854,7 +854,7 @@ a.library-download-button:hover { background: #e2f0df; }
     .lesson-code-header { align-items: stretch; flex-direction: column; padding: 17px; }
     .lesson-code-header .save-report-button { width: 100%; }
     .sidebar { width: min(300px, calc(100vw - 48px)); max-height: 100vh; transform: translateX(105%); transition: transform 220ms ease; box-shadow: -10px 0 30px rgba(30, 55, 45, 0.08); }
-    .sidebar.is-open { transform: translateX(0); }
+    .sidebar.is-open { z-index: 50; transform: translateX(0); }
     .curriculum { max-height: 32vh; }
     .sidebar-scrim { position: fixed; z-index: 19; inset: 0; display: block; visibility: hidden; border: 0; background: rgba(26, 42, 35, 0.35); opacity: 0; transition: opacity 180ms ease, visibility 180ms ease; }
     .sidebar-scrim.is-visible { visibility: visible; opacity: 1; }

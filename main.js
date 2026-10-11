@@ -410,6 +410,8 @@ async function loadDictionaryWordFile() {
 
 const dictionaryWordFileReady = loadDictionaryWordFile().catch((error) => {
 	console.error("تعذر تحميل ملف كلمات القاموس:", error);
+	dictionaryStatus = `تعذر تحميل كلمات القاموس: ${error.message}`;
+	window.dispatchEvent(new Event("itqan-dictionary-changed"));
 	window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
 		detail: { kind: "error", message: `تعذر تحميل كلمات القاموس من الملف: ${error.message}` }
 	}));
@@ -2870,7 +2872,7 @@ document.querySelector(".lesson-tools").addEventListener("click", (event) => {
 	const configuredTool = lessonTools.find((item) => item.id === tool.dataset.toolId);
 	if (!configuredTool || (!configuredTool.active && !isTeacher)) return;
 	const actions = {
-		dictionary: () => renderLessonDocument(configuredTool.title, "dictionary", configuredTool.description, configuredTool.url),
+		dictionary: () => showPortalPage("dictionary"),
 		"activity-book": () => renderLessonDocument(configuredTool.title, "activityBook", configuredTool.description, configuredTool.url),
 		audio: () => renderLessonAudio(configuredTool),
 		homework: renderHomeworkActivity,
@@ -3873,7 +3875,6 @@ teacherLoginForm.addEventListener("submit", async (event) => {
 		if (loginRoleInput.value === "teacher") {
 			await cloud.signInTeacher(teacherEmailInput.value.trim(), teacherPasswordInput.value);
 			await cloud.syncReady;
-			await cloud.clearLessonQuizzesOnce();
 			if (await cloud.clearStudentRosterOnce()) {
 				students = [];
 				activeReportStudentId = "";
@@ -3888,6 +3889,14 @@ teacherLoginForm.addEventListener("submit", async (event) => {
 			activeReportStudentId = students[0]?.id || "";
 			localStorage.setItem(studentListStorageKey, JSON.stringify(sharedRoster));
 			localStorage.setItem(studentNamesStorageKey, JSON.stringify(Object.fromEntries(sharedRoster.map((student) => [student.id, student.name]))));
+			try {
+				await cloud.clearLessonQuizzesOnce();
+			} catch (error) {
+				console.error("تعذر إكمال تحديث الاختبارات:", error);
+				window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
+					detail: { kind: "error", message: `تم تسجيل الدخول، لكن تعذر إكمال تحديث الاختبارات: ${error.message}` }
+				}));
+			}
 			isTeacher = true;
 			activeStudentId = "";
 			isGuest = false;
