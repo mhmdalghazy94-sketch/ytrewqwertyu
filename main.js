@@ -3430,8 +3430,13 @@ dictionaryPageContent.addEventListener("click", (event) => {
 	if (target.hasAttribute("data-speak-word")) window.speakText?.(target.dataset.speakWord);
 });
 portalPages.recitation.addEventListener("click", (event) => {
-	const target = event.target.closest("[data-clear-recitation]");
-	if (!target || !isTeacher) return;
+	const target = event.target.closest("button");
+	if (!target) return;
+	if (target.hasAttribute("data-speak-word")) {
+		window.speakText?.(target.dataset.speakWord);
+		return;
+	}
+	if (!target.hasAttribute("data-clear-recitation") || !isTeacher) return;
 	dictionaryWords = dictionaryWords.map((word) => ({ ...word, recitation: false }));
 	try {
 		saveDictionaryWords();

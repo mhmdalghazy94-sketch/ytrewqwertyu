@@ -1,5 +1,614 @@
 [
   {
+    "id": "pre-stage-lesson01-action-figure",
+    "english": "action figure",
+    "arabic": "مجسم شخصية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-actor",
+    "english": "actor",
+    "arabic": "ممثل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-add",
+    "english": "add",
+    "arabic": "يجمع (أرقام)",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson01-address",
+    "english": "address",
+    "arabic": "عنوان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-aeroplane",
+    "english": "aeroplane",
+    "arabic": "طائرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-airport",
+    "english": "airport",
+    "arabic": "مطار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-alarm-clock",
+    "english": "alarm clock",
+    "arabic": "منبه",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-alligator",
+    "english": "alligator",
+    "arabic": "تمساح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-alphabet",
+    "english": "alphabet",
+    "arabic": "الأبجدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-ambulance",
+    "english": "ambulance",
+    "arabic": "سيارة إسعاف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-anchor",
+    "english": "anchor",
+    "arabic": "مرساة سفينة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-angry",
+    "english": "angry",
+    "arabic": "غاضب",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson01-animals",
+    "english": "animals",
+    "arabic": "حيوانات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-answer",
+    "english": "answer",
+    "arabic": "يجيب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson01-ant",
+    "english": "ant",
+    "arabic": "نملة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-antelope",
+    "english": "antelope",
+    "arabic": "ظبي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-apple",
+    "english": "apple",
+    "arabic": "تفاحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-apricot",
+    "english": "apricot",
+    "arabic": "مشمش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-apron",
+    "english": "apron",
+    "arabic": "مريلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-archery",
+    "english": "archery",
+    "arabic": "رماية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-arm",
+    "english": "arm",
+    "arabic": "ذراع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-armchair",
+    "english": "armchair",
+    "arabic": "كرسي بمسندين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-arrow",
+    "english": "arrow",
+    "arabic": "سهم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-art",
+    "english": "art",
+    "arabic": "فن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-artist",
+    "english": "artist",
+    "arabic": "فنان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-ask",
+    "english": "ask",
+    "arabic": "يسأل",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson01-asleep",
+    "english": "asleep",
+    "arabic": "نائم",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson01-astronaut",
+    "english": "astronaut",
+    "arabic": "رائد فضاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-aubergine",
+    "english": "aubergine",
+    "arabic": "باذنجان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-audience",
+    "english": "audience",
+    "arabic": "جمهور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-aunt",
+    "english": "aunt",
+    "arabic": "عمة / خالة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-avocado",
+    "english": "avocado",
+    "arabic": "أفوكادو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-awake",
+    "english": "awake",
+    "arabic": "مستيقظ",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-backpack",
+    "english": "backpack",
+    "arabic": "حقيبة ظهر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-badger",
+    "english": "badger",
+    "arabic": "غرير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-badminton",
+    "english": "badminton",
+    "arabic": "تنس ريشة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-bag",
+    "english": "bag",
+    "arabic": "كيس نوم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-baker",
+    "english": "baker",
+    "arabic": "خباز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bakery",
+    "english": "bakery",
+    "arabic": "مخبز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-balcony",
+    "english": "balcony",
+    "arabic": "شرفة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-ball",
+    "english": "ball",
+    "arabic": "كرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-balloon",
+    "english": "balloon",
+    "arabic": "بالون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-banana",
+    "english": "banana",
+    "arabic": "موز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-band",
+    "english": "band",
+    "arabic": "فرقة موسيقية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-bandage",
+    "english": "bandage",
+    "arabic": "ضمادة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bank",
+    "english": "bank",
+    "arabic": "بنك",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bark",
+    "english": "bark",
+    "arabic": "لحاء الشجر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-barn",
+    "english": "barn",
+    "arabic": "حظيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-barrow",
+    "english": "barrow",
+    "arabic": "عربة يد بعجلة واحدة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-baseball",
+    "english": "baseball",
+    "arabic": "بيسبول",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-baseball-cap",
+    "english": "baseball cap",
+    "arabic": "قبعة بيسبول",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-basin",
+    "english": "basin",
+    "arabic": "مغسلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-basket",
+    "english": "basket",
+    "arabic": "سلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-basketball",
+    "english": "basketball",
+    "arabic": "كرة سلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bat",
+    "english": "bat",
+    "arabic": "خفاش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bath",
+    "english": "bath",
+    "arabic": "حوض استرخاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bathroom",
+    "english": "bathroom",
+    "arabic": "حمام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beach",
+    "english": "beach",
+    "arabic": "شاطئ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beach-ball",
+    "english": "beach ball",
+    "arabic": "كرة شاطئ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beads",
+    "english": "beads",
+    "arabic": "خرز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beak",
+    "english": "beak",
+    "arabic": "منقار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beans",
+    "english": "beans",
+    "arabic": "فاصوليا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bear",
+    "english": "bear",
+    "arabic": "دب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-beard",
+    "english": "beard",
+    "arabic": "لحية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beaver",
+    "english": "beaver",
+    "arabic": "قندس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bed",
+    "english": "bed",
+    "arabic": "سرير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bedroom",
+    "english": "bedroom",
+    "arabic": "غرفة نوم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bee",
+    "english": "bee",
+    "arabic": "نحلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beehive",
+    "english": "beehive",
+    "arabic": "خلية نحل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bees",
+    "english": "bees?",
+    "arabic": "كم عدد النحل؟",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-beetle",
+    "english": "beetle",
+    "arabic": "خنفساء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bench",
+    "english": "bench",
+    "arabic": "مقعد حديقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bicycle",
+    "english": "bicycle",
+    "arabic": "دراجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-big",
+    "english": "big",
+    "arabic": "كبير",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-bin",
+    "english": "bin",
+    "arabic": "سلة مهملات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bird",
+    "english": "bird",
+    "arabic": "طائر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-biscuit",
+    "english": "biscuit",
+    "arabic": "بسكويت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-black",
+    "english": "black",
+    "arabic": "أسود",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-blackberry",
+    "english": "blackberry",
+    "arabic": "توت العليق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-blanket",
+    "english": "blanket",
+    "arabic": "بطانية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-blind",
+    "english": "blind",
+    "arabic": "ستارة نافذة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-blossom",
+    "english": "blossom",
+    "arabic": "براعم الأزهار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-blue",
+    "english": "blue",
+    "arabic": "أزرق",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-blueberries",
+    "english": "blueberries",
+    "arabic": "توت أزرق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-board",
+    "english": "board",
+    "arabic": "لوح تقطيع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-board-game",
+    "english": "board game",
+    "arabic": "لعبة لوحية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-boat",
+    "english": "boat",
+    "arabic": "قارب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-body",
     "english": "body",
     "arabic": "جسم",
@@ -14,9 +623,1248 @@
     "partOfSpeech": "noun"
   },
   {
+    "id": "pre-stage-lesson03-book",
+    "english": "book",
+    "arabic": "قصة مصورة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bookcase",
+    "english": "bookcase",
+    "arabic": "خزانة كتب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-books",
+    "english": "books!",
+    "arabic": "أحب قراءة الكتب!",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bookshop",
+    "english": "bookshop",
+    "arabic": "مكتبة كتب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-boot",
+    "english": "boot",
+    "arabic": "حذاء طويل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bottle",
+    "english": "bottle",
+    "arabic": "زجاجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bounce",
+    "english": "bounce",
+    "arabic": "ارتداد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bowl",
+    "english": "bowl",
+    "arabic": "وعاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bowling",
+    "english": "bowling",
+    "arabic": "بولينغ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-box",
+    "english": "box",
+    "arabic": "صندوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-boy",
+    "english": "boy",
+    "arabic": "ولد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-branch",
+    "english": "branch",
+    "arabic": "غصن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bread",
+    "english": "bread",
+    "arabic": "خبز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-breakfast",
+    "english": "breakfast",
+    "arabic": "إفطار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bricks",
+    "english": "bricks",
+    "arabic": "طوب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bridge",
+    "english": "bridge",
+    "arabic": "جسر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-broccoli",
+    "english": "broccoli",
+    "arabic": "بروكلي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-broom",
+    "english": "broom",
+    "arabic": "ممسحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-brother",
+    "english": "brother",
+    "arabic": "أخ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-brown",
+    "english": "brown",
+    "arabic": "بني",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-bubble",
+    "english": "bubble",
+    "arabic": "فقاعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-build",
+    "english": "build",
+    "arabic": "يبني",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson02-builder",
+    "english": "builder",
+    "arabic": "عامل بناء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-building",
+    "english": "building",
+    "arabic": "مبنى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bull",
+    "english": "bull",
+    "arabic": "ثور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-burger",
+    "english": "burger",
+    "arabic": "برجر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bus",
+    "english": "bus",
+    "arabic": "حافلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bus-station",
+    "english": "bus station",
+    "arabic": "محطة حافلات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-bus-stop",
+    "english": "bus stop",
+    "arabic": "موقف حافلات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-butter",
+    "english": "butter",
+    "arabic": "زبدة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-butterfly",
+    "english": "butterfly",
+    "arabic": "فراشة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-button",
+    "english": "button",
+    "arabic": "زر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-buy",
+    "english": "buy",
+    "arabic": "يشتري",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-cabbage",
+    "english": "cabbage",
+    "arabic": "ملفوف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-caf",
+    "english": "café",
+    "arabic": "مقهى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-camel",
+    "english": "camel",
+    "arabic": "جمل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-camera",
+    "english": "camera",
+    "arabic": "كاميرا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-camp",
+    "english": "camp",
+    "arabic": "يخيم / مخيم",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-campfire",
+    "english": "campfire",
+    "arabic": "نار التخييم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-can",
+    "english": "can",
+    "arabic": "مرشة ماء الحديقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-candle",
+    "english": "candle",
+    "arabic": "شمعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-candyfloss",
+    "english": "candyfloss",
+    "arabic": "غزل البنات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-car",
+    "english": "car",
+    "arabic": "سيارة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-caravan",
+    "english": "caravan",
+    "arabic": "منزل متنقل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-card",
+    "english": "card",
+    "arabic": "بطاقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-carpet",
+    "english": "carpet",
+    "arabic": "سجادة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-carrot",
+    "english": "carrot",
+    "arabic": "جزر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-case",
+    "english": "case",
+    "arabic": "مقلمة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-castle",
+    "english": "castle",
+    "arabic": "قلعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cat",
+    "english": "cat",
+    "arabic": "قطة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-caterpillar",
+    "english": "caterpillar",
+    "arabic": "يرقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cauliflower",
+    "english": "cauliflower",
+    "arabic": "قرنبيط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cave",
+    "english": "cave",
+    "arabic": "كهف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-ceiling",
+    "english": "ceiling",
+    "arabic": "سقف الغرفة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-celery",
+    "english": "celery",
+    "arabic": "كرفس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-centre",
+    "english": "centre",
+    "arabic": "مركز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cereal",
+    "english": "cereal",
+    "arabic": "حبوب إفطار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-chain",
+    "english": "chain",
+    "arabic": "سلسلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-cheap",
+    "english": "cheap",
+    "arabic": "رخيص الثمن",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson03-cheese",
+    "english": "cheese",
+    "arabic": "جبن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cheetah",
+    "english": "cheetah",
+    "arabic": "فهد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-chef",
+    "english": "chef",
+    "arabic": "طاهٍ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-chest",
+    "english": "chest",
+    "arabic": "صدر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-chick",
+    "english": "chick",
+    "arabic": "كتكوت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-chicken",
+    "english": "chicken",
+    "arabic": "دجاج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-children",
+    "english": "children",
+    "arabic": "أطفال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-chin",
+    "english": "chin",
+    "arabic": "ذقن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-chips",
+    "english": "chips",
+    "arabic": "بطاطس مقلية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-chopsticks",
+    "english": "chopsticks",
+    "arabic": "عيدان الأكل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cinema",
+    "english": "cinema",
+    "arabic": "سينما",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-circus",
+    "english": "circus",
+    "arabic": "سيرك",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-city",
+    "english": "city",
+    "arabic": "مدينة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-claw",
+    "english": "claw",
+    "arabic": "مخلب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cliff",
+    "english": "cliff",
+    "arabic": "جرف صخري",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-climb",
+    "english": "climb",
+    "arabic": "يتسلق",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-clock",
+    "english": "clock",
+    "arabic": "ساعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-cloth",
+    "english": "cloth",
+    "arabic": "مفرش الطاولة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-clothes",
+    "english": "clothes",
+    "arabic": "ملابس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cloud",
+    "english": "cloud",
+    "arabic": "سحابة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-clown",
+    "english": "clown",
+    "arabic": "مهرج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-coaster",
+    "english": "coaster",
+    "arabic": "قطار الموت السريع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-coat",
+    "english": "coat",
+    "arabic": "معطف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cobweb",
+    "english": "cobweb",
+    "arabic": "شبكة عنكبوت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-coconut",
+    "english": "coconut",
+    "arabic": "جوز الهند",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-collar",
+    "english": "collar",
+    "arabic": "ياقة القميص",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-colour-in",
+    "english": "colour in",
+    "arabic": "يلون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-comb",
+    "english": "comb",
+    "arabic": "مشط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-comet",
+    "english": "comet",
+    "arabic": "مذنب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-compass",
+    "english": "compass",
+    "arabic": "بوصلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-computer",
+    "english": "computer",
+    "arabic": "حاسوب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-control",
+    "english": "control",
+    "arabic": "جهاز تحكم عن بُعد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cook",
+    "english": "cook",
+    "arabic": "يطبخ",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-cooker",
+    "english": "cooker",
+    "arabic": "موقد طهي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-coral",
+    "english": "coral",
+    "arabic": "مرجان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-corn",
+    "english": "corn",
+    "arabic": "ذرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-corner",
+    "english": "corner",
+    "arabic": "ركن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-count",
+    "english": "count",
+    "arabic": "يعد / يحسب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-cousins",
+    "english": "cousins",
+    "arabic": "أولاد العم/الخال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cow",
+    "english": "cow",
+    "arabic": "بقرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-crab",
+    "english": "crab",
+    "arabic": "سرطان البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-cream",
+    "english": "cream",
+    "arabic": "آيس كريم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-crocodile",
+    "english": "crocodile",
+    "arabic": "تمساح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-crown",
+    "english": "crown",
+    "arabic": "تاج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cry",
+    "english": "cry",
+    "arabic": "يبكي",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-cucumber",
+    "english": "cucumber",
+    "arabic": "خيار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cupboard",
+    "english": "cupboard",
+    "arabic": "خزانة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-curtain",
+    "english": "curtain",
+    "arabic": "ستارة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cushion",
+    "english": "cushion",
+    "arabic": "وسادة أريكة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-cycle",
+    "english": "cycle",
+    "arabic": "يركب دراجة",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-dad",
+    "english": "dad",
+    "arabic": "أب / أبي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dance",
+    "english": "dance",
+    "arabic": "يرقص",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-daughters",
+    "english": "daughters",
+    "arabic": "بنات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-day",
+    "english": "day",
+    "arabic": "يوم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-deckchair",
+    "english": "deckchair",
+    "arabic": "كرسي استرخاء شاطئي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-deer",
+    "english": "deer",
+    "arabic": "غزال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dentist",
+    "english": "dentist",
+    "arabic": "طبيب أسنان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-desert",
+    "english": "desert",
+    "arabic": "صحراء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-desk",
+    "english": "desk",
+    "arabic": "مكتب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dessert",
+    "english": "dessert",
+    "arabic": "تحلية / حلوى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-diary",
+    "english": "diary",
+    "arabic": "مفكرة يومية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dictionary",
+    "english": "dictionary",
+    "arabic": "قاموس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-difficult",
+    "english": "difficult",
+    "arabic": "صعب",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson04-dinner",
+    "english": "dinner",
+    "arabic": "وجبة العشاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dinosaur",
+    "english": "dinosaur",
+    "arabic": "ديناصور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dive",
+    "english": "dive",
+    "arabic": "يغوص",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-diver",
+    "english": "diver",
+    "arabic": "غواص أجهزة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-doctor",
+    "english": "doctor",
+    "arabic": "طبيب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dog",
+    "english": "dog",
+    "arabic": "كلب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-doll",
+    "english": "doll",
+    "arabic": "دمية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dolphin",
+    "english": "dolphin",
+    "arabic": "دلفين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-donkey",
+    "english": "donkey",
+    "arabic": "حمار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-door",
+    "english": "door",
+    "arabic": "باب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dragon",
+    "english": "dragon",
+    "arabic": "تنين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dragonfly",
+    "english": "dragonfly",
+    "arabic": "يعسوب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-draw",
+    "english": "draw",
+    "arabic": "يرسم",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson04-drawer",
+    "english": "drawer",
+    "arabic": "درج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-dream",
+    "english": "dream",
+    "arabic": "حلم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-drill",
+    "english": "drill",
+    "arabic": "مثقاب (شريحة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-drink",
+    "english": "drink",
+    "arabic": "يشرب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson04-drinks",
+    "english": "drinks",
+    "arabic": "مشروبات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-drive",
+    "english": "drive",
+    "arabic": "يقود",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson13-driver",
+    "english": "driver",
+    "arabic": "مفك براغي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-drum",
+    "english": "drum",
+    "arabic": "طبل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-duck",
+    "english": "duck",
+    "arabic": "بطة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-duckling",
+    "english": "duckling",
+    "arabic": "فرخ البط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-eagle",
+    "english": "eagle",
+    "arabic": "نسر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-ear",
+    "english": "ear",
+    "arabic": "أذن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-earring",
+    "english": "earring",
+    "arabic": "قرط / حلق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-earth",
+    "english": "Earth",
+    "arabic": "كوكب الأرض",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-east",
+    "english": "east",
+    "arabic": "شرق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-easy",
+    "english": "easy",
+    "arabic": "سهل",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson05-eat",
+    "english": "eat",
+    "arabic": "يأكل",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-eel",
+    "english": "eel",
+    "arabic": "ثعبان البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-egg",
+    "english": "egg",
+    "arabic": "بيضة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-eight-8",
+    "english": "eight (8)",
+    "arabic": "ثمانية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-eighteen-18",
+    "english": "eighteen (18)",
+    "arabic": "ثمانية عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-eighty",
+    "english": "eighty",
+    "arabic": "ثمانون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson02-elbow",
+    "english": "elbow",
+    "arabic": "مرفق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-elephant",
+    "english": "elephant",
+    "arabic": "فيل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-eleven-11",
+    "english": "eleven (11)",
+    "arabic": "أحد عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-engine",
+    "english": "engine",
+    "arabic": "سيارة إطفاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-entrance",
+    "english": "entrance",
+    "arabic": "مدخل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-exit",
+    "english": "exit",
+    "arabic": "مخرج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-expensive",
+    "english": "expensive",
+    "arabic": "باهظ الثمن",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson05-explorer",
+    "english": "explorer",
+    "arabic": "مستكشف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-eye",
+    "english": "eye",
+    "arabic": "عين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-eyebrow",
+    "english": "eyebrow",
+    "arabic": "حاجب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-eyelash",
+    "english": "eyelash",
+    "arabic": "رمش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-face",
     "english": "face",
     "arabic": "وجه",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-family",
+    "english": "family",
+    "arabic": "عائلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-farm",
+    "english": "farm",
+    "arabic": "مزرعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-farmer",
+    "english": "farmer",
+    "arabic": "مزارع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fence",
+    "english": "fence",
+    "arabic": "سياج / سور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-field",
+    "english": "field",
+    "arabic": "حقل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-fifteen-15",
+    "english": "fifteen (15)",
+    "arabic": "خمسة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-fifty",
+    "english": "fifty",
+    "arabic": "خمسون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson05-film",
+    "english": "film",
+    "arabic": "فيلم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fin",
+    "english": "fin",
+    "arabic": "زعنفة",
     "recitation": false,
     "partOfSpeech": "noun"
   },
@@ -28,9 +1876,506 @@
     "partOfSpeech": "noun"
   },
   {
+    "id": "pre-stage-lesson06-fingernail",
+    "english": "fingernail",
+    "arabic": "ظفر الإصبع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-finish",
+    "english": "finish",
+    "arabic": "ينتهي / خط النهاية",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-fire",
+    "english": "fire",
+    "arabic": "نار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-firefighter",
+    "english": "firefighter",
+    "arabic": "رجل إطفاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fireworks",
+    "english": "fireworks",
+    "arabic": "ألعاب نارية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fish",
+    "english": "fish",
+    "arabic": "سمكة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-five-5",
+    "english": "five (5)",
+    "arabic": "خمسة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-flag",
+    "english": "flag",
+    "arabic": "علم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-flamingo",
+    "english": "flamingo",
+    "arabic": "طائر الفلامنجو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-flats",
+    "english": "flats",
+    "arabic": "مبنى شقق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-flippers",
+    "english": "flippers",
+    "arabic": "زعانف سباحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-floor",
+    "english": "floor",
+    "arabic": "أرضية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-flour",
+    "english": "flour",
+    "arabic": "دقيق / طحين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-flower",
+    "english": "flower",
+    "arabic": "زهرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-flowers",
+    "english": "flowers",
+    "arabic": "زهور في السلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fly",
+    "english": "fly",
+    "arabic": "يطير / ذبابة",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson05-food",
+    "english": "food",
+    "arabic": "طعام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-football",
+    "english": "football",
+    "arabic": "كرة قدم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-forest",
+    "english": "forest",
+    "arabic": "غابة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-forty",
+    "english": "forty",
+    "arabic": "أربعون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson09-four-4",
+    "english": "four (4)",
+    "arabic": "أربعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-fourteen-14",
+    "english": "fourteen (14)",
+    "arabic": "أربعة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fox",
+    "english": "fox",
+    "arabic": "ثعلب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-friday",
+    "english": "Friday",
+    "arabic": "الجمعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fridge",
+    "english": "fridge",
+    "arabic": "ثلاجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-frog",
+    "english": "frog",
+    "arabic": "ضفدع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-fruit",
+    "english": "fruit",
+    "arabic": "فاكهة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-game",
+    "english": "game",
+    "arabic": "لعبة فيديو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-garage",
+    "english": "garage",
+    "arabic": "مرآب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-garden",
+    "english": "garden",
+    "arabic": "حديقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-garlic",
+    "english": "garlic",
+    "arabic": "ثوم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gate",
+    "english": "gate",
+    "arabic": "بوابة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gazelle",
+    "english": "gazelle",
+    "arabic": "غزال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gift",
+    "english": "gift",
+    "arabic": "هدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-giraffe",
+    "english": "giraffe",
+    "arabic": "زرافة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-girl",
+    "english": "girl",
+    "arabic": "فتاة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-give",
+    "english": "give",
+    "arabic": "يعطي",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson06-glass",
+    "english": "glass",
+    "arabic": "كوب زجاجي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-glasses",
+    "english": "glasses",
+    "arabic": "نظارات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gloves",
+    "english": "gloves",
+    "arabic": "قفازات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-glue",
+    "english": "glue",
+    "arabic": "صمغ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-goal",
+    "english": "goal",
+    "arabic": "مرمى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-goat",
+    "english": "goat",
+    "arabic": "مازة / عنز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-goggles",
+    "english": "goggles",
+    "arabic": "نظارات سباحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-goldfish",
+    "english": "goldfish",
+    "arabic": "سمكة ذهبية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-golf",
+    "english": "golf",
+    "arabic": "لعبة الجولف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson01-good-morning",
+    "english": "good morning",
+    "arabic": "صباح الخير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-goose",
+    "english": "goose",
+    "arabic": "وزة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gorilla",
+    "english": "gorilla",
+    "arabic": "غوريلا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-granddaughter",
+    "english": "granddaughter",
+    "arabic": "حفيدة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-grandma",
+    "english": "grandma",
+    "arabic": "جدة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-grandpa",
+    "english": "grandpa",
+    "arabic": "جد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-grandparents",
+    "english": "grandparents",
+    "arabic": "الأجداد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-grandson",
+    "english": "grandson",
+    "arabic": "حفيد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-grapes",
+    "english": "grapes",
+    "arabic": "عنب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-grass",
+    "english": "grass",
+    "arabic": "عشب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-grasshopper",
+    "english": "grasshopper",
+    "arabic": "جرادة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-green",
+    "english": "green",
+    "arabic": "أخضر",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson06-greenhouse",
+    "english": "greenhouse",
+    "arabic": "بيت زجاجي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-grey",
+    "english": "grey",
+    "arabic": "رمادي",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson06-grow",
+    "english": "grow",
+    "arabic": "ينمو",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson06-guitar",
+    "english": "guitar",
+    "arabic": "جيتار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gym",
+    "english": "gym",
+    "arabic": "صالة رياضية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-gymnastics",
+    "english": "gymnastics",
+    "arabic": "جمباز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hall",
+    "english": "hall",
+    "arabic": "رواق / صالة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-hammer",
+    "english": "hammer",
+    "arabic": "مطرقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-hand",
     "english": "hand",
     "arabic": "يد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-handbag",
+    "english": "handbag",
+    "arabic": "حقيبة يد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-handlebar",
+    "english": "handlebar",
+    "arabic": "مقود الدراجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-happy",
+    "english": "happy",
+    "arabic": "سعيد",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson06-hat",
+    "english": "hat",
+    "arabic": "قبعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hay",
+    "english": "hay",
+    "arabic": "قش (تبن)",
     "recitation": false,
     "partOfSpeech": "noun"
   },
@@ -42,9 +2387,2242 @@
     "partOfSpeech": "noun"
   },
   {
+    "id": "pre-stage-lesson06-headphones",
+    "english": "headphones",
+    "arabic": "سماعات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-health",
+    "english": "health",
+    "arabic": "الصحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-heavy",
+    "english": "heavy",
+    "arabic": "ثقيل",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson06-hedgehog",
+    "english": "hedgehog",
+    "arabic": "قنفذ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-helicopter",
+    "english": "helicopter",
+    "arabic": "مروحية (هليكوبتر)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-helmet",
+    "english": "helmet",
+    "arabic": "خوذة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hippo",
+    "english": "hippo",
+    "arabic": "فرس النهر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-hockey",
+    "english": "hockey",
+    "arabic": "هوكي الجليد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-honey",
+    "english": "honey",
+    "arabic": "عسل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hoof",
+    "english": "hoof",
+    "arabic": "حافر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hook",
+    "english": "hook",
+    "arabic": "خطاف تعليق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-horse",
+    "english": "horse",
+    "arabic": "حصان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hospital",
+    "english": "hospital",
+    "arabic": "مستشفى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hotel",
+    "english": "hotel",
+    "arabic": "فندق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-hour",
+    "english": "hour",
+    "arabic": "ساعة (زمنية)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-house",
+    "english": "house",
+    "arabic": "منزل الدمى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-hummingbird",
+    "english": "hummingbird",
+    "arabic": "طائر طنان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-hundred",
+    "english": "hundred",
+    "arabic": "مائة",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson16-hungry",
+    "english": "hungry",
+    "arabic": "جائع",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson05-husband",
+    "english": "husband",
+    "arabic": "زوج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-ice",
+    "english": "ice",
+    "arabic": "جليد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-ice-cream",
+    "english": "ice cream",
+    "arabic": "الآيس كريم لذيذ جداً!",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-iceberg",
+    "english": "iceberg",
+    "arabic": "جبل جليدي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-igloo",
+    "english": "igloo",
+    "arabic": "كوخ جليدي (إيجلو)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-insects",
+    "english": "insects",
+    "arabic": "حشرات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-instruments",
+    "english": "instruments",
+    "arabic": "آلات موسيقية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-iron",
+    "english": "iron",
+    "arabic": "مكواة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-island",
+    "english": "island",
+    "arabic": "جزيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jacket",
+    "english": "jacket",
+    "arabic": "سترة / جاكيت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jaguar",
+    "english": "jaguar",
+    "arabic": "نمر رقطاء (جاغوار)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jam",
+    "english": "jam",
+    "arabic": "مربى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jar",
+    "english": "jar",
+    "arabic": "برطمان / وعاء زجاجي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jeans",
+    "english": "jeans",
+    "arabic": "بنطلون جينز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jelly",
+    "english": "jelly",
+    "arabic": "جيلي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jellyfish",
+    "english": "jellyfish",
+    "arabic": "قنديل البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jewellery",
+    "english": "jewellery",
+    "arabic": "مجوهرات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jobs",
+    "english": "jobs",
+    "arabic": "وظائف / مهن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-join",
+    "english": "join",
+    "arabic": "ينضم / يربط",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson07-jug",
+    "english": "jug",
+    "arabic": "إبريق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-juice",
+    "english": "juice",
+    "arabic": "عصير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jump",
+    "english": "jump",
+    "arabic": "يقفز",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson07-jumper",
+    "english": "jumper",
+    "arabic": "كنزة صوفية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-jungle",
+    "english": "jungle",
+    "arabic": "أدغال / غابة استوائية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kangaroo",
+    "english": "kangaroo",
+    "arabic": "كنغر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kettle",
+    "english": "kettle",
+    "arabic": "غلاية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-key",
+    "english": "key",
+    "arabic": "مفتاح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-keyboard",
+    "english": "keyboard",
+    "arabic": "لوحة مفاتيح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kick",
+    "english": "kick",
+    "arabic": "ركلة / يركل",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson07-king",
+    "english": "king",
+    "arabic": "ملك",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kitchen",
+    "english": "kitchen",
+    "arabic": "مطبخ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kite",
+    "english": "kite",
+    "arabic": "طائرة ورقية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kitten",
+    "english": "kitten",
+    "arabic": "قط صغير (كيتن)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-kiwi",
+    "english": "kiwi",
+    "arabic": "كيوي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-knee",
     "english": "knee",
     "arabic": "ركبة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-knife",
+    "english": "knife",
+    "arabic": "سكين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-knit",
+    "english": "knit",
+    "arabic": "يحاك / ينسج",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson06-knuckle",
+    "english": "knuckle",
+    "arabic": "مفصل الإصبع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-koala",
+    "english": "koala",
+    "arabic": "كوالا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-ladder",
+    "english": "ladder",
+    "arabic": "سلم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-ladybird",
+    "english": "ladybird",
+    "arabic": "دعسوقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lake",
+    "english": "lake",
+    "arabic": "بحيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lamb",
+    "english": "lamb",
+    "arabic": "خروف صغير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-land",
+    "english": "land",
+    "arabic": "أرض / يابسة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-laptop",
+    "english": "laptop",
+    "arabic": "حاسوب محمول",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-laugh",
+    "english": "laugh",
+    "arabic": "يضحك",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson08-leaf",
+    "english": "leaf",
+    "arabic": "ورقة شجر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-learn",
+    "english": "learn!",
+    "arabic": "أحب أن أتعلم!",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-leg",
+    "english": "leg",
+    "arabic": "ساق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lemon",
+    "english": "lemon",
+    "arabic": "ليمون أصفر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lemonade",
+    "english": "lemonade",
+    "arabic": "عصير ليمون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-leopard",
+    "english": "leopard",
+    "arabic": "نمر (فهد)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-letter",
+    "english": "letter",
+    "arabic": "رسالة / حرف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-letters",
+    "english": "letters",
+    "arabic": "حروف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lettuce",
+    "english": "lettuce",
+    "arabic": "خس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-librarian",
+    "english": "librarian",
+    "arabic": "أمين مكتبة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-library",
+    "english": "library",
+    "arabic": "مكتبة عامة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lifeguard",
+    "english": "lifeguard",
+    "arabic": "منقذ سباحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lift",
+    "english": "lift",
+    "arabic": "يرفع",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson16-light",
+    "english": "light",
+    "arabic": "خفيف الوزن / مضيء",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson08-lighthouse",
+    "english": "lighthouse",
+    "arabic": "منارة بحرية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lights",
+    "english": "lights",
+    "arabic": "أضواء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lime",
+    "english": "lime",
+    "arabic": "ليمون أخضر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lion",
+    "english": "lion",
+    "arabic": "أسد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-listen",
+    "english": "listen",
+    "arabic": "يستمع",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson08-lizard",
+    "english": "lizard",
+    "arabic": "سحليّة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-llama",
+    "english": "llama",
+    "arabic": "حيوان اللاما",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lobster",
+    "english": "lobster",
+    "arabic": "حيوان الكركند",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lollipop",
+    "english": "lollipop",
+    "arabic": "مصاصة حلوى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-lolly",
+    "english": "lolly",
+    "arabic": "مصاصة مثلجات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-lorry",
+    "english": "lorry",
+    "arabic": "شاحنة نقل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-loud",
+    "english": "loud",
+    "arabic": "صاخب / مرتفع الصوت",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson12-lounger",
+    "english": "lounger",
+    "arabic": "كرسي استرخاء شمسي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-machine",
+    "english": "machine",
+    "arabic": "آلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-magazine",
+    "english": "magazine",
+    "arabic": "مجلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-magician",
+    "english": "magician",
+    "arabic": "ساحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-man",
+    "english": "man",
+    "arabic": "رجل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mango",
+    "english": "mango",
+    "arabic": "مانجو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-map",
+    "english": "map",
+    "arabic": "خريطة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-market",
+    "english": "market",
+    "arabic": "سوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-mask",
+    "english": "mask",
+    "arabic": "كمامة / قناع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mat",
+    "english": "mat",
+    "arabic": "سجادة أرضية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-match",
+    "english": "match",
+    "arabic": "مباراة / عود ثقاب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-me",
+    "english": "me",
+    "arabic": "أنا",
+    "recitation": false,
+    "partOfSpeech": "pronoun"
+  },
+  {
+    "id": "pre-stage-lesson08-meal",
+    "english": "meal",
+    "arabic": "وجبة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-measure",
+    "english": "measure",
+    "arabic": "شريط القياس",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson08-meat",
+    "english": "meat",
+    "arabic": "لحم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mechanic",
+    "english": "mechanic",
+    "arabic": "ميكانيكي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-medicine",
+    "english": "medicine",
+    "arabic": "دواء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-meerkat",
+    "english": "meerkat",
+    "arabic": "حيوان الميركات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-melon",
+    "english": "melon",
+    "arabic": "بطيخ / شمام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-men",
+    "english": "men",
+    "arabic": "رجال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-menu",
+    "english": "menu",
+    "arabic": "قائمة طعام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-metal",
+    "english": "metal",
+    "arabic": "معدن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-midday",
+    "english": "midday",
+    "arabic": "منتصف النهار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-midnight",
+    "english": "midnight",
+    "arabic": "منتصف الليل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-milk",
+    "english": "milk",
+    "arabic": "حليب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-milkshake",
+    "english": "milkshake",
+    "arabic": "مشروب الحليب المخفوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-minute",
+    "english": "minute",
+    "arabic": "دقيقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mirror",
+    "english": "mirror",
+    "arabic": "مرآة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mole",
+    "english": "mole",
+    "arabic": "خلد (حيوان)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-monday",
+    "english": "Monday",
+    "arabic": "الإثنين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-money",
+    "english": "money",
+    "arabic": "نقود / مال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-monkey",
+    "english": "monkey",
+    "arabic": "قرد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-monster",
+    "english": "monster",
+    "arabic": "وحش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-month",
+    "english": "month",
+    "arabic": "شهر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-motorbike",
+    "english": "motorbike",
+    "arabic": "دراجة نارية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mountain",
+    "english": "mountain",
+    "arabic": "جبل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-mouse",
+    "english": "mouse",
+    "arabic": "فأرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-moustache",
+    "english": "moustache",
+    "arabic": "شارب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mud",
+    "english": "mud",
+    "arabic": "طين / وحل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mug",
+    "english": "mug",
+    "arabic": "كوب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-mum",
+    "english": "mum",
+    "arabic": "أم / أمي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-museum",
+    "english": "museum",
+    "arabic": "متحف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-mushroom",
+    "english": "mushroom",
+    "arabic": "فطر (مشروم)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-music",
+    "english": "music",
+    "arabic": "موسيقى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson08-musician",
+    "english": "musician",
+    "arabic": "عازف / موسيقي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-nail",
+    "english": "nail",
+    "arabic": "مسمار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-neck",
+    "english": "neck",
+    "arabic": "رقبة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-necklace",
+    "english": "necklace",
+    "arabic": "قلادة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nest",
+    "english": "nest",
+    "arabic": "عش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-newspaper",
+    "english": "newspaper",
+    "arabic": "جريدة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-night",
+    "english": "night",
+    "arabic": "ليل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nine-9",
+    "english": "nine (9)",
+    "arabic": "تسعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nineteen-19",
+    "english": "nineteen (19)",
+    "arabic": "تسعة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-ninety",
+    "english": "ninety",
+    "arabic": "تسعون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson03-north",
+    "english": "north",
+    "arabic": "شمال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nose",
+    "english": "nose",
+    "arabic": "أنف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nostril",
+    "english": "nostril",
+    "arabic": "منخر (فتحة الأنف)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-notebook",
+    "english": "notebook",
+    "arabic": "دفتر ملاحظات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nurse",
+    "english": "nurse",
+    "arabic": "ممرضة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-nuts",
+    "english": "nuts",
+    "arabic": "مكسرات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-oar",
+    "english": "oar",
+    "arabic": "مجداف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-ocean",
+    "english": "ocean",
+    "arabic": "محيط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-octopus",
+    "english": "octopus",
+    "arabic": "أخطبوط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-off",
+    "english": "off",
+    "arabic": "مغلق / إيقاف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-office",
+    "english": "office",
+    "arabic": "مكتب / شركة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-officer",
+    "english": "officer",
+    "arabic": "ضابط شرطة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-old",
+    "english": "old",
+    "arabic": "كبير السن / قديم",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson09-olive",
+    "english": "olive",
+    "arabic": "زيتون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-on",
+    "english": "on",
+    "arabic": "على / تشغيل",
+    "recitation": false,
+    "partOfSpeech": "preposition"
+  },
+  {
+    "id": "pre-stage-lesson09-one-1",
+    "english": "one (1)",
+    "arabic": "واحد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-onion",
+    "english": "onion",
+    "arabic": "بصل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-orange",
+    "english": "orange",
+    "arabic": "برتقالي",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson09-ostrich",
+    "english": "ostrich",
+    "arabic": "نعامة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-otter",
+    "english": "otter",
+    "arabic": "ثعلب الماء (قضاعة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-oven",
+    "english": "oven",
+    "arabic": "فرن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-owl",
+    "english": "owl",
+    "arabic": "بومة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-paint",
+    "english": "paint",
+    "arabic": "طلاء / يلوّن",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson10-paintbrush",
+    "english": "paintbrush",
+    "arabic": "فرشاة رسم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-painting",
+    "english": "painting",
+    "arabic": "لوحة فنية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-palace",
+    "english": "palace",
+    "arabic": "قصر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-palm",
+    "english": "palm",
+    "arabic": "راحة اليد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pancakes",
+    "english": "pancakes",
+    "arabic": "فطائر محلاة (بان كيك)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-panda",
+    "english": "panda",
+    "arabic": "حيوان الباندا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-paper",
+    "english": "paper",
+    "arabic": "ورقة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-paperclip",
+    "english": "paperclip",
+    "arabic": "مشبك ورق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-parcel",
+    "english": "parcel",
+    "arabic": "طرد بريدي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-parents",
+    "english": "parents",
+    "arabic": "الوالدان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-park",
+    "english": "park",
+    "arabic": "موقف سيارات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-parrot",
+    "english": "parrot",
+    "arabic": "ببغاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-party",
+    "english": "party",
+    "arabic": "حفلة عيد ميلاد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-passenger",
+    "english": "passenger",
+    "arabic": "مسافر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pasta",
+    "english": "pasta",
+    "arabic": "معكرونة (باستا)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-path",
+    "english": "path",
+    "arabic": "ممر / مسار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-patient",
+    "english": "patient",
+    "arabic": "مريض",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pattern",
+    "english": "pattern",
+    "arabic": "نمط / نقش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pavement",
+    "english": "pavement",
+    "arabic": "رصيف الشارع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-paw",
+    "english": "paw",
+    "arabic": "مخلب الحيوان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pea",
+    "english": "pea",
+    "arabic": "بازلاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-peach",
+    "english": "peach",
+    "arabic": "خوخ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-peacock",
+    "english": "peacock",
+    "arabic": "طاووس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pear",
+    "english": "pear",
+    "arabic": "كمثرى (إجاص)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-pecker",
+    "english": "pecker",
+    "arabic": "طائر نقار الخشب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pen",
+    "english": "pen",
+    "arabic": "قلم جاف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pencil",
+    "english": "pencil",
+    "arabic": "قلم رصاص",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-penguin",
+    "english": "penguin",
+    "arabic": "بطريق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-people",
+    "english": "people",
+    "arabic": "أشخاص / ناس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pepper",
+    "english": "pepper",
+    "arabic": "فلفل حلو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-perfume",
+    "english": "perfume",
+    "arabic": "عطر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pets",
+    "english": "pets",
+    "arabic": "حيوانات أليفة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-phone",
+    "english": "phone",
+    "arabic": "هاتف محمول",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-photo",
+    "english": "photo",
+    "arabic": "صورة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-photo",
+    "english": "photo!",
+    "arabic": "التقط صورة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-piano",
+    "english": "piano",
+    "arabic": "بيانو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-picnic",
+    "english": "picnic",
+    "arabic": "نزهة خلوية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pie",
+    "english": "pie",
+    "arabic": "فطيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pig",
+    "english": "pig",
+    "arabic": "خنزير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pilot",
+    "english": "pilot",
+    "arabic": "طيار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pineapple",
+    "english": "pineapple",
+    "arabic": "أناناس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-pink",
+    "english": "pink",
+    "arabic": "وردي",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson10-pirate",
+    "english": "pirate",
+    "arabic": "قرصان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pizza",
+    "english": "pizza",
+    "arabic": "بيتزا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-plain",
+    "english": "plain",
+    "arabic": "سادة (بدون نقش)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-plane",
+    "english": "plane",
+    "arabic": "طائرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-planets",
+    "english": "planets",
+    "arabic": "الكواكب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-plant",
+    "english": "plant",
+    "arabic": "نبات منزلي",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson06-plaster",
+    "english": "plaster",
+    "arabic": "لاصة طبية للجروح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-plastic",
+    "english": "plastic",
+    "arabic": "بلاستيك",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-plate",
+    "english": "plate",
+    "arabic": "طبق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-play",
+    "english": "play",
+    "arabic": "يلعب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson10-plum",
+    "english": "plum",
+    "arabic": "برقوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pocket",
+    "english": "pocket",
+    "arabic": "جيب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pond",
+    "english": "pond",
+    "arabic": "بركة ماء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pony",
+    "english": "pony",
+    "arabic": "حصان قصير (بوني)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-pool",
+    "english": "pool",
+    "arabic": "حمام سباحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-popcorn",
+    "english": "popcorn",
+    "arabic": "فشار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-postbox",
+    "english": "postbox",
+    "arabic": "صندوق بريد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-postcard",
+    "english": "postcard",
+    "arabic": "بطاقة بريدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-poster",
+    "english": "poster",
+    "arabic": "ملصق حائط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-postman",
+    "english": "postman",
+    "arabic": "ساعي بريد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pot",
+    "english": "pot",
+    "arabic": "إناء الزرع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-potato",
+    "english": "potato",
+    "arabic": "بطاطس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-present",
+    "english": "present",
+    "arabic": "هدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-prince",
+    "english": "prince",
+    "arabic": "أمير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-princess",
+    "english": "princess",
+    "arabic": "أميرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-printer",
+    "english": "printer",
+    "arabic": "طابعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-puddle",
+    "english": "puddle",
+    "arabic": "بركة ماء صغيرة (مستنقع)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pull",
+    "english": "pull",
+    "arabic": "يسحب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson10-pumpkin",
+    "english": "pumpkin",
+    "arabic": "يقطين",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-puppet",
+    "english": "puppet",
+    "arabic": "دمية خيطية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-puppy",
+    "english": "puppy",
+    "arabic": "جرو (كلب صغير)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-purple",
+    "english": "purple",
+    "arabic": "بنفسجي",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson10-push",
+    "english": "push",
+    "arabic": "يدفع",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson10-pushchair",
+    "english": "pushchair",
+    "arabic": "عربة أطفال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-puzzle",
+    "english": "puzzle",
+    "arabic": "أحجية الصور (بازل)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-pyjamas",
+    "english": "pyjamas",
+    "arabic": "ملابس نوم (بيجامة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-queen",
+    "english": "queen",
+    "arabic": "ملكة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-quiet",
+    "english": "quiet",
+    "arabic": "هادئ",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson11-rabbit",
+    "english": "rabbit",
+    "arabic": "أرنب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-raccoon",
+    "english": "raccoon",
+    "arabic": "حيوان الراكون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-race",
+    "english": "race",
+    "arabic": "سباق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-racket",
+    "english": "racket",
+    "arabic": "مضرب التنس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-radio",
+    "english": "radio",
+    "arabic": "راديو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rain",
+    "english": "rain",
+    "arabic": "مطر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rainbow",
+    "english": "rainbow",
+    "arabic": "قوس قزح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-raincoat",
+    "english": "raincoat",
+    "arabic": "معطف المطر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rainforest",
+    "english": "rainforest",
+    "arabic": "غابة مطيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-raisins",
+    "english": "raisins",
+    "arabic": "زبيب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-raspberries",
+    "english": "raspberries",
+    "arabic": "توت البري",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-read",
+    "english": "read",
+    "arabic": "يقرأ",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson11-recycle",
+    "english": "recycle",
+    "arabic": "إعادة تدوير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-red",
+    "english": "red",
+    "arabic": "أحمر",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson11-reindeer",
+    "english": "reindeer",
+    "arabic": "حيوان الرنة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-restaurant",
+    "english": "restaurant",
+    "arabic": "مطعم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rhino",
+    "english": "rhino",
+    "arabic": "وحيد القرن (خرتيت)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-ribbon",
+    "english": "ribbon",
+    "arabic": "شريط / زينة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rice",
+    "english": "rice",
+    "arabic": "أرز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-riding",
+    "english": "riding",
+    "arabic": "ركوب الخيل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-ring",
+    "english": "ring",
+    "arabic": "ميدالية مفاتيح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-rink",
+    "english": "rink",
+    "arabic": "حلبة تزلج جليدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-river",
+    "english": "river",
+    "arabic": "نهر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-road",
+    "english": "road",
+    "arabic": "طريق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-robot",
+    "english": "robot",
+    "arabic": "روبوت (نسان آلي)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rock",
+    "english": "rock",
+    "arabic": "صخرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rocket",
+    "english": "rocket",
+    "arabic": "صاروخ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-rod",
+    "english": "rod",
+    "arabic": "صنارة صيد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-roof",
+    "english": "roof",
+    "arabic": "سقف المبنى",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-room",
+    "english": "room",
+    "arabic": "غرفة طعام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rope",
+    "english": "rope",
+    "arabic": "حبل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rubber",
+    "english": "rubber",
+    "arabic": "ممحاة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rubbish",
+    "english": "rubbish",
+    "arabic": "قمامة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-rug",
+    "english": "rug",
+    "arabic": "سجادة صغيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-ruler",
+    "english": "ruler",
+    "arabic": "مسطرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-run",
+    "english": "run",
+    "arabic": "يركض",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson16-sad",
+    "english": "sad",
+    "arabic": "حزين",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson02-saddle",
+    "english": "saddle",
+    "arabic": "مقعد الدراجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sail",
+    "english": "sail",
+    "arabic": "شراع القارب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-salt",
+    "english": "salt",
+    "arabic": "ملح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sandcastle",
+    "english": "sandcastle",
+    "arabic": "قلعة رملية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sandpit",
+    "english": "sandpit",
+    "arabic": "صندوق الرمل للعب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-saturday",
+    "english": "Saturday",
+    "arabic": "السبت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-saturn",
+    "english": "Saturn",
+    "arabic": "كوكب زحل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sauce",
+    "english": "sauce",
+    "arabic": "صلصة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sausage",
+    "english": "sausage",
+    "arabic": "نقانق (سجق)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-scared",
+    "english": "scared",
+    "arabic": "خائف",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson12-scarf",
+    "english": "scarf",
+    "arabic": "وشاح / شال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-school",
+    "english": "school",
+    "arabic": "مدرسة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-scissors",
+    "english": "scissors",
+    "arabic": "مقص",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-scooter",
+    "english": "scooter",
+    "arabic": "سكوتر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-screen",
+    "english": "screen",
+    "arabic": "شاشة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-screw",
+    "english": "screw",
+    "arabic": "برغي (سدابة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sea",
+    "english": "sea",
+    "arabic": "بحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-seagull",
+    "english": "seagull",
+    "arabic": "طائر النورس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-seahorse",
+    "english": "seahorse",
+    "arabic": "حصان البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-seasons",
+    "english": "seasons",
+    "arabic": "فصول السنة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-seaweed",
+    "english": "seaweed",
+    "arabic": "عشبة البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-second",
+    "english": "second",
+    "arabic": "ثانية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-seesaw",
+    "english": "seesaw",
+    "arabic": "لعبة الميزان (التوازن)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-set",
+    "english": "set",
+    "arabic": "مجموعة قطار للعب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-seven-7",
+    "english": "seven (7)",
+    "arabic": "سبعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-seventeen-17",
+    "english": "seventeen (17)",
+    "arabic": "سبعة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-seventy",
+    "english": "seventy",
+    "arabic": "سبعون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson12-sew",
+    "english": "sew",
+    "arabic": "يخيط",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-shark",
+    "english": "shark",
+    "arabic": "سمكة قرش",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sheep",
+    "english": "sheep",
+    "arabic": "أغنام / خروف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-shell",
+    "english": "shell",
+    "arabic": "صدفة بحرية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-ship",
+    "english": "ship",
+    "arabic": "سفينة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-shirt",
+    "english": "shirt",
+    "arabic": "قميص",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-shop",
+    "english": "shop",
+    "arabic": "متجر / محل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-shorts",
+    "english": "shorts",
+    "arabic": "سروال قصير (شورت)",
     "recitation": false,
     "partOfSpeech": "noun"
   },
@@ -56,9 +4634,317 @@
     "partOfSpeech": "noun"
   },
   {
+    "id": "pre-stage-lesson16-shy",
+    "english": "shy",
+    "arabic": "خجول",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson12-sing",
+    "english": "sing",
+    "arabic": "يغني",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-singer",
+    "english": "singer",
+    "arabic": "مغني",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-sister",
+    "english": "sister",
+    "arabic": "أخت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-six-6",
+    "english": "six (6)",
+    "arabic": "ستة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-sixteen-16",
+    "english": "sixteen (16)",
+    "arabic": "ستة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-sixty",
+    "english": "sixty",
+    "arabic": "ستون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson07-skate",
+    "english": "skate",
+    "arabic": "حذاء تزلج",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-skateboard",
+    "english": "skateboard",
+    "arabic": "لوح التزلج بعجلات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-skates",
+    "english": "skates",
+    "arabic": "حذاء التزلج بعجلات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-skating",
+    "english": "skating",
+    "arabic": "التزلج على الجليد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-skeleton",
     "english": "skeleton",
     "arabic": "هيكل عظمي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-ski",
+    "english": "ski",
+    "arabic": "يتزلج",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-skip",
+    "english": "skip",
+    "arabic": "يقفز بالحبل",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-skirt",
+    "english": "skirt",
+    "arabic": "تنورة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-skyscraper",
+    "english": "skyscraper",
+    "arabic": "ناطحة سحاب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sledge",
+    "english": "sledge",
+    "arabic": "زلاجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sleep",
+    "english": "sleep",
+    "arabic": "ينام",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-slide",
+    "english": "slide",
+    "arabic": "زحليقة أطفال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-small",
+    "english": "small",
+    "arabic": "صغير",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson12-snake",
+    "english": "snake",
+    "arabic": "ثعبان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-snow",
+    "english": "snow",
+    "arabic": "ثلج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-snowball",
+    "english": "snowball",
+    "arabic": "كرة ثلجية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-snowboard",
+    "english": "snowboard",
+    "arabic": "لوح تزلج على الثلج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-snowman",
+    "english": "snowman",
+    "arabic": "رجل الثلج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-socks",
+    "english": "socks",
+    "arabic": "جوارب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sofa",
+    "english": "sofa",
+    "arabic": "أريكة (كنبة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-son",
+    "english": "son",
+    "arabic": "ابن",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-south",
+    "english": "south",
+    "arabic": "جنوب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-space",
+    "english": "space",
+    "arabic": "الفضاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-spaceship",
+    "english": "spaceship",
+    "arabic": "مركبة فضائية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-spade",
+    "english": "spade",
+    "arabic": "مجرفة رمل",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-spaghetti",
+    "english": "spaghetti",
+    "arabic": "معكرونة سباجيتي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-spanner",
+    "english": "spanner",
+    "arabic": "مفتاح ربط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-spell",
+    "english": "spell",
+    "arabic": "يتهجى الحروف",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-spices",
+    "english": "spices",
+    "arabic": "توابل / بهارات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-squirrel",
+    "english": "squirrel",
+    "arabic": "سنجاب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stable",
+    "english": "stable",
+    "arabic": "إسطبل الخيول",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stadium",
+    "english": "stadium",
+    "arabic": "ملعب رياضي (استاد)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stamp",
+    "english": "stamp",
+    "arabic": "طابع بريدي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stapler",
+    "english": "stapler",
+    "arabic": "دباسة ورق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-starfish",
+    "english": "starfish",
+    "arabic": "نجم البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stars",
+    "english": "stars",
+    "arabic": "نجوم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-station",
+    "english": "station",
+    "arabic": "محطة إطفاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-stingray",
+    "english": "stingray",
+    "arabic": "سمكة الراي اللدّاسة",
     "recitation": false,
     "partOfSpeech": "noun"
   },
@@ -70,9 +4956,919 @@
     "partOfSpeech": "noun"
   },
   {
+    "id": "pre-stage-lesson12-stream",
+    "english": "stream",
+    "arabic": "جدول ماء صغير",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-stretcher",
+    "english": "stretcher",
+    "arabic": "نقالة إسعاف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-submarine",
+    "english": "submarine",
+    "arabic": "غواصة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-sugar",
+    "english": "sugar",
+    "arabic": "سكر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-sun",
+    "english": "sun",
+    "arabic": "الشمس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-sunday",
+    "english": "Sunday",
+    "arabic": "الأحد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-surf",
+    "english": "surf",
+    "arabic": "يتزلج على الأمواج",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-surfboard",
+    "english": "surfboard",
+    "arabic": "لوح التزلج المائي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-surprised",
+    "english": "surprised",
+    "arabic": "متفاجئ",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson12-swan",
+    "english": "swan",
+    "arabic": "بجعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-swim",
+    "english": "swim",
+    "arabic": "يسبح",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson12-swimsuit",
+    "english": "swimsuit",
+    "arabic": "ملابس سباحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-swing",
+    "english": "swing",
+    "arabic": "أرجوحة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson12-syrup",
+    "english": "syrup",
+    "arabic": "شراب مركز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-table",
+    "english": "table",
+    "arabic": "طاولة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tablet",
+    "english": "tablet",
+    "arabic": "جهاز لوحي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tadpole",
+    "english": "tadpole",
+    "arabic": "شرغوف (يرقة الضفدع)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tail",
+    "english": "tail",
+    "arabic": "ذيل الحيوان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tambourine",
+    "english": "tambourine",
+    "arabic": "دف موسيقي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-taxi",
+    "english": "taxi",
+    "arabic": "سيارة أجرة (تاكسي)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tea",
+    "english": "tea",
+    "arabic": "شاي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-teacher",
+    "english": "teacher",
+    "arabic": "معلم / مدرس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-teapot",
+    "english": "teapot",
+    "arabic": "إبريق شاي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-telescope",
+    "english": "telescope",
+    "arabic": "منظار فلكي (تلسكوب)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-television",
+    "english": "television",
+    "arabic": "تلفاز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-ten",
+    "english": "ten",
+    "arabic": "عشرة",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson09-ten-10",
+    "english": "ten (10)",
+    "arabic": "عشرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tennis",
+    "english": "tennis",
+    "arabic": "لعبة التنس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tent",
+    "english": "tent",
+    "arabic": "خيمة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-theatre",
+    "english": "theatre",
+    "arabic": "مسرح",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-thermometer",
+    "english": "thermometer",
+    "arabic": "مقياس الحرارة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-thirsty",
+    "english": "thirsty",
+    "arabic": "عطشان",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson09-thirteen-13",
+    "english": "thirteen (13)",
+    "arabic": "ثلاثة عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-thirty",
+    "english": "thirty",
+    "arabic": "ثلاثون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson16-thousand",
+    "english": "thousand",
+    "arabic": "ألف",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson09-three-3",
+    "english": "three (3)",
+    "arabic": "ثلاثة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson06-thumb",
+    "english": "thumb",
+    "arabic": "الإبهام",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-thursday",
+    "english": "Thursday",
+    "arabic": "الخميس",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-ticket",
+    "english": "ticket",
+    "arabic": "تذكرة سفر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tie",
+    "english": "tie",
+    "arabic": "ربطة عنق (كرافتة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tiger",
+    "english": "tiger",
+    "arabic": "نمر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tights",
+    "english": "tights",
+    "arabic": "جوارب ضيقة طويلة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-till",
+    "english": "till",
+    "arabic": "ماكينة الدفع (الكاشير)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-timetable",
+    "english": "timetable",
+    "arabic": "جدول المواعيد",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-toad",
+    "english": "toad",
+    "arabic": "علجوم (ضفدع جاف)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-toast",
+    "english": "toast",
+    "arabic": "خبز محمص",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-toaster",
+    "english": "toaster",
+    "arabic": "محمصة خبز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
     "id": "pre-stage-lesson17-toe",
     "english": "toe",
     "arabic": "إصبع القدم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tomato",
+    "english": "tomato",
+    "arabic": "طماطم",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-toolbox",
+    "english": "toolbox",
+    "arabic": "صندوق الأدوات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tools",
+    "english": "tools",
+    "arabic": "أدوات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-top",
+    "english": "top",
+    "arabic": "قطعة ملابس علوية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-torch",
+    "english": "torch",
+    "arabic": "مصباح يدوي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tortoise",
+    "english": "tortoise",
+    "arabic": "سلحفاة برية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-towel",
+    "english": "towel",
+    "arabic": "منشفة (فوطة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-town",
+    "english": "town",
+    "arabic": "بلدة / مدينة صغيرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-toys",
+    "english": "toys",
+    "arabic": "ألعاب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson11-track",
+    "english": "track",
+    "arabic": "سكة حديدية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tractor",
+    "english": "tractor",
+    "arabic": "جرار زراعي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-traffic",
+    "english": "traffic",
+    "arabic": "حركة المرور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-train",
+    "english": "train",
+    "arabic": "قطار سريق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-trainers",
+    "english": "trainers",
+    "arabic": "أحذية رياضية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tram",
+    "english": "tram",
+    "arabic": "قطار ترام كهربائي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-treasure",
+    "english": "treasure",
+    "arabic": "كنز",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tree",
+    "english": "tree",
+    "arabic": "شجرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-triangle",
+    "english": "triangle",
+    "arabic": "المثلث الموسيقي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tricycle",
+    "english": "tricycle",
+    "arabic": "دراجة ثلاثية العجلات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-trolley",
+    "english": "trolley",
+    "arabic": "عربة تسوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-trousers",
+    "english": "trousers",
+    "arabic": "بنطلون (سروال)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-trumpet",
+    "english": "trumpet",
+    "arabic": "آلة البوق",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-tuesday",
+    "english": "Tuesday",
+    "arabic": "الثلاثاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-tunnel",
+    "english": "tunnel",
+    "arabic": "نفق قطار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson13-turkey",
+    "english": "turkey",
+    "arabic": "ديك رومي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-twelve-12",
+    "english": "twelve (12)",
+    "arabic": "اثنا عشر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-twenty",
+    "english": "twenty",
+    "arabic": "عشرون",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson09-twenty-20",
+    "english": "twenty (20)",
+    "arabic": "عشرون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson09-two-2",
+    "english": "two (2)",
+    "arabic": "اثنان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson02-tyre",
+    "english": "tyre",
+    "arabic": "إطار",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-umbrella",
+    "english": "umbrella",
+    "arabic": "مظلة (شمسية)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson05-uncle",
+    "english": "uncle",
+    "arabic": "عم / خال",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-underwear",
+    "english": "underwear",
+    "arabic": "ملابس داخلية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-unicorn",
+    "english": "unicorn",
+    "arabic": "وحيد القرن الخيالي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-university",
+    "english": "university",
+    "arabic": "جامعة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson07-van",
+    "english": "van",
+    "arabic": "شاحنة مثلجات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-vase",
+    "english": "vase",
+    "arabic": "مزهرية (فازة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-vegetables",
+    "english": "vegetables",
+    "arabic": "خضروات",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-vet",
+    "english": "vet",
+    "arabic": "طبيب بيطري",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-view",
+    "english": "view",
+    "arabic": "منظر طبيعي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-village",
+    "english": "village",
+    "arabic": "قرية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-violin",
+    "english": "violin",
+    "arabic": "آلة الكمان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-volcano",
+    "english": "volcano",
+    "arabic": "بركان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-volleyball",
+    "english": "volleyball",
+    "arabic": "كرة الطائرة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wall",
+    "english": "wall",
+    "arabic": "جدار / حائط",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-walrus",
+    "english": "walrus",
+    "arabic": "حيوان الفقمة (الفظ)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wasp",
+    "english": "wasp",
+    "arabic": "دبور",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-water",
+    "english": "water",
+    "arabic": "ماء / يروي",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson14-watermelon",
+    "english": "watermelon",
+    "arabic": "بطيخ",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wave",
+    "english": "wave",
+    "arabic": "موجة البحر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson04-wednesday",
+    "english": "Wednesday",
+    "arabic": "الأربعاء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-week",
+    "english": "week",
+    "arabic": "أسبوع",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wellies",
+    "english": "wellies",
+    "arabic": "حذاء مطاطي للمطر",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson03-west",
+    "english": "west",
+    "arabic": "غرب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-whale",
+    "english": "whale",
+    "arabic": "حوت",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-whiskers",
+    "english": "whiskers",
+    "arabic": "شوارب الحيوان",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-whisper",
+    "english": "whisper",
+    "arabic": "يهمس",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson14-whistle",
+    "english": "whistle",
+    "arabic": "يصفّر / صفارة",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-white",
+    "english": "white",
+    "arabic": "أبيض",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson05-wife",
+    "english": "wife",
+    "arabic": "زوجة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-windmill",
+    "english": "windmill",
+    "arabic": "طاحونة هوائية",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-window",
+    "english": "window",
+    "arabic": "نافذة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wolf",
+    "english": "wolf",
+    "arabic": "ذئب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-woman",
+    "english": "woman",
+    "arabic": "امرأة",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson10-women",
+    "english": "women",
+    "arabic": "نساء",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wood",
+    "english": "wood",
+    "arabic": "خشب",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-wool",
+    "english": "wool",
+    "arabic": "صوف",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-worm",
+    "english": "worm",
+    "arabic": "دودة الارض",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson14-write",
+    "english": "write",
+    "arabic": "يكتب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson15-x-ray",
+    "english": "x-ray",
+    "arabic": "أشعة سينية (إكس-راي)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-xylophone",
+    "english": "xylophone",
+    "arabic": "آلة الزيلوفون",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-yacht",
+    "english": "yacht",
+    "arabic": "يخت بحري",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-yawn",
+    "english": "yawn",
+    "arabic": "يتثاءب",
+    "recitation": false,
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "pre-stage-lesson03-yellow",
+    "english": "yellow",
+    "arabic": "أصفر",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson15-yo-yo",
+    "english": "yo-yo",
+    "arabic": "لعبة اليويو",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-yoga",
+    "english": "yoga",
+    "arabic": "رياضة اليوغا",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-yoghurt",
+    "english": "yoghurt",
+    "arabic": "زبادي (لبن رائب)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-young",
+    "english": "young",
+    "arabic": "صغير السن",
+    "recitation": false,
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pre-stage-lesson15-zebra",
+    "english": "zebra",
+    "arabic": "حمار وحشي",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson16-zero",
+    "english": "zero",
+    "arabic": "صفر",
+    "recitation": false,
+    "partOfSpeech": "number"
+  },
+  {
+    "id": "pre-stage-lesson15-zigzag",
+    "english": "zigzag",
+    "arabic": "خط متعرج",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-zip",
+    "english": "zip",
+    "arabic": "سحاب (سوستة)",
+    "recitation": false,
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pre-stage-lesson15-zoo",
+    "english": "zoo",
+    "arabic": "حديقة الحيوان",
     "recitation": false,
     "partOfSpeech": "noun"
   }
