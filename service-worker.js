@@ -1,10 +1,10 @@
-const CACHE_NAME = "itqan-shell-v39";
+const CACHE_NAME = "itqan-shell-v40";
 const APP_FILES = [
 	"./",
 	"./index.html",
 	"./style.css",
 	"./main.js",
-	"./firebase-sync.js?v=39",
+	"./firebase-sync.js?v=40",
 	"./lesson-interactions.js",
 	"./quiz-lesson-1.js",
 	"./english-questions.js",

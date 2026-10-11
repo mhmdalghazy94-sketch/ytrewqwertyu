@@ -420,10 +420,19 @@ a.library-download-button:hover { background: #e2f0df; }
 .lesson-audio-track audio { width: 100%; }
 .homework-assignment { display: grid; gap: 12px; padding: 14px; border: 1px solid #e4e9e1; border-radius: 7px; background: #fffefa; }
 .homework-assignment.is-active { border-color: #8db99a; background: #f0f7ef; }
-.homework-assignment-copy h4 { margin: 0; font-size: 14px; }
+.homework-assignment-copy h3, .homework-assignment-copy h4 { margin: 0; font-size: 14px; }
 .homework-assignment-copy p { margin: 6px 0 0; color: #68786e; font-size: 11px; line-height: 1.8; }
 .worksheet-preview { display: block; width: min(100%, 520px); aspect-ratio: 3 / 4; justify-self: center; border: 1px solid #e2e7df; background: #fff; object-fit: contain; }
 .homework-submission, .homework-management-form { display: grid; gap: 11px; padding: 12px; border: 1px solid #e9ede6; border-radius: 6px; background: #fbfcf8; }
+.homework-portal-section { display: grid; gap: 13px; margin: 0 0 16px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); box-shadow: var(--shadow); }
+.homework-portal-section > .feature-section-heading { margin: 0; }
+.homework-portal-section > .homework-assignment-list { margin-top: 2px; }
+.homework-management-form select { width: 100%; min-height: 37px; padding: 7px 9px; border: 1px solid #dfe6dd; border-radius: 5px; color: var(--ink); background: #fffefa; font: inherit; }
+.homework-form-error[hidden] { display: none; }
+.homework-portal-status { min-height: 16px; margin: 0; color: #397448; font-size: 11px; }
+.homework-submission-records { display: grid; gap: 8px; }
+.homework-submission-actions { display: flex !important; flex-wrap: wrap; align-items: center; gap: 8px !important; }
+.homework-teacher-view-only { margin: 0; color: #68786e; font-size: 11px; }
 .homework-submission p { margin: 0; color: #68786e; font-size: 11px; line-height: 1.8; }
 .homework-manager-actions .save-report-button { justify-self: start; }
 .telegram-homework-link { display: inline-flex; align-items: center; justify-self: start; text-decoration: none; }

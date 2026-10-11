@@ -786,6 +786,7 @@ async function loadGithubProjectAssets(repositoryValue, branchValue = "") {
 			projectAssetsStatus.textContent += " تعذر حفظ إعداد المستودع على هذا الجهاز.";
 		}
 		renderProjectAssets();
+		if (!portalPages.homework.hidden) renderPortalPage("homework");
 	} catch (error) {
 		if (requestId !== projectAssetsRequestId) return;
 		projectAssetsStatus.textContent = `تعذر جلب ملفات GitHub: ${error.message}`;
@@ -1351,6 +1352,10 @@ function renderPortalPage(page) {
 	}
 	const content = document.querySelector(`#${page}-page-content`);
 	if (!content) return;
+	if (page === "homework") {
+		renderHomeworkPortalPage(content);
+		return;
+	}
 	const lessonName = getLessonNames(activeLesson.level, activeLesson.semester)[activeLesson.lesson] || currentLessonName();
 	const assignments = getLessonHomeworkAssignments(currentLessonKey()).filter((assignment) => isTeacher || assignment.active);
 	const lessonLink = `<button class="save-report-button" type="button" data-open-current-lesson>الانتقال إلى ${escapeHtml(lessonName)}</button>`;
@@ -1359,8 +1364,7 @@ function renderPortalPage(page) {
 	const grade = student ? getStageGrade(student.id, activeLesson.level) : null;
 	const cards = (items, empty) => items.length ? `<div class="portal-card-grid">${items.join("")}</div>` : `<article class="portal-card portal-empty"><h2>لا توجد عناصر لعرضها</h2><p>${empty}</p>${lessonLink}</article>`;
 	const assignmentCards = assignments.map((assignment) => `<article class="portal-card"><span class="eyebrow">${assignment.active ? "واجب مفعّل" : "إدارة المعلم"}</span><h2>${escapeHtml(assignment.title)}</h2><p>${escapeHtml(assignment.details || "راجع تعليمات الواجب في صفحة الدرس.")}</p>${assignment.dueDate ? `<small>آخر موعد: ${escapeHtml(assignment.dueDate)}</small>` : ""}</article>`);
-	if (page === "homework") content.innerHTML = `${cards(assignmentCards, "ستظهر هنا واجبات الدرس التي يفعّلها المعلم.")}<button class="save-report-button" type="button" data-open-homework-activity>فتح الواجبات وتسليم الحل</button>${lessonLink}`;
-	else if (page === "recitation") {
+	if (page === "recitation") {
 		const words = dictionaryWords.filter((word) => word.recitation);
 		content.innerHTML = `
 			${isTeacher ? `<div class="recitation-teacher-actions"><span>${words.length} كلمة محددة للتسميع</span><button class="delete-report-button" type="button" data-clear-recitation ${words.length ? "" : "disabled"}>إلغاء جميع كلمات التسميع</button></div>` : ""}
@@ -1388,6 +1392,97 @@ function renderPortalPage(page) {
 	}
 	else if (page === "profile") content.innerHTML = student ? `<article class="portal-card profile-summary"><span class="profile-avatar">${escapeHtml((student.fullName || student.name).slice(0, 1))}</span><div><span class="eyebrow">ملف الطالب</span><h2>${escapeHtml(student.fullName || student.name)}</h2><p>${escapeHtml(curriculumData[getStudentCurrentLevel(student.id)].name)} · ${grade.percentage}% في ${escapeHtml(curriculumData[activeLesson.level].name)}</p><small>${grade.earned} من ${grade.possible} درجة مسجّلة</small></div></article><button class="text-button" type="button" data-open-student-reports>عرض سجل التقارير</button>` : `<article class="portal-card"><h2>سجّل الدخول لعرض ملفك</h2><p>بعد تسجيل الدخول ستظهر المرحلة الحالية والتقدم الدراسي.</p><button class="save-report-button" type="button" data-open-student-login>تسجيل الدخول</button></article>`;
 	else if (page === "settings") content.innerHTML = `<div class="portal-card-grid"><article class="portal-card"><span class="eyebrow">المظهر</span><h2>الوضع الليلي</h2><p>بدّل بين المظهر الفاتح والداكن.</p><button class="text-button" type="button" data-toggle-theme>تبديل الوضع الليلي</button></article><article class="portal-card"><span class="eyebrow">سهولة الوصول</span><h2>إعدادات العرض</h2><p>تحكم بحجم الخط والتباين من لوحة الأدوات.</p><button class="text-button" type="button" data-open-feature-tab="appearance">فتح إعدادات سهولة الوصول</button></article></div>`;
+}
+
+function ensureHomeworkGithubAssets() {
+	if (!isTeacher || projectAssets.length) return;
+	try {
+		const settings = JSON.parse(localStorage.getItem("itqan-github-project-assets-v1") || "{}");
+		const repository = String(settings.repository || "").trim();
+		const branch = String(settings.branch || "").trim();
+		const autoLoadKey = `${repository}|${branch}`;
+		if (repository && githubAssetsAutoLoadKey !== autoLoadKey) {
+			githubAssetsAutoLoadKey = autoLoadKey;
+			githubAssetsRepository.value = repository;
+			githubAssetsBranch.value = branch;
+			loadGithubProjectAssets(repository, branch);
+		}
+	} catch (error) {
+		console.error("تعذر قراءة إعداد مستودع GitHub للواجبات:", error);
+	}
+}
+
+function renderHomeworkManagerForm(assignment = null) {
+	const assetOptions = projectAssets.map((asset) => `<option value="${escapeHtml(asset.path)}" ${assignment?.attachment?.path === asset.path ? "selected" : ""}>${escapeHtml(asset.path)}</option>`).join("");
+	return `<form id="homework-management-form" class="homework-management-form">
+		<input name="assignmentId" type="hidden" value="${escapeHtml(assignment?.id || "")}">
+		<label class="field-label">عنوان الواجب<input name="title" required maxlength="100" placeholder="عنوان الواجب" value="${escapeHtml(assignment?.title || "")}"></label>
+		<label class="field-label">تعليمات الواجب<textarea name="details" required maxlength="300" rows="2" placeholder="اكتب تعليمات الواجب">${escapeHtml(assignment?.details || "")}</textarea></label>
+		<label class="field-label">آخر موعد للتسليم<input name="dueDate" type="date" value="${escapeHtml(assignment?.dueDate || "")}"></label>
+		<label class="field-label">ملف من مستودع GitHub (اختياري)<select name="githubAsset"><option value="">${projectAssets.length ? "لا تغيّر الملف الحالي" : "لم تُحمّل ملفات المستودع بعد"}</option>${assetOptions}</select></label>
+		${projectAssets.length ? "" : `<button class="text-button" type="button" data-open-github-settings>إعداد المستودع أو تحديث ملفات GitHub من إدارة الدرس</button>`}
+		<label class="field-label">أو ارفع ملفاً من جهازك (اختياري، حتى 600 كيلوبايت)<input name="worksheet" type="file" accept="image/*,.pdf,application/pdf"></label>
+		<label class="assignment-activation-toggle"><input name="active" type="checkbox" ${assignment?.active ? "checked" : ""}><span>تفعيل الواجب للطلاب عند الحفظ</span></label>
+		<label class="assignment-activation-toggle"><input name="notifyStudents" type="checkbox"><span>إرسال إشعار للطلاب عند نشر الواجب</span></label>
+		<div class="homework-manager-actions"><button class="save-report-button" type="submit">${assignment ? "حفظ التعديلات" : "إضافة الواجب"}</button><button class="delete-report-button" type="button" data-reset-assignment>تفريغ النموذج</button></div>
+		<p class="homework-form-error" role="alert" hidden></p>
+	</form>`;
+}
+
+function renderHomeworkPortalPage(content) {
+	homeworkAssignments = getLessonHomeworkAssignments(currentLessonKey());
+	ensureHomeworkGithubAssets();
+	const lessonKey = currentLessonKey();
+	const lessonName = currentLessonName();
+	const visibleAssignments = homeworkAssignments.filter((assignment) => assignment.active);
+	let submissions = [];
+	if (isTeacher) {
+		try {
+			const stored = JSON.parse(localStorage.getItem("itqan-homework-submissions-v1") || "[]");
+			if (Array.isArray(stored)) submissions = stored.filter((item) => item.lessonKey === lessonKey);
+		} catch (error) {
+			console.error("تعذر قراءة تسليمات الواجبات:", error);
+		}
+	}
+	let manager = "";
+	if (isTeacher) {
+		manager = `<section class="homework-portal-section" aria-labelledby="homework-management-title"><div class="feature-section-heading"><div><span class="eyebrow">${escapeHtml(lessonName)}</span><h2 id="homework-management-title">إدارة واجبات الدرس</h2></div></div>${renderHomeworkManagerForm()}<p class="homework-portal-status" id="homework-notification-status" role="status"></p><div class="homework-assignment-list">${homeworkAssignments.map((assignment) => `<article class="homework-assignment ${assignment.active ? "is-active" : "is-inactive"}"><div class="homework-assignment-copy"><h4>${escapeHtml(assignment.title)}</h4><p>${escapeHtml(assignment.details || "")}</p>${assignment.dueDate ? `<small class="assignment-due-date">آخر موعد: ${escapeHtml(assignment.dueDate)}</small>` : ""}</div><div class="assignment-admin-actions"><label class="assignment-activation-toggle ${assignment.active ? "is-active" : ""}"><input type="checkbox" data-toggle-assignment="${escapeHtml(assignment.id)}" ${assignment.active ? "checked" : ""}><span>${assignment.active ? "مفعّل للطلاب" : "غير مفعّل"}</span></label><button class="save-report-button" type="button" data-edit-assignment="${escapeHtml(assignment.id)}">تعديل الواجب</button><button class="delete-report-button" type="button" data-delete-assignment="${escapeHtml(assignment.id)}">حذف الواجب</button></div></article>`).join("") || `<p class="assignment-submissions-empty">لا توجد واجبات في هذا الدرس بعد.</p>`}</div></section>`;
+	}
+	const submissionSection = isTeacher
+		? `<section class="homework-portal-section" aria-labelledby="homework-submissions-title"><div class="feature-section-heading"><div><span class="eyebrow">متابعة الطلاب</span><h2 id="homework-submissions-title">حلول الطلاب</h2></div><span class="reports-period">${submissions.length} حل</span></div><div class="homework-submission-records">${submissions.length ? submissions.sort((left, right) => new Date(right.submittedAt) - new Date(left.submittedAt)).map((submission) => {
+			const student = students.find((item) => item.id === submission.studentId);
+			return `<article class="assignment-submission"><div><strong>${escapeHtml(student?.fullName || student?.name || "طالب")}</strong><small>${escapeHtml(homeworkAssignments.find((item) => item.id === submission.assignmentId)?.title || "واجب محذوف")} · ${new Date(submission.submittedAt).toLocaleString("ar")}</small><small>${submission.status === "reviewed" ? "تمت المراجعة" : "بانتظار المراجعة"}</small>${submission.details ? `<p>${escapeHtml(submission.details)}</p>` : ""}</div><div class="homework-submission-actions">${submission.fileId ? `<button class="text-button" type="button" data-open-homework-file data-file-id="${escapeHtml(submission.fileId)}" data-file-name="${escapeHtml(submission.fileName || "حل الواجب")}">معاينة الحل</button>` : `<span class="offline-status">مرفق الحل غير متاح</span>`}<button class="delete-report-button" type="button" data-delete-homework-submission="${escapeHtml(submission.id)}">حذف سجل الحل</button></div></article>`;
+		}).join("") : `<p class="assignment-submissions-empty">لم تصل حلول لهذا الدرس بعد.</p>`}</div></section>`
+		: "";
+	let pendingLateRequests = [];
+	if (!isTeacher && activeStudentId) {
+		try {
+			pendingLateRequests = JSON.parse(localStorage.getItem("itqan-late-submission-requests-v1") || "{}")[activeStudentId] || [];
+		} catch (error) {
+			console.error("تعذر قراءة طلبات التسليم المتأخر:", error);
+		}
+	}
+	const assignmentCards = visibleAssignments.length ? visibleAssignments.map((assignment) => {
+		const today = new Date();
+		const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+		const isLate = Boolean(assignment.dueDate && assignment.dueDate < todayKey);
+		const lateAllowed = Array.isArray(assignment.lateAllowedStudentIds) && assignment.lateAllowedStudentIds.includes(activeStudentId);
+		const form = isTeacher
+			? `<p class="homework-teacher-view-only">عرض المعلم فقط؛ لا يمكن للمعلم حل الواجب.</p>`
+			: !activeStudentId
+				? `<div class="homework-submission"><p>سجّل الدخول برمز الطالب لإرسال الحل.</p><button class="save-report-button" type="button" data-open-student-login>دخول الطالب</button></div>`
+				: isLate && !lateAllowed
+					? `<div class="homework-submission"><p>انتهى موعد التسليم. يمكنك طلب فتح الواجب من المعلم.</p>${pendingLateRequests.some((request) => request.assignmentId === assignment.id && request.status === "pending") ? `<button class="text-button" type="button" disabled>طلبك بانتظار مراجعة المعلم</button>` : `<button class="text-button" type="button" data-request-late-submission="${escapeHtml(assignment.id)}">طلب إعادة فتح الواجب</button>`}<p class="submission-status" role="status"></p></div>`
+					: `<form class="homework-submission" data-assignment-submission="${escapeHtml(assignment.id)}"><label class="field-label">ملاحظات الحل<textarea name="details" maxlength="500" rows="2" placeholder="اكتب ملاحظة للمعلم (اختياري)"></textarea></label><label class="field-label">إرفاق صورة أو PDF أو تسجيل صوتي (حتى 600 كيلوبايت)<input name="file" type="file" accept="image/*,.pdf,application/pdf,audio/*" required></label><div class="voice-record-controls"><button class="text-button" type="button" data-record-voice>بدء تسجيل صوتي</button><span class="voice-record-status" role="status"></span><audio class="voice-record-preview" controls hidden></audio></div><button class="save-report-button" type="submit">إرسال للمعلم</button><p class="submission-status" role="status"></p></form>`;
+		const attachment = assignment.attachment;
+		const attachmentMarkup = attachment?.fileId
+			? `<button class="text-button" type="button" data-open-homework-file data-file-id="${escapeHtml(attachment.fileId)}" data-file-name="${escapeHtml(attachment.name || "مرفق")}">معاينة ملف الواجب: ${escapeHtml(attachment.name || "مرفق")}</button>`
+			: attachment?.url
+				? attachment.type?.startsWith("image/") ? `<img class="worksheet-preview" src="${escapeHtml(attachment.url)}" alt="ورقة عمل: ${escapeHtml(assignment.title)}">` : `<a class="text-button" href="${escapeHtml(attachment.url)}" target="_blank" rel="noopener">فتح ملف الواجب: ${escapeHtml(attachment.name || "ملف")}</a>`
+				: assignment.image ? `<img class="worksheet-preview" src="${escapeHtml(assignment.image)}" alt="ورقة عمل: ${escapeHtml(assignment.title)}">` : "";
+		return `<article class="homework-assignment ${assignment.active ? "is-active" : "is-inactive"}" data-assignment-card="${escapeHtml(assignment.id)}"><div class="homework-assignment-copy"><h3>${escapeHtml(assignment.title)}</h3><p>${escapeHtml(assignment.details || "")}</p>${assignment.dueDate ? `<small class="assignment-due-date">آخر موعد: ${escapeHtml(assignment.dueDate)}</small>` : ""}</div>${attachmentMarkup}${form}</article>`;
+	}).join("") : `<p class="assignment-submissions-empty">${isTeacher ? "لا توجد واجبات في هذا الدرس." : "لا توجد واجبات مفعّلة لهذا الدرس حالياً."}</p>`;
+	content.innerHTML = `${manager}${submissionSection}<section class="homework-portal-section" aria-labelledby="homework-published-title"><div class="feature-section-heading"><div><span class="eyebrow">${escapeHtml(lessonName)}</span><h2 id="homework-published-title">الواجبات المنشورة</h2></div></div><div class="homework-assignment-list">${assignmentCards}</div></section>`;
 }
 
 function showPortalPage(page) {
@@ -2298,7 +2393,7 @@ async function openHomeworkFileViewer(fileId, fileName = "معاينة المر�
 }
 
 function renderHomeworkActivity() {
-	const manager = isTeacher ? `<form id="homework-management-form" class="homework-management-form"><input name="assignmentId" type="hidden"><label class="field-label">عنوان الواجب<input name="title" required maxlength="100" placeholder="عنوان الواجب"></label><label class="field-label">تعليمات الواجب<textarea name="details" required maxlength="300" rows="2" placeholder="اكتب تعليمات الواجب"></textarea></label>	<label class="field-label">آخر موعد للتسليم<input name="dueDate" type="date"></label><label class="field-label">ملف ورقة العمل (اختياري، حتى 600 كيلوبايت)<input name="worksheet" type="file" accept="image/*,.pdf,application/pdf"></label><label class="assignment-activation-toggle"><input name="active" type="checkbox"><span>تفعيل الواجب للطلاب عند الحفظ</span></label><div class="homework-manager-actions"><button class="save-report-button" type="submit">حفظ الواجب</button><button class="delete-report-button" type="button" data-reset-assignment>تفريغ النموذج</button></div></form>` : `<p class="activity-intro">أرسل الحل من النموذج أدناه ليصل للمعلم عبر الإنترنت ويظهر في قائمة المراجعة.</p>`;
+	const manager = isTeacher ? renderHomeworkManagerForm() : `<p class="activity-intro">أرسل الحل من النموذج أدناه ليصل للمعلم عبر الإنترنت ويظهر في قائمة المراجعة.</p>`;
 	let pendingLateRequests = [];
 	if (!isTeacher && activeStudentId) {
 		try {
@@ -2357,14 +2452,16 @@ async function saveHomeworkAssignment(form) {
 	if (!isTeacher) return;
 	const formData = new FormData(form);
 	const id = String(formData.get("assignmentId") || crypto.randomUUID());
+	const lessonKey = currentLessonKey();
 	const existingIndex = homeworkAssignments.findIndex((assignment) => assignment.id === id);
 	const assignment = existingIndex >= 0 ? { ...homeworkAssignments[existingIndex] } : { id };
 	assignment.title = String(formData.get("title")).trim();
 	assignment.details = String(formData.get("details")).trim();
 	assignment.active = formData.has("active");
 	assignment.dueDate = String(formData.get("dueDate") || "");
+	const selectedPath = String(formData.get("githubAsset") || "");
 	const imageFile = formData.get("worksheet");
-	if (imageFile?.size) {
+	if (imageFile?.size && !selectedPath) {
 		if (!(imageFile.type.startsWith("image/") || imageFile.type === "application/pdf") || imageFile.size > 600 * 1024 && !imageFile.type.startsWith("image/")) {
 			form.querySelector('[name="worksheet"]').focus();
 			form.insertAdjacentHTML("beforeend", `<p class="homework-form-error" role="alert">اختر صورة أو ملف PDF لا يتجاوز حجمه 600 كيلوبايت. تُضغط الصور الكبيرة تلقائياً.</p>`);
@@ -2374,10 +2471,68 @@ async function saveHomeworkAssignment(form) {
 		assignment.attachment = { fileId: upload.fileId, name: upload.name, type: upload.type };
 		delete assignment.image;
 	}
+	if (selectedPath) {
+		const asset = projectAssets.find((item) => item.path === selectedPath);
+		if (!asset) throw new Error("ملف GitHub المحدد لم يعد متاحاً؛ حدّث قائمة ملفات المستودع.");
+		assignment.attachment = { path: asset.path, url: asset.path, name: asset.name, type: asset.category === "صورة" ? `image/${asset.name.split(".").pop().toLocaleLowerCase()}` : "" };
+	}
 	if (existingIndex >= 0) homeworkAssignments[existingIndex] = assignment;
 	else homeworkAssignments.push(assignment);
 	saveHomeworkAssignments();
-	renderHomeworkActivity();
+	const shouldNotify = formData.has("notifyStudents") && assignment.active;
+	const savedTitle = assignment.title;
+	refreshHomeworkPresentation();
+	if (shouldNotify) {
+		const status = document.querySelector("#homework-notification-status");
+		try {
+			await publishHomeworkNotification(assignment, lessonKey);
+			if (status) status.textContent = `تم حفظ الواجب وإرسال إشعار بعنوان «${savedTitle}» إلى الطلاب.`;
+		} catch (error) {
+			console.error("تعذر إرسال إشعار الواجب:", error);
+			if (status) status.textContent = `تم حفظ الواجب، لكن تعذر إرسال الإشعار: ${error.message}`;
+		}
+	} else if (formData.has("notifyStudents")) {
+		const status = document.querySelector("#homework-notification-status");
+		if (status) status.textContent = "تم حفظ الواجب دون إشعار؛ فعّل الواجب للطلاب أولاً لنشره.";
+	}
+}
+
+function refreshHomeworkPresentation() {
+	if (!portalPages.homework.hidden) renderPortalPage("homework");
+	if (activityPanel.querySelector("#homework-management-form")) renderHomeworkActivity();
+}
+
+async function publishHomeworkNotification(assignment, lessonKey) {
+	const notificationsKey = "itqan-teacher-notifications-v1";
+	let notifications;
+	try {
+		notifications = JSON.parse(localStorage.getItem(notificationsKey) || "{}");
+	} catch (error) {
+		throw new Error(`تعذر قراءة الإشعارات الحالية: ${error.message}`);
+	}
+	if (!notifications || typeof notifications !== "object" || Array.isArray(notifications)) notifications = {};
+	const createdAt = new Date().toISOString();
+	const [level, semester, lesson] = lessonKey.split("-").map(Number);
+	const lessonName = getLessonNames(level, semester)[lesson] || "الدرس";
+	const notificationId = `homework-${assignment.id}-${crypto.randomUUID()}`;
+	students.forEach((student) => {
+		if (!Array.isArray(notifications[student.id])) notifications[student.id] = [];
+		notifications[student.id].push({
+			id: notificationId,
+			type: "announcement",
+			title: assignment.title,
+			message: `تم نشر واجب جديد في ${lessonName}. ${assignment.details}`,
+			createdAt,
+			read: false
+		});
+		notifications[student.id] = notifications[student.id].slice(-100);
+	});
+	localStorage.setItem(notificationsKey, JSON.stringify(notifications));
+	if (!window.itqanCloud?.publish || !await window.itqanCloud.publish(notificationsKey, JSON.stringify(notifications))) {
+		window.dispatchEvent(new Event("itqan-notifications-changed"));
+		throw new Error("حُفظ الإشعار على هذا الجهاز لكن تعذرت مزامنته إلى Firestore.");
+	}
+	window.dispatchEvent(new Event("itqan-notifications-changed"));
 }
 
 function renderLessonDocument(title, assetKey, description, customPath = "") {
@@ -2883,7 +3038,7 @@ document.querySelector(".lesson-tools").addEventListener("click", (event) => {
 		dictionary: () => showPortalPage("dictionary"),
 		"activity-book": () => renderLessonDocument(configuredTool.title, "activityBook", configuredTool.description, configuredTool.url),
 		audio: () => renderLessonAudio(configuredTool),
-		homework: renderHomeworkActivity,
+		homework: () => showPortalPage("homework"),
 		quiz: startQuiz,
 		resource: () => renderLessonDocument(configuredTool.title, "", configuredTool.description, configuredTool.url)
 	};
@@ -3047,9 +3202,8 @@ lessonManagerPanel.addEventListener("change", (event) => {
 	renderTeacherLessonManager();
 });
 
-activityPanel.addEventListener("click", async (event) => {
+document.addEventListener("click", async (event) => {
 	if (event.target.closest(".close-activity")) activityPanel.hidden = true;
-	if (event.target.closest("[data-open-student-login]")) openTeacherDialog();
 	const recordVoiceButton = event.target.closest("[data-record-voice]");
 	if (recordVoiceButton) {
 		const form = recordVoiceButton.closest("[data-assignment-submission]");
@@ -3149,6 +3303,12 @@ activityPanel.addEventListener("click", async (event) => {
 			window.alert(`تعذرت معاينة الملف: ${error.message}`);
 		});
 	}
+	if (event.target.closest("[data-open-github-settings]") && isTeacher) {
+		openLessonCodePage(activeLesson.level, activeLesson.semester, activeLesson.lesson);
+		lessonManagerPanel.hidden = false;
+		lessonManagerToggle.setAttribute("aria-expanded", "true");
+		renderTeacherLessonManager();
+	}
 	if (event.target.closest("[data-retry-assessment]")) startQuiz();
 	if (event.target.closest("[data-advance-assessment]")) {
 		if (quizState.expiresAt && quizState.expiresAt <= Date.now()) {
@@ -3164,7 +3324,7 @@ activityPanel.addEventListener("click", async (event) => {
 	const editButton = event.target.closest("[data-edit-assignment]");
 	if (editButton && isTeacher) {
 		const assignment = homeworkAssignments.find((item) => item.id === editButton.dataset.editAssignment);
-		const form = activityPanel.querySelector("#homework-management-form");
+		const form = editButton.closest("#homework-page-content, #activity-panel")?.querySelector("#homework-management-form");
 		if (!assignment || !form) return;
 		form.elements.assignmentId.value = assignment.id;
 		form.elements.title.value = assignment.title;
@@ -3175,14 +3335,34 @@ activityPanel.addEventListener("click", async (event) => {
 	}
 	const deleteButton = event.target.closest("[data-delete-assignment]");
 	if (deleteButton && isTeacher) {
+		if (!window.confirm("هل تريد حذف هذا الواجب؟")) return;
 		homeworkAssignments = homeworkAssignments.filter((item) => item.id !== deleteButton.dataset.deleteAssignment);
 		saveHomeworkAssignments();
-		renderHomeworkActivity();
+		refreshHomeworkPresentation();
 	}
-	if (event.target.closest("[data-reset-assignment]") && isTeacher) renderHomeworkActivity();
+	const deleteSubmissionButton = event.target.closest("[data-delete-homework-submission]");
+	if (deleteSubmissionButton && isTeacher) {
+		if (!window.confirm("هل تريد حذف سجل حل الطالب ومرفقه؟")) return;
+		const submissionId = deleteSubmissionButton.dataset.deleteHomeworkSubmission;
+		deleteSubmissionButton.disabled = true;
+		try {
+			const submissions = JSON.parse(localStorage.getItem("itqan-homework-submissions-v1") || "[]");
+			const submission = submissions.find((item) => item.id === submissionId);
+			if (!submission) throw new Error("لم يعد سجل الحل موجوداً في هذا الجهاز.");
+			if (!window.itqanCloud?.deleteHomeworkSubmission) throw new Error("الاتصال السحابي غير جاهز لحذف سجل الحل.");
+			await window.itqanCloud.deleteHomeworkSubmission(submission.id, submission.fileId);
+			localStorage.setItem("itqan-homework-submissions-v1", JSON.stringify(submissions.filter((item) => item.id !== submissionId)));
+			refreshHomeworkPresentation();
+		} catch (error) {
+			console.error("تعذر حذف سجل حل الواجب:", error);
+			deleteSubmissionButton.disabled = false;
+			window.alert(`تعذر حذف سجل الحل: ${error.message}`);
+		}
+	}
+	if (event.target.closest("[data-reset-assignment]") && isTeacher) refreshHomeworkPresentation();
 });
 
-activityPanel.addEventListener("submit", async (event) => {
+document.addEventListener("submit", async (event) => {
 	const assessmentForm = event.target.closest("#assessment-question-form");
 	if (assessmentForm) {
 		event.preventDefault();
@@ -3224,21 +3404,22 @@ activityPanel.addEventListener("submit", async (event) => {
 		try {
 			await saveHomeworkAssignment(managerForm);
 		} catch (error) {
-			managerForm.querySelector(".homework-form-error")?.remove();
-			managerForm.insertAdjacentHTML("beforeend", `<p class="homework-form-error" role="alert">تعذر حفظ الواجب أو رفع الملف: ${escapeHtml(error.message)}</p>`);
+			const status = managerForm.querySelector(".homework-form-error");
+			status.textContent = `تعذر حفظ الواجب أو رفع الملف: ${error.message}`;
+			status.hidden = false;
 		}
 		return;
 	}
 });
 
-activityPanel.addEventListener("change", (event) => {
+document.addEventListener("change", (event) => {
 	const assignmentToggle = event.target.closest("[data-toggle-assignment]");
 	if (assignmentToggle && isTeacher) {
 		const assignment = homeworkAssignments.find((item) => item.id === assignmentToggle.dataset.toggleAssignment);
 		if (!assignment) return;
 		assignment.active = assignmentToggle.checked;
 		saveHomeworkAssignments();
-		renderHomeworkActivity();
+		refreshHomeworkPresentation();
 		return;
 	}
 	const selectedFile = event.target.files?.[0];
@@ -3269,7 +3450,7 @@ activityPanel.addEventListener("change", (event) => {
 	}
 });
 
-activityPanel.addEventListener("submit", async (event) => {
+document.addEventListener("submit", async (event) => {
 	const submissionForm = event.target.closest("[data-assignment-submission]");
 	if (!submissionForm || isTeacher || !activeStudentId) return;
 	event.preventDefault();
@@ -3486,8 +3667,7 @@ document.addEventListener("click", (event) => {
 	if (!target) return;
 	if (target.hasAttribute("data-open-current-lesson")) showLessons();
 	else if (target.hasAttribute("data-open-homework-activity")) {
-		showLessons();
-		renderHomeworkActivity();
+		showPortalPage("homework");
 	}
 	else if (target.hasAttribute("data-open-current-assessment")) {
 		showLessons();
@@ -4142,6 +4322,7 @@ window.addEventListener("itqan-cloud-data-changed", async (event) => {
 	if (isTeacher && !reportsPage.hidden) renderReportsPage();
 	if (isTeacher) renderTeacherLessonManager();
 	if (!activityPanel.hidden && activityPanel.querySelector(".homework-assignment-list")) renderHomeworkActivity();
+	if (!portalPages.homework.hidden) renderPortalPage("homework");
 	renderLibrary();
 	renderQuizLibrary();
 	window.dispatchEvent(new Event("itqan-data-changed"));
@@ -4158,6 +4339,7 @@ window.addEventListener("itqan-student-data-changed", (event) => {
 });
 
 window.addEventListener("itqan-homework-submissions-changed", () => {
+	if (!portalPages.homework.hidden) renderPortalPage("homework");
 	if (isTeacher && !activityPanel.hidden && activityPanel.querySelector(".homework-assignment-list")) {
 		renderHomeworkActivity();
 	}

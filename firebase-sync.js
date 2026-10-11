@@ -781,6 +781,16 @@ window.itqanCloud = {
 		await updateDoc(submissionRef, review);
 		return true;
 	},
+	async deleteHomeworkSubmission(submissionId, fileId = "") {
+		await ready;
+		if (currentUser?.uid !== teacherUid) throw new Error("صلاحية المعلم مطلوبة لحذف سجل الحل.");
+		if (typeof submissionId !== "string" || !/^[\w-]{20,}$/.test(submissionId)) throw new Error("معرّف سجل الحل غير صالح.");
+		if (fileId && (typeof fileId !== "string" || !/^submission_[\w-]{20,}$/.test(fileId))) throw new Error("معرّف مرفق الحل غير صالح.");
+		const batch = writeBatch(database);
+		batch.delete(doc(database, "homeworkSubmissions", submissionId));
+		if (fileId) batch.delete(doc(database, "homeworkFiles", fileId));
+		await batch.commit();
+	},
 	async submitQuizResult(result) {
 		await ready;
 		if (await getAuthenticatedStudentId() !== result.studentId) throw new Error("رمز الدخول لا يطابق سجل الطالب.");
