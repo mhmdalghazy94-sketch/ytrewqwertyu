@@ -437,12 +437,20 @@ window.itqanCloud = {
 				.map((word) => [word.id, word]));
 			let changed = false;
 			words.forEach((word) => {
-				if (mergedWords.has(word.id)) return;
+				const existingWord = mergedWords.get(word.id);
+				if (existingWord) {
+					if (!existingWord.partOfSpeech && typeof word.partOfSpeech === "string" && word.partOfSpeech) {
+						mergedWords.set(word.id, { ...existingWord, partOfSpeech: word.partOfSpeech });
+						changed = true;
+					}
+					return;
+				}
 				mergedWords.set(word.id, {
 					id: word.id,
 					english: word.english,
 					arabic: word.arabic,
-					recitation: word.recitation === true
+					recitation: word.recitation === true,
+					partOfSpeech: typeof word.partOfSpeech === "string" ? word.partOfSpeech : ""
 				});
 				changed = true;
 			});

@@ -3,66 +3,77 @@
     "id": "pre-stage-lesson17-body",
     "english": "body",
     "arabic": "جسم",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-bone",
     "english": "bone",
     "arabic": "عظم",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-face",
     "english": "face",
     "arabic": "وجه",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-finger",
     "english": "finger",
     "arabic": "إصبع",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-hand",
     "english": "hand",
     "arabic": "يد",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-head",
     "english": "head",
     "arabic": "رأس",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-knee",
     "english": "knee",
     "arabic": "ركبة",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-shoulder",
     "english": "shoulder",
     "arabic": "كتف",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-skeleton",
     "english": "skeleton",
     "arabic": "هيكل عظمي",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-stomach",
     "english": "stomach",
     "arabic": "معدة",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   },
   {
     "id": "pre-stage-lesson17-toe",
     "english": "toe",
     "arabic": "إصبع القدم",
-    "recitation": false
+    "recitation": false,
+    "partOfSpeech": "noun"
   }
 ]

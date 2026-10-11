@@ -126,6 +126,23 @@ const libraryBooksStorageKey = "itqan-library-books-v1";
 const lessonAccessStorageKey = "itqan-lesson-access-v1";
 const dictionaryStorageKey = "itqan-dictionary-words-v1";
 const dictionaryFavoritesStorageKey = "itqan-dictionary-favorites-v1";
+const dictionaryPartOfSpeechOptions = [
+	{ value: "adjective", abbreviation: "adj", label: "صفة (adjective)" },
+	{ value: "noun", abbreviation: "n", label: "اسم (noun)" },
+	{ value: "number", abbreviation: "num", label: "عدد (number)" },
+	{ value: "preposition", abbreviation: "prep", label: "حرف جر (preposition)" },
+	{ value: "pronoun", abbreviation: "pron", label: "ضمير (pronoun)" },
+	{ value: "verb", abbreviation: "v", label: "فعل (verb)" }
+];
+const dictionaryPartOfSpeechByAbbreviation = Object.fromEntries(
+	dictionaryPartOfSpeechOptions.flatMap(({ value, abbreviation }) => [[value, value], [abbreviation, value]])
+);
+function normalizeDictionaryPartOfSpeech(word) {
+	return [word.partOfSpeech, word.pos, word.wordType, word.type, word.category]
+		.filter((candidate) => typeof candidate === "string")
+		.map((candidate) => dictionaryPartOfSpeechByAbbreviation[candidate.trim().toLocaleLowerCase()])
+		.find(Boolean) || "";
+}
 const homeworkTelegramUrl = "https://t.me/+PT3CQQVLJacxNWM0";
 const firstLessonAssetFiles = {
 	lesson: "المرحلة التمهيدية/الفصل الدراسي الاول/الدرس الاول/lesson01.pdf",
@@ -219,6 +236,7 @@ const portalPages = Object.fromEntries([
 	"homework", "recitation", "dictionary", "activity-book", "calendar", "contact", "achievements", "profile", "settings"
 ].map((page) => [page, document.querySelector(`#${page}-page`)]));
 const dictionaryPageContent = document.querySelector("#dictionary-page-content");
+let dictionaryPartOfSpeechFilter = "";
 const portalNavigation = [...document.querySelectorAll("[data-portal-page]")];
 const initialPortalPage = window.location.hash.slice(1);
 const initialLessonCodeRoute = /^lesson-(\d+)-(\d+)-(\d+)$/.test(initialPortalPage);
@@ -337,11 +355,12 @@ function loadDictionaryWords() {
 		if (!Array.isArray(stored)) throw new Error("بيانات القاموس ليست قائمة.");
 		return stored
 			.filter((word) => word && typeof word.id === "string" && typeof word.english === "string" && typeof word.arabic === "string")
-			.map(({ id, english, arabic, recitation }) => ({
-				id,
-				english: english.trim(),
-				arabic: arabic.trim(),
-				recitation: recitation === true
+			.map((word) => ({
+				id: word.id,
+				english: word.english.trim(),
+				arabic: word.arabic.trim(),
+				recitation: word.recitation === true,
+				partOfSpeech: normalizeDictionaryPartOfSpeech(word)
 			}))
 			.filter((word) => word.english && word.arabic)
 			.sort((left, right) => left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
@@ -369,14 +388,19 @@ async function loadDictionaryWordFile() {
 	}
 	const mergedWords = new Map(dictionaryWords.map((word) => [word.id, word]));
 	bundledWords.forEach((word) => {
-		if (!mergedWords.has(word.id)) {
-			mergedWords.set(word.id, {
-				id: word.id,
-				english: word.english.trim(),
-				arabic: word.arabic.trim(),
-				recitation: word.recitation === true
-			});
+		const partOfSpeech = normalizeDictionaryPartOfSpeech(word);
+		const existingWord = mergedWords.get(word.id);
+		if (existingWord) {
+			if (!existingWord.partOfSpeech && partOfSpeech) existingWord.partOfSpeech = partOfSpeech;
+			return;
 		}
+		mergedWords.set(word.id, {
+			id: word.id,
+			english: word.english.trim(),
+			arabic: word.arabic.trim(),
+			recitation: word.recitation === true,
+			partOfSpeech
+		});
 	});
 	dictionaryWords = [...mergedWords.values()].sort((left, right) =>
 		left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
@@ -1261,10 +1285,15 @@ function renderDictionaryWordList() {
 		const matchesSearch = !query
 			|| word.english.toLocaleLowerCase().includes(query)
 			|| word.arabic.toLocaleLowerCase().includes(query);
-		return matchesSearch && (!dictionaryFavoritesOnly || favorites.has(word.id));
+		const matchesPartOfSpeech = !dictionaryPartOfSpeechFilter
+			|| (dictionaryPartOfSpeechFilter === "unclassified" ? !word.partOfSpeech : word.partOfSpeech === dictionaryPartOfSpeechFilter);
+		return matchesSearch && matchesPartOfSpeech && (!dictionaryFavoritesOnly || favorites.has(word.id));
 	});
 	count.textContent = `${words.length} من ${dictionaryWords.length} كلمة`;
-	list.innerHTML = words.map((word) => `
+	const categories = dictionaryPartOfSpeechFilter
+		? [dictionaryPartOfSpeechFilter === "unclassified" ? "" : dictionaryPartOfSpeechFilter]
+		: [...dictionaryPartOfSpeechOptions.map(({ value }) => value), ""];
+	const wordCard = (word) => `
 		<article class="dictionary-word">
 			<div class="dictionary-word-translation"><strong lang="en" dir="ltr">${escapeHtml(word.english)}</strong><span lang="ar" dir="rtl">${escapeHtml(word.arabic)}</span></div>
 			<div class="dictionary-word-actions">
@@ -1272,7 +1301,15 @@ function renderDictionaryWordList() {
 				${isTeacher ? `<label class="dictionary-recitation-toggle"><input type="checkbox" data-dictionary-recitation="${escapeHtml(word.id)}" ${word.recitation ? "checked" : ""}><span>للتسميع</span></label><button class="text-button" type="button" data-dictionary-edit="${escapeHtml(word.id)}">تعديل</button><button class="delete-report-button" type="button" data-dictionary-delete="${escapeHtml(word.id)}">حذف</button>` : ""}
 			</div>
 		</article>
-	`).join("") || `<p class="dictionary-empty">${dictionaryWords.length ? "لا توجد كلمات تطابق البحث أو التصفية." : "لم يضف المعلم كلمات إلى القاموس بعد."}</p>`;
+	`;
+	list.innerHTML = words.length
+		? categories.map((category) => {
+			const categoryWords = words.filter((word) => word.partOfSpeech === category);
+			if (!categoryWords.length) return "";
+			const categoryLabel = dictionaryPartOfSpeechOptions.find(({ value }) => value === category)?.label || "غير مصنفة";
+			return `<section class="dictionary-word-group"><h3 class="dictionary-word-group-title">${categoryLabel}<span>${categoryWords.length}</span></h3><div class="dictionary-word-group-list">${categoryWords.map(wordCard).join("")}</div></section>`;
+		}).join("")
+		: `<p class="dictionary-empty">${dictionaryWords.length ? "لا توجد كلمات تطابق البحث أو التصفية." : "لم يضف المعلم كلمات إلى القاموس بعد."}</p>`;
 }
 
 function renderDictionaryPage() {
@@ -1282,10 +1319,12 @@ function renderDictionaryPage() {
 			<h2 id="dictionary-form-title">إضافة كلمة جديدة</h2>
 			<label class="field-label">الكلمة بالإنجليزية<input name="english" type="text" dir="ltr" lang="en" maxlength="100" required></label>
 			<label class="field-label">المعنى بالعربية<input name="arabic" type="text" lang="ar" maxlength="100" required></label>
+			<label class="field-label">قسم الكلمة<select name="partOfSpeech" required><option value="">اختر القسم</option>${dictionaryPartOfSpeechOptions.map(({ value, label }) => `<option value="${value}">${label}</option>`).join("")}</select></label>
 			<div class="dictionary-editor-actions"><button class="save-report-button" type="submit">حفظ الكلمة</button><button class="text-button" type="button" data-dictionary-cancel-edit hidden>إلغاء التعديل</button></div>
 		</form>` : ""}
 		<div class="dictionary-toolbar">
 			<label class="library-search"><span aria-hidden="true">⌕</span><input id="dictionary-search" type="search" placeholder="ابحث بالعربية أو الإنجليزية" value="${escapeHtml(dictionarySearch)}" autocomplete="off"></label>
+			<select id="dictionary-category-filter" aria-label="تصفية حسب قسم الكلمة"><option value="">كل الأقسام</option>${dictionaryPartOfSpeechOptions.map(({ value, label }) => `<option value="${value}" ${dictionaryPartOfSpeechFilter === value ? "selected" : ""}>${label}</option>`).join("")}<option value="unclassified" ${dictionaryPartOfSpeechFilter === "unclassified" ? "selected" : ""}>غير مصنفة</option></select>
 			<button class="text-button ${dictionaryFavoritesOnly ? "is-active" : ""}" id="dictionary-favorites-filter" type="button" aria-pressed="${dictionaryFavoritesOnly}">★ المفضلة</button>
 			<span class="dictionary-word-count" id="dictionary-word-count"></span>
 		</div>
@@ -3295,6 +3334,7 @@ dictionaryPageContent.addEventListener("submit", (event) => {
 	const id = String(new FormData(form).get("id") || "");
 	const english = String(new FormData(form).get("english") || "").trim();
 	const arabic = String(new FormData(form).get("arabic") || "").trim();
+	const partOfSpeech = String(new FormData(form).get("partOfSpeech") || "");
 	if (!english || !arabic) return;
 	const existing = id && dictionaryWords.find((word) => word.id === id);
 	if (id && !existing) {
@@ -3305,8 +3345,9 @@ dictionaryPageContent.addEventListener("submit", (event) => {
 	if (existing) {
 		existing.english = english;
 		existing.arabic = arabic;
+		existing.partOfSpeech = partOfSpeech;
 	} else {
-		dictionaryWords.push({ id: crypto.randomUUID(), english, arabic, recitation: false });
+		dictionaryWords.push({ id: crypto.randomUUID(), english, arabic, recitation: false, partOfSpeech });
 	}
 	try {
 		saveDictionaryWords();
@@ -3353,6 +3394,7 @@ dictionaryPageContent.addEventListener("click", (event) => {
 		form.elements.id.value = word.id;
 		form.elements.english.value = word.english;
 		form.elements.arabic.value = word.arabic;
+		form.elements.partOfSpeech.value = word.partOfSpeech || "";
 		dictionaryPageContent.querySelector("#dictionary-form-title").textContent = "تعديل كلمة";
 		form.querySelector("[data-dictionary-cancel-edit]").hidden = false;
 		form.elements.english.focus();
@@ -3375,22 +3417,27 @@ dictionaryPageContent.addEventListener("click", (event) => {
 		renderDictionaryPage();
 		return;
 	}
-	if (target.hasAttribute("data-clear-recitation")) {
-		if (!isTeacher) return;
-		dictionaryWords = dictionaryWords.map((word) => ({ ...word, recitation: false }));
-		try {
-			saveDictionaryWords();
-			dictionaryStatus = "تم إلغاء جميع كلمات التسميع.";
-		} catch (error) {
-			console.error("تعذر إلغاء كلمات التسميع:", error);
-			dictionaryStatus = `تعذر إلغاء كلمات التسميع: ${error.message}`;
-		}
-		renderPortalPage("recitation");
-		return;
-	}
 	if (target.hasAttribute("data-speak-word")) window.speakText?.(target.dataset.speakWord);
 });
+portalPages.recitation.addEventListener("click", (event) => {
+	const target = event.target.closest("[data-clear-recitation]");
+	if (!target || !isTeacher) return;
+	dictionaryWords = dictionaryWords.map((word) => ({ ...word, recitation: false }));
+	try {
+		saveDictionaryWords();
+		dictionaryStatus = "تم إلغاء جميع كلمات التسميع.";
+	} catch (error) {
+		console.error("تعذر إلغاء كلمات التسميع:", error);
+		dictionaryStatus = `تعذر إلغاء كلمات التسميع: ${error.message}`;
+	}
+	renderPortalPage("recitation");
+});
 dictionaryPageContent.addEventListener("change", (event) => {
+	if (event.target.id === "dictionary-category-filter") {
+		dictionaryPartOfSpeechFilter = event.target.value;
+		renderDictionaryWordList();
+		return;
+	}
 	const checkbox = event.target.closest("[data-dictionary-recitation]");
 	if (!checkbox) return;
 	if (!isTeacher) {

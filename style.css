@@ -191,6 +191,10 @@ details[open] > summary .disclosure { transform: rotate(180deg); }
 .dictionary-word-count { color: var(--muted); font-size: 10px; white-space: nowrap; }
 .dictionary-status { min-height: 18px; margin: -4px 0 0; color: var(--green); font-size: 10px; }
 .dictionary-word-list { display: grid; gap: 8px; }
+.dictionary-word-group { display: grid; gap: 8px; }
+.dictionary-word-group-title { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 0; color: var(--green); font-size: 13px; }
+.dictionary-word-group-title span { color: var(--muted); font-size: 10px; }
+.dictionary-word-group-list { display: grid; gap: 8px; }
 .dictionary-word { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--white); box-shadow: var(--shadow); }
 .dictionary-word-translation { display: grid; gap: 5px; min-width: 0; }
 .dictionary-word-translation strong { color: var(--ink); font-size: 14px; text-align: left; }
