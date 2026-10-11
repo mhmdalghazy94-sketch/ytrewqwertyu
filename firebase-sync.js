@@ -19,6 +19,7 @@ const courseDataKeys = [
 	"itqan-lesson-quizzes-cleared-v1",
 	"itqan-lesson-access-v1",
 	"itqan-library-books-v1",
+	"itqan-dictionary-words-v1",
 	"itqan-students-v1",
 	"itqan-teacher-notifications-v1",
 	"itqan-attendance-v1",
@@ -40,7 +41,8 @@ const studentDataKeys = [
 	"itqan-audit-log-v1",
 	"itqan-lesson-question-answers-v1",
 	"itqan-lesson-understanding-v1",
-	"itqan-lesson-notes-v1"
+	"itqan-lesson-notes-v1",
+	"itqan-dictionary-favorites-v1"
 ];
 
 let auth;
@@ -386,6 +388,7 @@ window.itqanCloud = {
 			const mergedRoster = new Map(existingRoster
 				.filter((student) => student && typeof student.id === "string" && typeof student.name === "string")
 				.map((student) => [student.id, student]));
+			let rosterChanged = false;
 			if (!migrationSnapshot.exists()) {
 				students.forEach((student) => mergedRoster.set(student.id, {
 					...mergedRoster.get(student.id),
@@ -393,16 +396,65 @@ window.itqanCloud = {
 					name: student.name,
 					nameEn: student.nameEn
 				}));
+				rosterChanged = true;
+				transaction.set(migrationRef, { value: "true", updatedAt: serverTimestamp() });
+			} else {
+				students.forEach((student) => {
+					if (mergedRoster.has(student.id)) return;
+					mergedRoster.set(student.id, student);
+					rosterChanged = true;
+				});
+			}
+			if (rosterChanged) {
 				const seededRoster = Array.from(mergedRoster.values())
 					.sort((left, right) => String(left.name).localeCompare(String(right.name), "ar"));
 				transaction.set(rosterRef, {
 					value: JSON.stringify(seededRoster),
 					updatedAt: serverTimestamp()
 				});
-				transaction.set(migrationRef, { value: "true", updatedAt: serverTimestamp() });
 			}
 			return Array.from(mergedRoster.values())
 				.sort((left, right) => String(left.name).localeCompare(String(right.name), "ar"));
+		});
+	},
+	async mergeDictionaryWords(words) {
+		await ready;
+		if (auth.currentUser?.uid !== teacherUid) throw new Error("صلاحية المعلم مطلوبة لمزامنة كلمات القاموس.");
+		if (!Array.isArray(words) || words.some((word) =>
+			!word || typeof word.id !== "string" || typeof word.english !== "string" || typeof word.arabic !== "string")) {
+			throw new Error("قائمة كلمات القاموس المراد مزامنتها غير صالحة.");
+		}
+		const dictionaryRef = doc(database, "courseData", "itqan-dictionary-words-v1");
+		return runTransaction(database, async (transaction) => {
+			const dictionarySnapshot = await transaction.get(dictionaryRef);
+			let existingWords = [];
+			if (dictionarySnapshot.exists()) {
+				existingWords = JSON.parse(dictionarySnapshot.data().value);
+				if (!Array.isArray(existingWords)) throw new Error("قائمة كلمات القاموس الموجودة في Firebase غير صالحة.");
+			}
+			const mergedWords = new Map(existingWords
+				.filter((word) => word && typeof word.id === "string" && typeof word.english === "string" && typeof word.arabic === "string")
+				.map((word) => [word.id, word]));
+			let changed = false;
+			words.forEach((word) => {
+				if (mergedWords.has(word.id)) return;
+				mergedWords.set(word.id, {
+					id: word.id,
+					english: word.english,
+					arabic: word.arabic,
+					recitation: word.recitation === true
+				});
+				changed = true;
+			});
+			const sortedWords = Array.from(mergedWords.values())
+				.sort((left, right) => String(left.english).localeCompare(String(right.english), "en", { sensitivity: "base" }));
+			if (changed) {
+				transaction.set(dictionaryRef, {
+					value: JSON.stringify(sortedWords),
+					updatedAt: serverTimestamp()
+				});
+			}
+			return sortedWords;
 		});
 	},
 	async clearLessonQuizzesOnce() {

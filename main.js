@@ -72,7 +72,12 @@ const defaultStudents = [
 	{ id: "student-5", name: "عمرو فيصل", nameEn: "Amr Faisal" },
 	{ id: "student-7", name: "مبشر ولي", nameEn: "Bushori Wali" },
 	{ id: "student-1", name: "محمود محمد", nameEn: "Mahmoud Mohammad" },
-	{ id: "student-2", name: "مروة محمد", nameEn: "Marwa Mohammad" }
+	{ id: "student-2", name: "مروة محمد", nameEn: "Marwa Mohammad" },
+	{ id: "student-10", name: "محمد مجيب", nameEn: "Mohammad Mujeeb" },
+	{ id: "student-11", name: "منار مجيب", nameEn: "Manar Mujeeb" },
+	{ id: "student-12", name: "ندى محمد", nameEn: "Nada Mohammad" },
+	{ id: "student-13", name: "قصي باسم", nameEn: "Qusai Bassem" },
+	{ id: "student-14", name: "لؤي باسم", nameEn: "Loay Bassem" }
 ];
 const studentNamesStorageKey = "itqan-student-full-names-v1";
 const studentListStorageKey = "itqan-students-v1";
@@ -119,6 +124,8 @@ const lessonToolsStorageKey = "itqan-lesson-tools-v1";
 const lessonBooksStorageKey = "itqan-lesson-books-v1";
 const libraryBooksStorageKey = "itqan-library-books-v1";
 const lessonAccessStorageKey = "itqan-lesson-access-v1";
+const dictionaryStorageKey = "itqan-dictionary-words-v1";
+const dictionaryFavoritesStorageKey = "itqan-dictionary-favorites-v1";
 const homeworkTelegramUrl = "https://t.me/+PT3CQQVLJacxNWM0";
 const firstLessonAssetFiles = {
 	lesson: "المرحلة التمهيدية/الفصل الدراسي الاول/الدرس الاول/lesson01.pdf",
@@ -209,8 +216,9 @@ const lessonCodeContent = document.querySelector("#lesson-code-content");
 lessonCodePage.append(lessonSection);
 const homeDashboard = document.querySelector("#home-dashboard");
 const portalPages = Object.fromEntries([
-	"homework", "recitation", "activity-book", "calendar", "contact", "achievements", "profile", "settings"
+	"homework", "recitation", "dictionary", "activity-book", "calendar", "contact", "achievements", "profile", "settings"
 ].map((page) => [page, document.querySelector(`#${page}-page`)]));
+const dictionaryPageContent = document.querySelector("#dictionary-page-content");
 const portalNavigation = [...document.querySelectorAll("[data-portal-page]")];
 const initialPortalPage = window.location.hash.slice(1);
 const initialLessonCodeRoute = /^lesson-(\d+)-(\d+)-(\d+)$/.test(initialPortalPage);
@@ -299,6 +307,10 @@ let homeworkAssignments = getLessonHomeworkAssignments(currentLessonKey());
 let lessonTools = getLessonTools(currentLessonKey());
 let isTeacher = false;
 let isGuest = false;
+let dictionaryWords = loadDictionaryWords();
+let dictionarySearch = "";
+let dictionaryFavoritesOnly = false;
+let dictionaryStatus = "";
 
 function persistCourseData(key, value) {
 	const serialized = JSON.stringify(value);
@@ -317,6 +329,107 @@ function saveStudents() {
 	persistCourseData(studentListStorageKey, roster);
 	localStorage.setItem(studentListStorageKey, JSON.stringify(roster));
 	localStorage.setItem(studentNamesStorageKey, JSON.stringify(Object.fromEntries(students.map((student) => [student.id, student.fullName || student.name]))));
+}
+
+function loadDictionaryWords() {
+	try {
+		const stored = JSON.parse(localStorage.getItem(dictionaryStorageKey) || "[]");
+		if (!Array.isArray(stored)) throw new Error("بيانات القاموس ليست قائمة.");
+		return stored
+			.filter((word) => word && typeof word.id === "string" && typeof word.english === "string" && typeof word.arabic === "string")
+			.map(({ id, english, arabic, recitation }) => ({
+				id,
+				english: english.trim(),
+				arabic: arabic.trim(),
+				recitation: recitation === true
+			}))
+			.filter((word) => word.english && word.arabic)
+			.sort((left, right) => left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
+	} catch (error) {
+		console.error("تعذرت قراءة كلمات القاموس:", error);
+		return [];
+	}
+}
+
+function saveDictionaryWords() {
+	dictionaryWords.sort((left, right) => left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
+	const serialized = JSON.stringify(dictionaryWords);
+	localStorage.setItem(dictionaryStorageKey, serialized);
+	if (isTeacher) window.itqanCloud?.publish(dictionaryStorageKey, serialized);
+	window.dispatchEvent(new CustomEvent("itqan-dictionary-changed"));
+}
+
+async function loadDictionaryWordFile() {
+	const response = await fetch("./dictionary-words.json");
+	if (!response.ok) throw new Error(`تعذر تحميل ملف كلمات القاموس (HTTP ${response.status}).`);
+	const bundledWords = await response.json();
+	if (!Array.isArray(bundledWords) || bundledWords.some((word) =>
+		!word || typeof word.id !== "string" || typeof word.english !== "string" || typeof word.arabic !== "string")) {
+		throw new Error("تنسيق ملف كلمات القاموس غير صالح.");
+	}
+	const mergedWords = new Map(dictionaryWords.map((word) => [word.id, word]));
+	bundledWords.forEach((word) => {
+		if (!mergedWords.has(word.id)) {
+			mergedWords.set(word.id, {
+				id: word.id,
+				english: word.english.trim(),
+				arabic: word.arabic.trim(),
+				recitation: word.recitation === true
+			});
+		}
+	});
+	dictionaryWords = [...mergedWords.values()].sort((left, right) =>
+		left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
+	localStorage.setItem(dictionaryStorageKey, JSON.stringify(dictionaryWords));
+	window.dispatchEvent(new Event("itqan-dictionary-changed"));
+}
+
+const dictionaryWordFileReady = loadDictionaryWordFile().catch((error) => {
+	console.error("تعذر تحميل ملف كلمات القاموس:", error);
+	window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
+		detail: { kind: "error", message: `تعذر تحميل كلمات القاموس من الملف: ${error.message}` }
+	}));
+});
+
+function getDictionaryFavoritesKey() {
+	const userId = isTeacher ? "teacher" : activeStudentId || (isGuest ? "guest" : "visitor");
+	return `itqan-dictionary-favorites-${userId}-v1`;
+}
+
+function loadDictionaryFavorites() {
+	try {
+		const stored = JSON.parse(localStorage.getItem(activeStudentId ? dictionaryFavoritesStorageKey : getDictionaryFavoritesKey()) || "[]");
+		const favorites = activeStudentId ? stored?.[activeStudentId] : stored;
+		return Array.isArray(favorites) ? favorites.filter((id) => typeof id === "string") : [];
+	} catch (error) {
+		console.error("تعذرت قراءة مفضلة القاموس:", error);
+		return [];
+	}
+}
+
+function saveDictionaryFavorites(favorites) {
+	const storageKey = activeStudentId ? dictionaryFavoritesStorageKey : getDictionaryFavoritesKey();
+	let stored = [];
+	if (activeStudentId) {
+		try {
+			stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
+		} catch (error) {
+			console.error("تعذرت قراءة مفضلة الطلاب المحفوظة:", error);
+		}
+		if (!stored || typeof stored !== "object" || Array.isArray(stored)) stored = {};
+		stored[activeStudentId] = favorites;
+	} else {
+		stored = favorites;
+	}
+	localStorage.setItem(storageKey, JSON.stringify(stored));
+	if (activeStudentId) {
+		window.itqanCloud?.publishStudentData(activeStudentId, storageKey, favorites).catch((error) => {
+			console.error("تعذرت مزامنة مفضلة القاموس:", error);
+			window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
+				detail: { kind: "error", message: `حُفظت المفضلة على هذا الجهاز، لكن تعذرت مزامنتها: ${error.message}` }
+			}));
+		});
+	}
 }
 
 function loadStudentReports() {
@@ -1138,7 +1251,55 @@ function renderHomeDashboard() {
 	`;
 }
 
+function renderDictionaryWordList() {
+	const list = dictionaryPageContent.querySelector("#dictionary-word-list");
+	const count = dictionaryPageContent.querySelector("#dictionary-word-count");
+	if (!list || !count) return;
+	const favorites = new Set(loadDictionaryFavorites());
+	const query = dictionarySearch.trim().toLocaleLowerCase();
+	const words = dictionaryWords.filter((word) => {
+		const matchesSearch = !query
+			|| word.english.toLocaleLowerCase().includes(query)
+			|| word.arabic.toLocaleLowerCase().includes(query);
+		return matchesSearch && (!dictionaryFavoritesOnly || favorites.has(word.id));
+	});
+	count.textContent = `${words.length} من ${dictionaryWords.length} كلمة`;
+	list.innerHTML = words.map((word) => `
+		<article class="dictionary-word">
+			<div class="dictionary-word-translation"><strong lang="en" dir="ltr">${escapeHtml(word.english)}</strong><span lang="ar" dir="rtl">${escapeHtml(word.arabic)}</span></div>
+			<div class="dictionary-word-actions">
+				<button class="dictionary-favorite-button ${favorites.has(word.id) ? "is-favorite" : ""}" type="button" data-dictionary-favorite="${escapeHtml(word.id)}" aria-pressed="${favorites.has(word.id)}" aria-label="${favorites.has(word.id) ? "إزالة من المفضلة" : "إضافة إلى المفضلة"}">★</button>
+				${isTeacher ? `<label class="dictionary-recitation-toggle"><input type="checkbox" data-dictionary-recitation="${escapeHtml(word.id)}" ${word.recitation ? "checked" : ""}><span>للتسميع</span></label><button class="text-button" type="button" data-dictionary-edit="${escapeHtml(word.id)}">تعديل</button><button class="delete-report-button" type="button" data-dictionary-delete="${escapeHtml(word.id)}">حذف</button>` : ""}
+			</div>
+		</article>
+	`).join("") || `<p class="dictionary-empty">${dictionaryWords.length ? "لا توجد كلمات تطابق البحث أو التصفية." : "لم يضف المعلم كلمات إلى القاموس بعد."}</p>`;
+}
+
+function renderDictionaryPage() {
+	dictionaryPageContent.innerHTML = `
+		${isTeacher ? `<form class="dictionary-editor" id="dictionary-word-form">
+			<input name="id" type="hidden">
+			<h2 id="dictionary-form-title">إضافة كلمة جديدة</h2>
+			<label class="field-label">الكلمة بالإنجليزية<input name="english" type="text" dir="ltr" lang="en" maxlength="100" required></label>
+			<label class="field-label">المعنى بالعربية<input name="arabic" type="text" lang="ar" maxlength="100" required></label>
+			<div class="dictionary-editor-actions"><button class="save-report-button" type="submit">حفظ الكلمة</button><button class="text-button" type="button" data-dictionary-cancel-edit hidden>إلغاء التعديل</button></div>
+		</form>` : ""}
+		<div class="dictionary-toolbar">
+			<label class="library-search"><span aria-hidden="true">⌕</span><input id="dictionary-search" type="search" placeholder="ابحث بالعربية أو الإنجليزية" value="${escapeHtml(dictionarySearch)}" autocomplete="off"></label>
+			<button class="text-button ${dictionaryFavoritesOnly ? "is-active" : ""}" id="dictionary-favorites-filter" type="button" aria-pressed="${dictionaryFavoritesOnly}">★ المفضلة</button>
+			<span class="dictionary-word-count" id="dictionary-word-count"></span>
+		</div>
+		<p class="dictionary-status" id="dictionary-status" role="status">${escapeHtml(dictionaryStatus)}</p>
+		<div class="dictionary-word-list" id="dictionary-word-list" aria-live="polite"></div>
+	`;
+	renderDictionaryWordList();
+}
+
 function renderPortalPage(page) {
+	if (page === "dictionary") {
+		renderDictionaryPage();
+		return;
+	}
 	const content = document.querySelector(`#${page}-page-content`);
 	if (!content) return;
 	const lessonName = getLessonNames(activeLesson.level, activeLesson.semester)[activeLesson.lesson] || currentLessonName();
@@ -1151,8 +1312,17 @@ function renderPortalPage(page) {
 	const assignmentCards = assignments.map((assignment) => `<article class="portal-card"><span class="eyebrow">${assignment.active ? "واجب مفعّل" : "إدارة المعلم"}</span><h2>${escapeHtml(assignment.title)}</h2><p>${escapeHtml(assignment.details || "راجع تعليمات الواجب في صفحة الدرس.")}</p>${assignment.dueDate ? `<small>آخر موعد: ${escapeHtml(assignment.dueDate)}</small>` : ""}</article>`);
 	if (page === "homework") content.innerHTML = `${cards(assignmentCards, "ستظهر هنا واجبات الدرس التي يفعّلها المعلم.")}<button class="save-report-button" type="button" data-open-homework-activity>فتح الواجبات وتسليم الحل</button>${lessonLink}`;
 	else if (page === "recitation") {
-		const paths = getLessonAssetPaths();
-		content.innerHTML = `<article class="portal-card"><span class="eyebrow">الدرس الحالي</span><h2>${escapeHtml(lessonName)}</h2><p>افتح قاموس الدرس لمراجعة المفردات، ثم استخدم أداة التسميع التي يحددها المعلم.</p>${paths.dictionary ? `<a class="save-report-button portal-link-button" href="${escapeHtml(paths.dictionary)}" target="_blank" rel="noopener">فتح قاموس الكلمات ↗</a>` : ""}${lessonLink}</article>`;
+		const words = dictionaryWords.filter((word) => word.recitation);
+		content.innerHTML = `
+			${isTeacher ? `<div class="recitation-teacher-actions"><span>${words.length} كلمة محددة للتسميع</span><button class="delete-report-button" type="button" data-clear-recitation ${words.length ? "" : "disabled"}>إلغاء جميع كلمات التسميع</button></div>` : ""}
+			<div class="dictionary-word-list recitation-word-list">${words.map((word) => `
+				<article class="dictionary-word">
+					<div class="dictionary-word-translation"><strong lang="en" dir="ltr">${escapeHtml(word.english)}</strong><span lang="ar" dir="rtl">${escapeHtml(word.arabic)}</span></div>
+					<button class="text-button" type="button" data-speak-word="${escapeHtml(word.english)}">استمع للنطق</button>
+				</article>
+			`).join("") || `<p class="dictionary-empty">${isTeacher ? "اختر كلمات من صفحة القاموس لتظهر هنا للطلاب." : "لم يحدد المعلم كلمات للتسميع بعد."}</p>`}</div>
+			<button class="save-report-button" type="button" data-open-portal="dictionary">فتح القاموس</button>
+		`;
 	} else if (page === "activity-book") {
 		const path = getLessonAssetPaths().activityBook;
 		content.innerHTML = `<article class="portal-card"><span class="eyebrow">كتاب النشاط</span><h2>${escapeHtml(lessonName)}</h2><p>تدرّب على محتوى الدرس باستخدام ملف كتاب النشاط.</p>${path ? `<a class="save-report-button portal-link-button" href="${escapeHtml(path)}" target="_blank" rel="noopener">فتح كتاب النشاط ↗</a>` : `<p>لم يضف المعلم ملفاً لهذا الدرس بعد.</p>`}${lessonLink}</article>`;
@@ -1187,7 +1357,8 @@ function showPortalPage(page) {
 	portalPages[page].hidden = false;
 	const navigation = portalNavigation.find((button) => button.dataset.portalPage === page);
 	navigation?.classList.add("is-active");
-	breadcrumbs.innerHTML = `مساحة الطالب <span>/</span> ${escapeHtml(portalPages[page].querySelector("h1").textContent)}`;
+	const sectionName = page === "dictionary" ? "مصادر التعلّم" : "مساحة الطالب";
+	breadcrumbs.innerHTML = `${sectionName} <span>/</span> ${escapeHtml(portalPages[page].querySelector("h1").textContent)}`;
 	setSidebarOpen(false);
 	renderPortalPage(page);
 	if (window.location.hash !== `#${page}`) setRouteHash(page);
@@ -3111,6 +3282,137 @@ portalNavigation.forEach((button) => button.addEventListener("click", () => {
 	if (page === "home") showLessons();
 	else showPortalPage(page);
 }));
+dictionaryPageContent.addEventListener("input", (event) => {
+	if (event.target.id !== "dictionary-search") return;
+	dictionarySearch = event.target.value;
+	renderDictionaryWordList();
+});
+dictionaryPageContent.addEventListener("submit", (event) => {
+	const form = event.target.closest("#dictionary-word-form");
+	if (!form) return;
+	event.preventDefault();
+	if (!isTeacher) return;
+	const id = String(new FormData(form).get("id") || "");
+	const english = String(new FormData(form).get("english") || "").trim();
+	const arabic = String(new FormData(form).get("arabic") || "").trim();
+	if (!english || !arabic) return;
+	const existing = id && dictionaryWords.find((word) => word.id === id);
+	if (id && !existing) {
+		dictionaryStatus = "تعذر العثور على الكلمة المراد تعديلها.";
+		renderDictionaryPage();
+		return;
+	}
+	if (existing) {
+		existing.english = english;
+		existing.arabic = arabic;
+	} else {
+		dictionaryWords.push({ id: crypto.randomUUID(), english, arabic, recitation: false });
+	}
+	try {
+		saveDictionaryWords();
+		dictionaryStatus = existing ? "تم تعديل الكلمة." : "تمت إضافة الكلمة.";
+	} catch (error) {
+		console.error("تعذر حفظ كلمة القاموس:", error);
+		dictionaryStatus = `تعذر حفظ الكلمة على هذا الجهاز: ${error.message}`;
+	}
+	renderDictionaryPage();
+});
+dictionaryPageContent.addEventListener("click", (event) => {
+	const target = event.target.closest("button");
+	if (!target) return;
+	if (target.id === "dictionary-favorites-filter") {
+		dictionaryFavoritesOnly = !dictionaryFavoritesOnly;
+		target.classList.toggle("is-active", dictionaryFavoritesOnly);
+		target.setAttribute("aria-pressed", String(dictionaryFavoritesOnly));
+		renderDictionaryWordList();
+		return;
+	}
+	if (target.hasAttribute("data-dictionary-favorite")) {
+		const wordId = target.dataset.dictionaryFavorite;
+		const favorites = loadDictionaryFavorites();
+		const updatedFavorites = favorites.includes(wordId)
+			? favorites.filter((id) => id !== wordId)
+			: [...favorites, wordId];
+		try {
+			saveDictionaryFavorites(updatedFavorites);
+			dictionaryStatus = updatedFavorites.includes(wordId) ? "أضيفت الكلمة إلى المفضلة." : "أزيلت الكلمة من المفضلة.";
+		} catch (error) {
+			console.error("تعذر حفظ مفضلة القاموس:", error);
+			dictionaryStatus = `تعذر حفظ المفضلة: ${error.message}`;
+		}
+		const status = dictionaryPageContent.querySelector("#dictionary-status");
+		if (status) status.textContent = dictionaryStatus;
+		renderDictionaryWordList();
+		return;
+	}
+	if (target.hasAttribute("data-dictionary-edit")) {
+		if (!isTeacher) return;
+		const word = dictionaryWords.find((item) => item.id === target.dataset.dictionaryEdit);
+		const form = dictionaryPageContent.querySelector("#dictionary-word-form");
+		if (!word || !form) return;
+		form.elements.id.value = word.id;
+		form.elements.english.value = word.english;
+		form.elements.arabic.value = word.arabic;
+		dictionaryPageContent.querySelector("#dictionary-form-title").textContent = "تعديل كلمة";
+		form.querySelector("[data-dictionary-cancel-edit]").hidden = false;
+		form.elements.english.focus();
+		return;
+	}
+	if (target.hasAttribute("data-dictionary-cancel-edit")) {
+		renderDictionaryPage();
+		return;
+	}
+	if (target.hasAttribute("data-dictionary-delete")) {
+		if (!isTeacher || !window.confirm("هل تريد حذف هذه الكلمة من القاموس؟")) return;
+		dictionaryWords = dictionaryWords.filter((word) => word.id !== target.dataset.dictionaryDelete);
+		try {
+			saveDictionaryWords();
+			dictionaryStatus = "تم حذف الكلمة.";
+		} catch (error) {
+			console.error("تعذر حذف كلمة القاموس:", error);
+			dictionaryStatus = `تعذر حفظ الحذف: ${error.message}`;
+		}
+		renderDictionaryPage();
+		return;
+	}
+	if (target.hasAttribute("data-clear-recitation")) {
+		if (!isTeacher) return;
+		dictionaryWords = dictionaryWords.map((word) => ({ ...word, recitation: false }));
+		try {
+			saveDictionaryWords();
+			dictionaryStatus = "تم إلغاء جميع كلمات التسميع.";
+		} catch (error) {
+			console.error("تعذر إلغاء كلمات التسميع:", error);
+			dictionaryStatus = `تعذر إلغاء كلمات التسميع: ${error.message}`;
+		}
+		renderPortalPage("recitation");
+		return;
+	}
+	if (target.hasAttribute("data-speak-word")) window.speakText?.(target.dataset.speakWord);
+});
+dictionaryPageContent.addEventListener("change", (event) => {
+	const checkbox = event.target.closest("[data-dictionary-recitation]");
+	if (!checkbox) return;
+	if (!isTeacher) {
+		checkbox.checked = !checkbox.checked;
+		return;
+	}
+	const word = dictionaryWords.find((item) => item.id === checkbox.dataset.dictionaryRecitation);
+	if (!word) return;
+	word.recitation = checkbox.checked;
+	try {
+		saveDictionaryWords();
+		dictionaryStatus = checkbox.checked ? "أضيفت الكلمة إلى قائمة التسميع." : "أزيلت الكلمة من قائمة التسميع.";
+	} catch (error) {
+		console.error("تعذر تحديث كلمات التسميع:", error);
+		dictionaryStatus = `تعذر حفظ التغيير: ${error.message}`;
+	}
+	renderDictionaryPage();
+});
+window.addEventListener("itqan-dictionary-changed", () => {
+	if (!portalPages.dictionary.hidden) renderDictionaryPage();
+	if (!portalPages.recitation.hidden) renderPortalPage("recitation");
+});
 document.querySelector(".brand").addEventListener("click", (event) => {
 	event.preventDefault();
 	showLessons();
@@ -3134,6 +3436,7 @@ document.addEventListener("click", (event) => {
 	else if (target.hasAttribute("data-open-student-reports")) showStudentReports();
 	else if (target.hasAttribute("data-toggle-theme")) document.querySelector("#theme-toggle").click();
 	else if (target.dataset.openPortal === "quizzes") showQuizzes();
+	else if (portalPages[target.dataset.openPortal]) showPortalPage(target.dataset.openPortal);
 });
 window.addEventListener("hashchange", () => {
 	const route = window.location.hash.slice(1);
@@ -3680,11 +3983,26 @@ window.addEventListener("itqan-cloud-status", (event) => {
 	cloudSyncStatus.classList.toggle("is-error", kind === "error");
 });
 
-window.addEventListener("itqan-cloud-auth-changed", (event) => {
+window.addEventListener("itqan-cloud-auth-changed", async (event) => {
 	if (event.detail?.isTeacher) {
-		if (isTeacher) return;
+		const wasTeacher = isTeacher;
 		isTeacher = true;
 		activeStudentId = "";
+		try {
+			await dictionaryWordFileReady;
+			await window.itqanCloud?.syncReady;
+			if (window.itqanCloud?.mergeDictionaryWords) {
+				dictionaryWords = await window.itqanCloud.mergeDictionaryWords(dictionaryWords);
+				localStorage.setItem(dictionaryStorageKey, JSON.stringify(dictionaryWords));
+				window.dispatchEvent(new Event("itqan-dictionary-changed"));
+			}
+		} catch (error) {
+			console.error("تعذرت مزامنة كلمات ملف القاموس:", error);
+			window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
+				detail: { kind: "error", message: `تعذرت مزامنة كلمات القاموس: ${error.message}` }
+			}));
+		}
+		if (wasTeacher) return;
 	} else {
 		if (!isTeacher) return;
 		isTeacher = false;
@@ -3700,6 +4018,11 @@ window.addEventListener("itqan-cloud-auth-changed", (event) => {
 });
 
 window.addEventListener("itqan-cloud-data-changed", async (event) => {
+	if (event.detail?.key === dictionaryStorageKey) {
+		dictionaryWords = loadDictionaryWords();
+		if (!portalPages.dictionary.hidden) renderDictionaryPage();
+		if (!portalPages.recitation.hidden) renderPortalPage("recitation");
+	}
 	if (event.detail?.key === "itqan-teacher-notifications-v1") {
 		window.dispatchEvent(new Event("itqan-notifications-changed"));
 	}
@@ -3746,6 +4069,9 @@ window.addEventListener("itqan-cloud-data-changed", async (event) => {
 window.addEventListener("itqan-student-data-changed", (event) => {
 	if (event.detail?.key === storageKey) studentReports = loadStudentReports();
 	if (event.detail?.key === quizAttemptsKey) quizAttempts = loadQuizAttempts();
+	if (event.detail?.key === dictionaryFavoritesStorageKey && event.detail?.studentId === activeStudentId && !portalPages.dictionary.hidden) {
+		renderDictionaryWordList();
+	}
 	renderCurriculum();
 	window.dispatchEvent(new Event("itqan-data-changed"));
 });

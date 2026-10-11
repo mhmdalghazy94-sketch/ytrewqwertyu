@@ -32,6 +32,7 @@ service cloud.firestore {
         "itqan-lesson-quizzes-cleared-v1",
         "itqan-lesson-access-v1",
         "itqan-library-books-v1",
+        "itqan-dictionary-words-v1",
         "itqan-students-v1",
         "itqan-student-roster-cleared-v1",
         "itqan-student-roster-seeded-v1",
@@ -210,7 +211,8 @@ service cloud.firestore {
           "itqan-audit-log-v1",
           "itqan-lesson-question-answers-v1",
           "itqan-lesson-understanding-v1",
-          "itqan-lesson-notes-v1"
+          "itqan-lesson-notes-v1",
+          "itqan-dictionary-favorites-v1"
         ];
       }
       allow read: if isTeacher()
