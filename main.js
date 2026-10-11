@@ -329,6 +329,8 @@ let dictionaryWords = loadDictionaryWords();
 let dictionarySearch = "";
 let dictionaryFavoritesOnly = false;
 let dictionaryStatus = "";
+let bundledDictionaryWords = [];
+let dictionaryCloudReady = false;
 
 function persistCourseData(key, value) {
 	const serialized = JSON.stringify(value);
@@ -378,6 +380,22 @@ function saveDictionaryWords() {
 	window.dispatchEvent(new CustomEvent("itqan-dictionary-changed"));
 }
 
+function mergeBundledDictionaryWords(words) {
+	const mergedWords = new Map(words.map((word) => [word.id, { ...word }]));
+	bundledDictionaryWords.forEach((bundledWord) => {
+		const existingWord = mergedWords.get(bundledWord.id);
+		if (existingWord) {
+			if (!existingWord.partOfSpeech && bundledWord.partOfSpeech) {
+				existingWord.partOfSpeech = bundledWord.partOfSpeech;
+			}
+			return;
+		}
+		mergedWords.set(bundledWord.id, { ...bundledWord });
+	});
+	return [...mergedWords.values()].sort((left, right) =>
+		left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
+}
+
 async function loadDictionaryWordFile() {
 	const response = await fetch("./dictionary-words.json");
 	if (!response.ok) throw new Error(`تعذر تحميل ملف كلمات القاموس (HTTP ${response.status}).`);
@@ -386,24 +404,14 @@ async function loadDictionaryWordFile() {
 		!word || typeof word.id !== "string" || typeof word.english !== "string" || typeof word.arabic !== "string")) {
 		throw new Error("تنسيق ملف كلمات القاموس غير صالح.");
 	}
-	const mergedWords = new Map(dictionaryWords.map((word) => [word.id, word]));
-	bundledWords.forEach((word) => {
-		const partOfSpeech = normalizeDictionaryPartOfSpeech(word);
-		const existingWord = mergedWords.get(word.id);
-		if (existingWord) {
-			if (!existingWord.partOfSpeech && partOfSpeech) existingWord.partOfSpeech = partOfSpeech;
-			return;
-		}
-		mergedWords.set(word.id, {
-			id: word.id,
-			english: word.english.trim(),
-			arabic: word.arabic.trim(),
-			recitation: word.recitation === true,
-			partOfSpeech
-		});
-	});
-	dictionaryWords = [...mergedWords.values()].sort((left, right) =>
-		left.english.localeCompare(right.english, "en", { sensitivity: "base" }));
+	bundledDictionaryWords = bundledWords.map((word) => ({
+		id: word.id,
+		english: word.english.trim(),
+		arabic: word.arabic.trim(),
+		recitation: word.recitation === true,
+		partOfSpeech: normalizeDictionaryPartOfSpeech(word)
+	}));
+	dictionaryWords = mergeBundledDictionaryWords(dictionaryWords);
 	localStorage.setItem(dictionaryStorageKey, JSON.stringify(dictionaryWords));
 	window.dispatchEvent(new Event("itqan-dictionary-changed"));
 }
@@ -4043,15 +4051,18 @@ window.addEventListener("itqan-cloud-auth-changed", async (event) => {
 	if (event.detail?.isTeacher) {
 		const wasTeacher = isTeacher;
 		isTeacher = true;
+		dictionaryCloudReady = false;
 		activeStudentId = "";
 		try {
 			await dictionaryWordFileReady;
 			await window.itqanCloud?.syncReady;
 			if (window.itqanCloud?.mergeDictionaryWords) {
+				dictionaryWords = mergeBundledDictionaryWords(dictionaryWords);
 				dictionaryWords = await window.itqanCloud.mergeDictionaryWords(dictionaryWords);
 				localStorage.setItem(dictionaryStorageKey, JSON.stringify(dictionaryWords));
 				window.dispatchEvent(new Event("itqan-dictionary-changed"));
 			}
+			dictionaryCloudReady = true;
 		} catch (error) {
 			console.error("تعذرت مزامنة كلمات ملف القاموس:", error);
 			window.dispatchEvent(new CustomEvent("itqan-cloud-status", {
@@ -4062,6 +4073,7 @@ window.addEventListener("itqan-cloud-auth-changed", async (event) => {
 	} else {
 		if (!isTeacher) return;
 		isTeacher = false;
+		dictionaryCloudReady = false;
 		activeStudentId = "";
 	}
 	if (teacherDialog.open) teacherDialog.close();
@@ -4075,7 +4087,15 @@ window.addEventListener("itqan-cloud-auth-changed", async (event) => {
 
 window.addEventListener("itqan-cloud-data-changed", async (event) => {
 	if (event.detail?.key === dictionaryStorageKey) {
-		dictionaryWords = loadDictionaryWords();
+		const cloudWords = loadDictionaryWords();
+		dictionaryWords = mergeBundledDictionaryWords(cloudWords);
+		if (JSON.stringify(dictionaryWords) !== JSON.stringify(cloudWords)) {
+			const serializedWords = JSON.stringify(dictionaryWords);
+			localStorage.setItem(dictionaryStorageKey, serializedWords);
+			if (isTeacher && dictionaryCloudReady) {
+				await window.itqanCloud?.publish(dictionaryStorageKey, serializedWords);
+			}
+		}
 		if (!portalPages.dictionary.hidden) renderDictionaryPage();
 		if (!portalPages.recitation.hidden) renderPortalPage("recitation");
 	}
