@@ -29,6 +29,8 @@ html.dark-theme .sidebar,
 html.dark-theme .home-dashboard,
 html.dark-theme .home-summary-card,
 html.dark-theme .portal-card,
+html.dark-theme .dictionary-word,
+html.dark-theme .dictionary-editor,
 html.dark-theme .feature-card,
 html.dark-theme .report-card,
 html.dark-theme .quiz-library-card,
@@ -181,6 +183,28 @@ details[open] > summary .disclosure { transform: rotate(180deg); }
 .portal-card .save-report-button, .portal-card .text-button { margin-top: 4px; }
 .portal-link-button { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; }
 .portal-empty { grid-column: 1 / -1; }
+.dictionary-editor { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; gap: 12px; padding: 16px; border: 1px solid #c9dccb; border-radius: 7px; background: #f7faf5; }
+.dictionary-editor h2 { grid-column: 1 / -1; margin: 0; font-size: 15px; }
+.dictionary-editor-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.dictionary-toolbar { display: flex; align-items: center; gap: 10px; }
+.dictionary-toolbar .library-search { flex: 1; width: auto; }
+.dictionary-word-count { color: var(--muted); font-size: 10px; white-space: nowrap; }
+.dictionary-status { min-height: 18px; margin: -4px 0 0; color: var(--green); font-size: 10px; }
+.dictionary-word-list { display: grid; gap: 8px; }
+.dictionary-word { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--white); box-shadow: var(--shadow); }
+.dictionary-word-translation { display: grid; gap: 5px; min-width: 0; }
+.dictionary-word-translation strong { color: var(--ink); font-size: 14px; text-align: left; }
+.dictionary-word-translation span { color: var(--muted); font-size: 12px; }
+.dictionary-word-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 7px; }
+.dictionary-recitation-toggle { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 10px; white-space: nowrap; }
+.dictionary-favorite-button { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; color: #89958b; background: var(--white); cursor: pointer; }
+.dictionary-favorite-button.is-favorite { border-color: #ead38a; color: #ba8c16; background: #fff8db; }
+.dictionary-toolbar .text-button.is-active { border-color: #ead38a; color: #8c6c10; background: #fff8db; }
+.dictionary-empty { margin: 0; padding: 25px 16px; border: 1px dashed var(--line); border-radius: 7px; color: var(--muted); text-align: center; font-size: 11px; }
+.recitation-teacher-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--white); color: var(--muted); font-size: 11px; }
+.recitation-word-list .dictionary-word { box-shadow: none; }
+.dictionary-editor .field-label { min-width: 0; }
+.dictionary-editor input[dir="ltr"] { text-align: left; }
 .portal-achievement-list { display: grid; gap: 10px; width: 100%; margin: 5px 0; padding: 0 20px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
 .profile-summary { display: flex; align-items: center; grid-auto-flow: column; justify-content: start; }
 .profile-summary .profile-avatar { flex: 0 0 48px; width: 48px; height: 48px; }
@@ -926,6 +950,13 @@ a.library-download-button:hover { background: #e2f0df; }
     .resource-path-options { max-height: 190px; }
     .lesson-tools-manager { grid-column: auto; }
     .library-toolbar { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .dictionary-toolbar { align-items: stretch; flex-wrap: wrap; }
+    .dictionary-toolbar .library-search { flex-basis: 100%; }
+    .dictionary-editor { grid-template-columns: minmax(0, 1fr); }
+    .dictionary-editor h2 { grid-column: auto; }
+    .dictionary-word { align-items: flex-start; flex-direction: column; }
+    .dictionary-word-actions { justify-content: flex-start; }
+    .recitation-teacher-actions { align-items: flex-start; flex-direction: column; }
     .library-search { width: 100%; }
     .library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
     .library-book-info { padding: 9px; }
